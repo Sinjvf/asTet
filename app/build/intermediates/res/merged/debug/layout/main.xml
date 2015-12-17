@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/frameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/standart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="35sp"
+                        android:textColor="@color/red"
+                        android:layout_gravity="center"
+
+                        android:text="Standart \nscreen">
+                    </TextView>
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10">
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="New Game"
+                        android:id="@+id/button_new_standart">
+                    </Button>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Results"
+                            android:id="@+id/button_rating_standart">
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/awry"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="35sp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/red"
+                            android:text="Awry \nscreen">
+                    </TextView>
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10">
+                    </LinearLayout>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="New Game"
+                            android:id="@+id/button_new_awry">
+                    </Button>
+
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Results"
+                            android:id="@+id/button_rating_awry"  >
+                    </Button>
+                </LinearLayout>
+
+            </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/standart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="35sp"
+                            android:textColor="@color/red"
+                            android:layout_gravity="center"
+
+                            android:text="Hex \nscreen">
+                    </TextView>
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10">
+                    </LinearLayout>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="New Game"
+                            android:id="@+id/button_new_hex">
+                    </Button>
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Results"
+                            android:id="@+id/button_rating_hex">
+                    </Button>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/awry"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="35sp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/red"
+                            android:text="">
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        </LinearLayout>
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Finish"
+                    android:id="@+id/button_exit_app"/>
+        </LinearLayout>
+        </FrameLayout>
+
+
+<!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/main.xml -->

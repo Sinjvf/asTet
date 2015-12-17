@@ -1,0 +1,64 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:3:11-39
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:5:11-36
+	android:versionCode
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:4:11-34
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:6:5-43
+	android:targetSdkVersion
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:6:15-41
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+		INJECTED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml
+application
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:7:5-24:19
+	android:label
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:7:18-40
+	android:icon
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:7:41-72
+activity#com.example.tetris.MainActivity
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:8:9-16:20
+	android:theme
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:10:17-59
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:9:17-44
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:11:13-14:29
+action#android.intent.action.MAIN
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:12:17-68
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:12:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:13:17-76
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:13:27-74
+activity#com.example.tetris.GameActivity
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:17:9-19:20
+	android:theme
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:18:13-55
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:17:19-46
+activity#com.example.tetris.PrintResultsActivity
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:20:9-21:63
+	android:theme
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:21:19-61
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:20:19-54
+activity#com.example.tetris.SaveResultsActivity
+ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:22:9-23:63
+	android:theme
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:23:19-61
+	android:name
+		ADDED from /home/sinjvf/StudioProjects/asTet/app/src/main/AndroidManifest.xml:22:19-53

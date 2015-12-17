@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tetris"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="23" />
+
+    <application
+        android:icon="@drawable/tetris"
+        android:label="Tetris" >
+        <activity
+            android:name="com.example.tetris.MainActivity"
+            android:theme="@android:style/Theme.Black" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.tetris.GameActivity"
+            android:theme="@android:style/Theme.Black" >
+        </activity>
+        <activity
+            android:name="com.example.tetris.PrintResultsActivity"
+            android:theme="@android:style/Theme.Black" />
+        <activity
+            android:name="com.example.tetris.SaveResultsActivity"
+            android:theme="@android:style/Theme.Black" />
+    </application>
+
+</manifest>

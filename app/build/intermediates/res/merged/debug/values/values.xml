@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/values/colors.xml -->
+    <eat-comment/>
+    <color name="bgreen">#ff00f0a0</color>
+    <color name="black">#ff000000</color>
+    <color name="dblue">#ff000aff</color>
+    <color name="dfox">#ffff8000</color>
+    <color name="red">#ffff0000</color>
+    <color name="white">#ffffffff</color>
+    <!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">tetris</string>
+</resources>
