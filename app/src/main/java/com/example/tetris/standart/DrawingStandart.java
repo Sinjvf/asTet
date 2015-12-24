@@ -1,7 +1,9 @@
 package com.example.tetris.standart;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
 
 import com.example.tetris.Const;
@@ -12,7 +14,9 @@ import com.example.tetris.Drawing;
  */
 public class DrawingStandart extends Drawing{
 
-
+    public DrawingStandart(Context context) {
+        super( context);
+    }
     @Override
     public void setHW( int height, int width){
         this.height = height;
@@ -27,21 +31,39 @@ public class DrawingStandart extends Drawing{
      * draw rectangle on canvas with p in (i, j) point
      */
     @Override
-    protected void drawField(Paint p, int i, int j) {
-        canvas.drawRect(shiftx+i * iW + Const.TRACE,
-                        shifty+j * iW + Const.TRACE,
-                        shiftx+(i + 1) * iW - Const.TRACE,
-                        shifty+(j + 1) * iW - Const.TRACE,
+    protected void drawField(int colCore, int colEdg , int i, int j) {
+        int absI, absJ;
+        absI = shiftx+i * iW;
+        absJ = shifty+j * iW;
+        Paint p = new Paint();
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI + iW/2, absJ+iW/2,
+                (int)(Math.sqrt(2)*iW), colCore,
+                colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
+        canvas.drawRect(absI + Const.TRACE,
+                        absJ + Const.TRACE,
+                        absI +iW- Const.TRACE,
+                        absJ+ iW- Const.TRACE,
                         p);
     }
     @Override
-    protected  void drawFieldForNextFugure(Paint p, int i, int j) {
+    protected  void drawFieldForNextFugure(int colCore, int colEdg, int i, int j) {
         Integer iiw;
         iiw = iW/2;
-        canvas.drawRect((i-1) * iiw + Const.TRACE+ iW*Const.NW[Const.STANDART] +1,
-                        (j+1) * iiw + Const.TRACE +hShift+iW,
-                        (i ) * iiw - Const.TRACE+ iW*Const.NW[Const.STANDART],
-                        (j + 2) * iiw - Const.TRACE+hShift+iW,
+        int absI, absJ;
+        absI = (i-1) * iiw +  iW*Const.NW[Const.STANDART] ;
+        absJ = (j+2)* iiw  +hShift+iW;
+        Paint p = new Paint();
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI + iiw/2, absJ+iiw/2,
+                                                    (int)(Math.sqrt(2)*iiw),
+                                                    colCore,colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
+        canvas.drawRect(absI+ Const.TRACE +1,
+                        absJ+ Const.TRACE,
+                        absI+ iiw -  Const.TRACE ,
+                        absJ+iiw - Const.TRACE,
                         p);
     }
     /**
@@ -49,20 +71,18 @@ public class DrawingStandart extends Drawing{
      */
     @Override
     public void drawFullScreen() {
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.FILL);
         for (int i = 0; i < Const.NW[Const.STANDART]; i++) {
             for (int j = 0; j < Const.NH[Const.STANDART]; j++) {
-                if (screen.isFull(i, j))
-                    drawField(p, i, j);
+                if (screen.isFull(i, j)){
+                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
+                }
             }
         }
     }
     @Override
     public void drawGrid(Integer score, int level) {
         Paint p = new Paint();
-        p.setStrokeWidth(Const.TRACE*2);
+        p.setStrokeWidth(Const.TRACE * 2);
         p.setColor(Color.BLACK);
         for (int i = 0; i <=Const.NW[Const.STANDART]; i++)
             canvas.drawLine(shiftx+i * iW,

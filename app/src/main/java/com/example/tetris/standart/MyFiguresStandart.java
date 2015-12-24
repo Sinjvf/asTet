@@ -17,7 +17,9 @@ public class MyFiguresStandart extends MyFigures{
 
     MyFiguresStandart(){
         super();
+        primaryY = Const.PRIMARY_Y[Const.STANDART];
         x= Const.NW[Const.STANDART]/2-1;
+        y = primaryY;
         movingStep = Const.MOVING_STEP[Const.STANDART];
         modes=Const.MODES[Const.STANDART];
     }
@@ -64,6 +66,7 @@ public class MyFiguresStandart extends MyFigures{
                 fCurrent = new F_I();
                 break;
         }
+       // fCurrent = new F_I();
         fCurrent.setCurrentMode(Math.abs(random.nextInt()) % modes);
         return fCurrent;
     }

@@ -4,23 +4,30 @@
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="23"/>
-    <application android:label="Tetris" android:icon="@drawable/tetris">
+    <application
+        android:label="Tetris"
+        android:icon="@drawable/tetris">
         <activity
-                android:name="MainActivity"
-                android:theme="@android:style/Theme.Black">
+                android:name=".MainActivity"
+                android:theme="@style/MyStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
 
-        </activity>
+        <activity android:name="ChoiceActivity"
+            android:theme="@style/MyStyle"/>
         <activity android:name="GameActivity"
-            android:theme="@android:style/Theme.Black">
-        </activity>
+            android:theme="@style/MyStyle"/>
         <activity android:name="PrintResultsActivity"
-                  android:theme="@android:style/Theme.Black"/>
+            android:theme="@style/MyStyle"/>
         <activity android:name="SaveResultsActivity"
-                  android:theme="@android:style/Theme.Black"/>
+            android:theme="@style/MyStyle"/>
+        <activity android:name="SettingsActivity"
+            android:theme="@style/MyStyle"/>
+        <activity android:name="BackgroundChoiceActivity"
+            android:theme="@style/MyStyle"/>
     </application>
 
 </manifest>

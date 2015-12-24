@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private int width, height;
-    private int type;
+    private int type, back, complex;
     private MyFigures fCurrent;
     private MyFigures fNext;
     private Drawing draw;
@@ -41,14 +41,17 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private ListenerToMain listenerToMain;
     private DrawThread drawThread;
 
+    Context context;
+
     private ArrayList<Integer> checkingLevel;
 
     /**
      * constructor
      */
-    public Game(Context context, int type) {
+    public Game(Context context, GameProperties gameProperties) {
         super(context);
-        newGame(type);
+        this.context = context;
+        newGame(gameProperties);
     }
 
     void setListenerToMain(ListenerToMain listenerToMain){
@@ -58,8 +61,13 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         return score;
     }
 
-    public void newGame(int type){
-        this.type = type;
+    public void newGame(GameProperties gameProperties){;
+        type = gameProperties.getType();
+        back = gameProperties.getBack();
+        complex = gameProperties.getComplex();
+
+        Log.d(Const.LOG_TAG, "------NEW GAME---------");
+        Log.d(Const.LOG_TAG, "type="+ type+ ", back="+back+", complex="+complex);
         Paint p = new Paint();
         score = 0;
         level =0;
@@ -75,21 +83,20 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                 screen = new GameScreenStandart(Const.NW[type], Const.NH[type]);
                 fCurrent = MyFiguresStandart.newFigure();
                 fNext = MyFiguresStandart.newFigure();
-                draw = new DrawingStandart();
+                draw = new DrawingStandart(context);
                 break;
             case Const.AWRY:
                 screen = new GameScreenAwry(Const.NW[type],  Const.NH[type]*2-1);
                 fCurrent = MyFiguresAwry.newFigure();
                 fNext = MyFiguresAwry.newFigure();
-                draw = new DrawingAwry();
+                draw = new DrawingAwry(context);
                 break;
             case Const.HEX:
-                //screen = new GameScreenHex(Const.NW[type],  Const.NH[type]*2-1);
                 fCurrent = MyFiguresHex.newFigure();
                 fNext = MyFiguresHex.newFigure();
 
                 screen = new GameScreenHex(Const.NW[type]*2,  Const.NH[type]*2-1);
-                draw = new DrawingHex();
+                draw = new DrawingHex(context);
                 break;
         }
     }
@@ -216,7 +223,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                             if (canvas != null){
                                 draw.setCanvas(canvas);
                                 draw.setScreen(screen);
-                                draw.drawBackgroung();
+                                draw.drawBackgroung(back);
                                 draw.drawFullScreen();
                                 draw.drawFigure(fCurrent);
                                 draw.drawNextFigure(fNext);

@@ -3,6 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@drawable/firework"
               android:weightSum="5">
     <LinearLayout
             android:layout_width="wrap_content"
@@ -10,36 +11,23 @@
             android:layout_weight="1">
     </LinearLayout>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="Your score is"
-            android:layout_gravity="center_horizontal"/>
+            style="@style/SaveResText"
+            android:text="Your score is"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
+            style="@style/SaveResText"
             android:text=""
-            android:id="@+id/textScore"
-            android:textColor="@color/bgreen"
-            android:layout_gravity="center_horizontal"/>
+            android:id="@+id/textScore"/>
     <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="4">
     </LinearLayout>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="Please,"
-            android:layout_gravity="center_horizontal"/>
+            style="@style/SaveResText"
+            android:text="Please,"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="print your name"
-            android:layout_gravity="center_horizontal"/>
+            style="@style/SaveResText"
+            android:text="print your name"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,11 +53,7 @@
                 android:text="Ok"
                 android:layout_weight="1"
                 android:id="@+id/button_save_res"/>
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-        </LinearLayout>
+
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

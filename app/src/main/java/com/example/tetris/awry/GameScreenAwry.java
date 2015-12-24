@@ -27,7 +27,7 @@ public class GameScreenAwry extends GameScreen{
 
     @Override
     protected  void removeLine(int j){
-        ArrayList <Boolean> TmpLine;
+/*        ArrayList <Boolean> TmpLine;
         int k=0;
         for (int i=j-2;i>0;i=i-2){
 
@@ -38,6 +38,9 @@ public class GameScreenAwry extends GameScreen{
             if (TmpLine.equals(blankLine)) break;
         }
         screenArray.set(j-k, blankLine);
+        */
+        screenArray.remove(j);
+        screenArray.add(0, blankLine);
     }
 
 

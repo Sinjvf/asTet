@@ -36,19 +36,11 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
     private GestureDetector mDetector;
     private LinearLayout surface;
     private DBUser db;
-    private int type;
-    //private TextView textView;
-    //private Handler handler;
-
-
-
-
+    private GameProperties gameProperties;
 
     public void onCreate(Bundle savedInstanceState) {
-     //   Log.d(Const.LOG_TAG, "create " + this.toString());
-        Intent intent = getIntent();
-        type = intent.getIntExtra("type", 0);
-        game = new Game(this, type);
+        gameProperties = (GameProperties) getIntent().getParcelableExtra("properties");
+        game = new Game(this, gameProperties);
         game.setListenerToMain(this);
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -56,8 +48,6 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
         surface = (LinearLayout)findViewById(R.id.linearLayout1);
         surface.addView(game);
         surface.setOnTouchListener(this);
-       // handler = surface.getHandler();
-
 
         buttonRight = (ImageButton)findViewById(R.id.button_right);
         buttonLeft = (ImageButton)findViewById(R.id.button_left);
@@ -78,15 +68,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
         buttonGameOver.setVisibility(View.INVISIBLE);
         buttonExit.setOnClickListener(this);
         mDetector = new GestureDetector(this,this);
-
-
-
-       // test.setClickable(false);
-      //  test.setVisibility(View.INVISIBLE);
-
-
-        db= new DBUser(this, type);
-       // textView = new TextView(this);
+        db= new DBUser(this, gameProperties.getType());
     }
 
     @Override
@@ -129,11 +111,10 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                 Log.d(Const.LOG_TAG, "is Printed res");
                 Intent intent = new Intent(this, SaveResultsActivity.class);
                 intent.putExtra("score", score);
-                intent.putExtra("type", type);
+                intent.putExtra("type", gameProperties.getType());
                 startActivity(intent);
             }
         }
-        //  finish();
     }
 
     @Override
@@ -141,11 +122,9 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
         Log.d(Const.LOG_TAG, "Show game over");
         //     checkResuts();
         //  finish();
-
         surface.getHandler().post(
                 new Runnable() {
                     public void run() {
-
                         buttonGameOver.setClickable(true);
                         buttonGameOver.setVisibility(View.VISIBLE);
                         buttonPause.setClickable(false);
@@ -158,7 +137,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                 }
         );
     }
-    private void inactivateButtons(boolean pause){
+    private void inActivateButtons(boolean pause){
         buttonRotate.setClickable(pause);
         buttonRotateBack.setClickable(pause);
         buttonRight.setClickable(pause);
@@ -193,7 +172,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                 break;
             case R.id.button_pause:
                 boolean pause = !game.getNotPause();
-                inactivateButtons(pause);
+                inActivateButtons(pause);
                 game.setNotPause(pause);
                 break;
             case R.id.button_exit:
@@ -205,10 +184,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                 this.finish();
                 break;
         }
-
     }
-
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -279,7 +255,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
     public void onLongPress(MotionEvent event) {
 
         boolean pause = !game.getNotPause();
-        inactivateButtons(pause);
+        inActivateButtons(pause);
         game.setNotPause(pause);
     }
 

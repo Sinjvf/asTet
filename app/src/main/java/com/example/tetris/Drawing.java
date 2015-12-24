@@ -1,5 +1,7 @@
 package com.example.tetris;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,7 +20,17 @@ public abstract class Drawing {
     protected int hShift =0; //text shift
     protected Canvas canvas;
     protected GameScreen screen;
+    protected Paint pCore;
+    protected DrawBackground back;
+    private Context context;
 
+    public Drawing(Context context){
+        this.context = context;
+        pCore =new Paint();
+
+
+
+    }
 
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
@@ -32,41 +44,42 @@ public abstract class Drawing {
 
 
     public void drawFigure( MyFigures fig) {
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.FILL);
         Log.d("myLogs", "DRAW FIG");
         HashSet<Point> hashSet = fig.getFieldsWithPosition(0);
         for (Point k : hashSet) {
-            if (k.y>=0)
-                drawField(p, k.x, k.y);
+            if (k.y>=0) {
+                drawField(Const.COLOR_CORE,Const.COLOR_EDGE,  k.x, k.y);
+            }
         }
     }
-    public void drawNextFigure( MyFigures fig){
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.FILL);
-        Log.d("myLogs", "DRAW NEXT FIG");
+    public void drawNextFigure( MyFigures nextFig){
+        MyFigures fig = nextFig.clone();
+        fig.y = fig.primaryY;
+        Log.d("myLogs", "DRAW NEXT FIG:  x="+fig.x + ", y=" + fig.y);
         HashSet<Point> hashSet = fig.getFieldsWithPosition(0);
         for (Point k : hashSet) {
-            drawFieldForNextFugure(p, k.x, k.y);
+            drawFieldForNextFugure(Const.COLOR_CORE,Const.COLOR_EDGE,  k.x, k.y);
         }
     }
     public abstract void drawFullScreen() ;
     public abstract void drawGrid(Integer score, int level);
-    protected abstract void drawField(Paint p, int i, int j);
-    protected abstract void drawFieldForNextFugure(Paint p, int i, int j);
-    public void drawBackgroung(){
+    protected abstract void drawField(int colCore, int colEdg , int i, int j);
+    protected abstract void drawFieldForNextFugure(int colCore, int colEdg,  int i, int j);
+    public void drawBackgroung(int fileID){
         /** fill field by color*/
-
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         canvas.drawARGB(250, 102, 204, 255);
 
-        Paint p=new Paint();
-        p.setColor(Color.argb(100, 200, 200, 0));
-        p.setStyle(Paint.Style.FILL);
-        for (int i=0;i<screen.getnI();i++){
-            drawField( p, i, 1);
+        if (fileID!=0) {
+            back = new DrawBackground(context, fileID);
+            back.setSize(width, height);
+            canvas.drawBitmap(back.getBitmap(), 0, 0, paint);
         }
+        for (int i=0;i<screen.getnI();i++){
+            drawField( Const.COLOR_FIRST_LINE_CORE, Const.COLOR_FIRST_LINE_EDGE, i, 1);
+        }
+
+
     }
 
 
@@ -76,10 +89,10 @@ public abstract class Drawing {
         p.setTextAlign(Paint.Align.CENTER);
         p.setTextSize(30);
         canvas.drawText("Next:", wShift, hShift, p);
-        canvas.drawText("Level:", wShift, hShift+step*3, p);
-        canvas.drawText(""+level, wShift, hShift+step*4, p);
-        canvas.drawText("score:", wShift, hShift + step*5, p);
-        canvas.drawText(""+score, wShift, hShift+step*6, p);
+        canvas.drawText("Level:", wShift, hShift+step*3.5f, p);
+        canvas.drawText(""+level, wShift, hShift+step*4.5f, p);
+        canvas.drawText("score:", wShift, hShift + step*5.5f, p);
+        canvas.drawText(""+score, wShift, hShift+step*6.5f, p);
     }
 
 }

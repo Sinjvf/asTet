@@ -15,11 +15,12 @@ public abstract class MyFigures {
     protected int x, y;
     protected static int movingStep;
     protected static int modes;
+    protected static int primaryY;
 
 
     public MyFigures(){
         modeHashMap = new HashMap<Integer,  HashSet<Point > >();
-         y=0;
+
     }
     public int getModes(){return modes;}
     public int getCurrentMode(){

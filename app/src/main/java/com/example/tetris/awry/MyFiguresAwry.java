@@ -20,8 +20,9 @@ public class MyFiguresAwry extends MyFigures{
 
     MyFiguresAwry(){
         super();
-        x=Const.NW[Const.AWRY]/2-1;
-        y=-3;
+        primaryY = Const.PRIMARY_Y[Const.AWRY];
+        x=Const.NW[Const.AWRY]/2;
+        y=primaryY;
         movingStep = Const.MOVING_STEP[Const.AWRY];
         modes=Const.MODES[Const.AWRY];
     }
@@ -97,7 +98,7 @@ public class MyFiguresAwry extends MyFigures{
         MyFiguresAwry fCurrent;
         Random random;
         random = new Random(System.currentTimeMillis());
-        int num = Math.abs(random.nextInt()) % 9;
+        int num = Math.abs(random.nextInt()) % 8;
         switch (num) {
             case 1:
                 fCurrent = new F_L();
@@ -117,14 +118,12 @@ public class MyFiguresAwry extends MyFigures{
             case 6:
                 fCurrent = new F_Z_back();
                 break;
-            case 7:
+            default:
                 fCurrent = new F_I();
                 break;
-            default:
-                fCurrent = new F_I_extended();
-                break;
+
         }
-        //fCurrent=new F_I_extended();
+       // fCurrent=new F_I();
         fCurrent.setCurrentMode(Math.abs(random.nextInt()) % modes);
         return fCurrent;
     }

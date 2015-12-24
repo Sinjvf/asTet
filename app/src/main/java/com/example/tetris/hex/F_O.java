@@ -23,7 +23,7 @@ public class F_O extends MyFiguresHex {
         hs.add(new Point(0, 0)); hs.add(new Point(0, -1));hs.add(new Point(1, -1));hs.add(new Point(-1, -1));
         modeHashMap.put(3, hs);
         hs=new HashSet<Point>();
-        hs.add(new Point(0, 0)); hs.add(new Point(0, -1));hs.add(new Point(1, -1));hs.add(new Point(-1, -2));
+        hs.add(new Point(0, 0)); hs.add(new Point(0, -1));hs.add(new Point(-1, -1));hs.add(new Point(-1, -2));
         modeHashMap.put(4, hs);
         hs=new HashSet<Point>();
         hs.add(new Point(0, 0)); hs.add(new Point(0, -1));hs.add(new Point(1, -1));hs.add(new Point(-1, -1));

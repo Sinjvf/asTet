@@ -51,7 +51,7 @@ public class SaveResultsActivity extends Activity implements View.OnClickListene
                 finish();
                 break;
             case R.id.button_cancel_res:
-                this.finish();
+                finish();
                 break;
 
         }

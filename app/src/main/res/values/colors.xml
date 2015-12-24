@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
  <resources>
-        <color name="bgreen">#ff00f0a0</color>
+        <color name="bgreen">#ff00e0c0</color>
+       <color name="blue">#ff0055ff</color>
         <color name="white">#ffffffff</color>
         <color name="black">#ff000000</color>
         <color name="dfox">#ffff8000</color>
+        <color name="yellow">#ffffff00</color>
         <color name="red">#ffff0000</color>
-       <color name="dblue">#ff000aff</color>
+        <color name="dblue">#ff000aff</color>
+        <color name="background">#ff66ccff</color>
+    <!--colors for buttons-->
+
+        <color name="dark_pressed">#ff0040c0</color>
+        <color name="dark_not_pressed">#ff0060a0</color>
+
 
 </resources>

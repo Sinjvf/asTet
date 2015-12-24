@@ -19,8 +19,9 @@ public class MyFiguresHex extends MyFigures{
 
     MyFiguresHex(){
         super();
+        primaryY = Const.PRIMARY_Y[Const.HEX];
         x=Const.NW[Const.HEX];
-        y=-3;
+        y=primaryY;
         movingStep = Const.MOVING_STEP[Const.HEX];
         modes=Const.MODES[Const.HEX];
     }
@@ -80,7 +81,6 @@ public class MyFiguresHex extends MyFigures{
         return newFig;
     }
 
-    //TODO
     public static MyFiguresHex newFigure(){
         MyFiguresHex fCurrent;
         Random random;
@@ -112,6 +112,7 @@ public class MyFiguresHex extends MyFigures{
                 fCurrent = new F_I();
                 break;
         }
+  //      fCurrent = new F_L_ex();
         fCurrent.setCurrentMode(Math.abs(random.nextInt()) % modes);
         return fCurrent;
     }

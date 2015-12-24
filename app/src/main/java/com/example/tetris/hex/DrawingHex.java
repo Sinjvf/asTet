@@ -1,8 +1,10 @@
 package com.example.tetris.hex;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RadialGradient;
 
 import com.example.tetris.Const;
 import com.example.tetris.Drawing;
@@ -13,6 +15,9 @@ import com.example.tetris.Drawing;
 public class DrawingHex extends Drawing{
 
 
+    public DrawingHex(Context context) {
+        super(context);
+    }
     @Override
     public void setHW( int height, int width){
         this.height = height;
@@ -41,17 +46,20 @@ public class DrawingHex extends Drawing{
      */
 
     @Override
-    protected void drawField(Paint p, int i, int j) {
+    protected void drawField(int colCore, int colEdg, int i, int j) {
         Path path=new Path();
         int absI, absJ;
         path.reset();
-        p.setStyle(Paint.Style.FILL);
         absI = shiftx+iW/2+(iW*3/2)*i;
         absJ = shifty + ((i%2==0)
                         ?(int)((j)*iH)
                         :(int)((j+0.5f)*iH));
 
-
+        Paint p = new Paint();
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI + iW/2, absJ+iH/2, iW*3/2,
+                colCore,colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
         path.moveTo(absI, absJ+Const.TRACE);
         path.lineTo(absI-iW/2+Const.TRACE, absJ+iH/2);
         path.lineTo(absI, absJ+iH-Const.TRACE);
@@ -62,22 +70,26 @@ public class DrawingHex extends Drawing{
         canvas.drawPath(path, p);
     }
 
-    //TODO
     @Override
-    protected  void drawFieldForNextFugure(Paint p, int i, int j) {
+    protected  void drawFieldForNextFugure(int colCore, int colEdg, int i, int j) {
         Integer iiW, iiH;
         iiW = iW/2;
         iiH=iH/2;
         Path path=new Path();
         int absI, absJ;
         path.reset();
-        p.setStyle(Paint.Style.FILL);
         absI = iW*3*(Const.NW[Const.HEX] )
                 +(iiW*3/2)*(i-1) ;
         absJ = hShift+ iW*3+ 2*iiH+
                 ((i%2==0)
                 ?(int)(j*iiH)
                 :(int)(j*iiH+iiH/2));
+
+        Paint p = new Paint();
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI + iiW/2, absJ+iiH/2, iiW*3/2,
+                colCore,colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
         path.moveTo(absI, absJ+Const.TRACE);
         path.lineTo(absI-iiW/2+Const.TRACE, absJ+iiH/2);
         path.lineTo(absI, absJ+iiH-Const.TRACE);
@@ -91,22 +103,18 @@ public class DrawingHex extends Drawing{
     /**
      * draw fulling rectangles
      */
-    //TODO
+
     @Override
     public void drawFullScreen() {
-
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.FILL);
         for (int i = 0; i < Const.NW[Const.HEX]*2; i++) {
             for (int j = 0; j < Const.NH[Const.HEX]*2-1; j++) {
                 if (screen.isFull(i, j) ){
-                    drawField(p, i, j);
+                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
                 }
             }
         }
     }
-    //TODO text
+
     @Override
     public void drawGrid(Integer score, int level) {
         Paint p = new Paint();

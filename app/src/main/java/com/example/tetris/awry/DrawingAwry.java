@@ -1,8 +1,10 @@
 package com.example.tetris.awry;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RadialGradient;
 
 import com.example.tetris.Const;
 import com.example.tetris.Drawing;
@@ -12,7 +14,9 @@ import com.example.tetris.Drawing;
  */
 public class DrawingAwry extends Drawing{
 
-
+    public DrawingAwry(Context context) {
+        super(context);
+    }
     @Override
     public void setHW( int height, int width){
         this.height = height;
@@ -30,15 +34,26 @@ public class DrawingAwry extends Drawing{
      * draw rectangle on canvas with p in (i, j) point
      */
     @Override
-    protected void drawField(Paint p, int i, int j) {
+    protected void drawField(int colCore, int colEdg ,  int i, int j) {
+        Paint p =new Paint();
         Path path=new Path();
         int absI, absJ;
         path.reset();
-        p.setStyle(Paint.Style.FILL);
         absJ = shifty+iW*j/2;
         absI = (j%2==0)
                         ?(int)(shiftx+(i+1)*iW)
                         :(int)(shiftx+(i+0.5f)*iW);
+
+     /*   RadialGradient gradient = new RadialGradient(absI+(int)(iW*Math.sqrt(2)), absJ+(int)(iW*Math.sqrt(2)), (int)(iW*Math.sqrt(2)), Const.COLOR_CORE,
+                Const.COLOR_EDGE, android.graphics.Shader.TileMode.CLAMP);
+
+        p.setShader(gradient);
+        */
+
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI, absJ+iW/2, iW, colCore,
+                colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
 
 
         path.moveTo(absI, absJ+Const.TRACE);
@@ -49,18 +64,22 @@ public class DrawingAwry extends Drawing{
         canvas.drawPath(path, p);
     }
     @Override
-    protected  void drawFieldForNextFugure(Paint p, int i, int j) {
+    protected  void drawFieldForNextFugure(int colCore, int colEdg , int i, int j) {
+        Paint p =new Paint();
         Integer iiw;
         iiw = iW/2;
         Path path=new Path();
         int absI, absJ;
         path.reset();
-        p.setStyle(Paint.Style.FILL);
         absJ = hShift+iW*2+iiw*j/2;
         absI = iW*(Const.NW[Const.AWRY] )+
                 ((j%2==0) ?
-                        (int)(shiftx+(i+1)*iiw)
-                        :(int)(shiftx+(i+0.5f)*iiw));;
+                        (int)(shiftx+(i)*iiw)
+                        :(int)(shiftx+(i-0.5f)*iiw));
+        p.setDither(true);
+        RadialGradient gradient = new RadialGradient(absI, absJ+iiw/2, iiw, colCore,
+                colEdg, android.graphics.Shader.TileMode.CLAMP);
+        p.setShader(gradient);
         path.moveTo(absI, absJ+Const.TRACE);
         path.lineTo(absI-iiw/2+Const.TRACE, absJ+iiw/2);
         path.lineTo(absI, absJ+iiw-(Const.TRACE+1));
@@ -74,13 +93,10 @@ public class DrawingAwry extends Drawing{
      */
     @Override
     public void drawFullScreen() {
-        Paint p = new Paint();
-        p.setColor(Color.RED);
-        p.setStyle(Paint.Style.FILL);
         for (int i = 0; i < Const.NW[Const.AWRY]; i++) {
             for (int j = 0; j < Const.NH[Const.AWRY]*2-1; j++) {
                 if (screen.isFull(i, j) && !(j%2==0  && i==Const.NW[Const.AWRY]-1)){
-                    drawField(p, i, j);
+                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
                 }
             }
         }

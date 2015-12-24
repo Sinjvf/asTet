@@ -3,7 +3,9 @@ package com.example.tetris;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +28,6 @@ public class PrintResultsActivity extends Activity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(new Game(this));
         setContentView(R.layout.results);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         button_exit = (Button)findViewById(R.id.button_exit_from_res);
@@ -34,13 +35,11 @@ public class PrintResultsActivity extends Activity implements View.OnClickListen
         resTable = (TableLayout)findViewById(R.id.res_table);
         button_exit.setOnClickListener(this);
         button_erase.setOnClickListener(this);
-      //  dbHelper = new DBHelper(this);
         Intent intent= getIntent();
         type = intent.getIntExtra("type", 0);
 
-
+Log.d(Const.LOG_TAG, "--------Print res!----------");
         printResults();
-        //resTable.addView(new TableRow(this), );
     }
     @Override
     public void onClick(View v) {
@@ -69,19 +68,24 @@ public class PrintResultsActivity extends Activity implements View.OnClickListen
             TextView place = new TextView(this);
             TextView tname = new TextView(this);
             TextView tscore = new TextView(this);
-            place.setLayoutParams(new LinearLayout.LayoutParams
-                                        (LinearLayout.LayoutParams.WRAP_CONTENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT, 0.2f));
-            tname.setLayoutParams(new LinearLayout.LayoutParams
-                    (LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT, 0.5f));
-            tscore.setLayoutParams(new LinearLayout.LayoutParams
-                    (LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT, 0.3f));
+
+            place.setLayoutParams(new TableRow.LayoutParams
+                                        (TableRow.LayoutParams.WRAP_CONTENT,
+                                                TableRow.LayoutParams.WRAP_CONTENT, 0.2f));
+            tname.setLayoutParams(new TableRow.LayoutParams
+                                        (TableRow.LayoutParams.WRAP_CONTENT,
+                                                TableRow.LayoutParams.WRAP_CONTENT, 0.5f));
+            tscore.setLayoutParams(new TableRow.LayoutParams
+                                        (TableRow.LayoutParams.WRAP_CONTENT,
+                                                TableRow.LayoutParams.WRAP_CONTENT, 0.3f));
 
             place.setTextSize(25);
             tname.setTextSize(25);
-            tscore.setTextSize(25);/*
+            tscore.setTextSize(25);
+            place.setTextColor(Color.GREEN);
+            tname.setTextColor(Color.GREEN);
+            tscore.setTextColor(Color.GREEN);
+            /*
                     place.setGravity(Gravity.LEFT);
                     tname.setGravity(Gravity.LEFT);
                     tscore.setGravity(Gravity.RIGHT);*/
