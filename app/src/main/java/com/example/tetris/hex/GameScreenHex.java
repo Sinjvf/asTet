@@ -17,13 +17,11 @@ public class GameScreenHex extends GameScreen{
         super(i_size, j_size);
     }
 
-    //TODO
 @Override
     public boolean isFull(int i, int j){
         if (j<0)return false;
         return screenArray.get(j).get(i);
     }
-    //TODO
     @Override
     protected  void removeLine(int j) {
         screenArray.remove(j);
