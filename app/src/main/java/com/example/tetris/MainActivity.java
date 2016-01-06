@@ -7,29 +7,29 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    private Button button_new_game,
-            button_rating,
-            button_settings,
-            button_about,
-            button_finish;
-
+    private Button buttonNewGame,
+            buttonRating,
+            buttonSettings,
+            buttonAbout,
+            buttonFinish;
+    private final int REQUEST_CODE=1;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        button_new_game = (Button)findViewById(R.id.button_new_game_layout);
-        button_rating = (Button)findViewById(R.id.button_results_layout);
-        button_settings = (Button)findViewById(R.id.button_settings_layout);
-        button_about = (Button)findViewById(R.id.button_about_layout);
-        button_finish = (Button)findViewById(R.id.button_finish);
+        buttonNewGame = (Button)findViewById(R.id.button_new_game_layout);
+        buttonRating = (Button)findViewById(R.id.button_results_layout);
+        buttonSettings = (Button)findViewById(R.id.button_settings_layout);
+        buttonAbout = (Button)findViewById(R.id.button_about_layout);
+        buttonFinish = (Button)findViewById(R.id.button_finish);
 
-        button_new_game.setOnClickListener(this);
-        button_rating.setOnClickListener(this);
-        button_settings.setOnClickListener(this);
-        button_about.setOnClickListener(this);
-        button_finish.setOnClickListener(this);
+        buttonNewGame.setOnClickListener(this);
+        buttonRating.setOnClickListener(this);
+        buttonSettings.setOnClickListener(this);
+        buttonAbout.setOnClickListener(this);
+        buttonFinish.setOnClickListener(this);
 
     }
         @Override
@@ -39,26 +39,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     intent = new Intent(this, ChoiceActivity.class);
                     intent.putExtra("layout", Const.NEW_GAME_LAYOUT);
                     startActivity(intent);
+               //     finish();
                     break;
                 case R.id.button_results_layout:
                     intent = new Intent(this, ChoiceActivity.class);
                     intent.putExtra("layout", Const.RESULTS_LAYOUT);
                     startActivity(intent);
+                 //   finish();
                     break;
                 case R.id.button_settings_layout:
                     intent = new Intent(this, SettingsActivity.class);
                     startActivity(intent);
+                  //  finish();
                     break;
                 case R.id.button_about_layout:
-           //         intent = new Intent(this, PrintResultsActivity.class);
-
-              //      startActivity(intent);
+                    intent = new Intent(this, AboutActivity.class);
+                    startActivity(intent);
+                  //  finish();
                     break;
                 case R.id.button_finish:
-                    this.finish();
+                    finish();
                     break;
         }
-    };
+    }
 
 
 }

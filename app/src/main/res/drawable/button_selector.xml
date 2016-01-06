@@ -4,11 +4,11 @@
         <shape>
             <gradient
                 android:startColor="@color/background"
-                android:endColor="@color/dark_not_pressed"
+                android:endColor="@color/dark_primary"
                 android:angle="270" />
             <stroke
                 android:width="2dp"
-                android:color="@color/dark_not_pressed"/>
+                android:color="@color/dark_primary"/>
             <corners
                 android:radius="10dp" />
             <padding

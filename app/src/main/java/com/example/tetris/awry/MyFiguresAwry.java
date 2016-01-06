@@ -27,7 +27,6 @@ public class MyFiguresAwry extends MyFigures{
         modes=Const.MODES[Const.AWRY];
     }
 
-
     protected void setOddHashMap(){
         HashSet<Point> hs1, hs;//=new HashSet<Point>();
         for (int k=0;k<modes;k++){

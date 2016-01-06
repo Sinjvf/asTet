@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--number of misch fig -->
+    <array name="numb">
+        <item name="rb_id_numb_0" type="id"/>
+        <item name="rb_id_numb_1" type="id"/>
+        <item name="rb_id_numb_2" type="id"/>
+        <item name="rb_id_numb_3" type="id"/>
+    </array>
+    <!-- choosing color of mischevious figure-->
+    <!--1-->
+    <array name="fig_1">
+        <item name="rb_id_red1" type="id"/>
+        <item name="rb_id_green1" type="id"/>
+        <item name="rb_id_yellow1" type="id"/>
+        <item name="rb_id_blue1" type="id"/>
+        <item name="rb_id_rand1" type="id"/>
+    </array>
+    <!--2-->
+    <array name="fig_2">
+        <item name="rb_id_red2" type="id"/>
+        <item name="rb_id_green2" type="id"/>
+        <item name="rb_id_yellow2" type="id"/>
+        <item name="rb_id_blue2" type="id"/>
+        <item name="rb_id_rand2" type="id"/>
+    </array>
+    <!--3-->
+    <array name="fig_3">
+        <item name="rb_id_red" type="id"/>
+        <item name="rb_id_green" type="id"/>
+        <item name="rb_id_yellow" type="id"/>
+        <item name="rb_id_blue" type="id"/>
+        <item name="rb_id_rand" type="id"/>
+    </array>
+    <!--pace -->
+    <array name="fig_pace">
+        <item name="rb_id_p_1" type="id"/>
+        <item name="rb_id_p_2" type="id"/>
+        <item name="rb_id_p_3" type="id"/>
+        <item name="rb_id_p_4" type="id"/>
+    </array>
+
+
+</resources>

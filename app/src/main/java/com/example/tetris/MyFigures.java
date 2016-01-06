@@ -1,7 +1,6 @@
 package com.example.tetris;
 
 import android.graphics.Point;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -16,11 +15,17 @@ public abstract class MyFigures {
     protected static int movingStep;
     protected static int modes;
     protected static int primaryY;
-
+    protected int colorSheme;
 
     public MyFigures(){
         modeHashMap = new HashMap<Integer,  HashSet<Point > >();
-
+        colorSheme = 0;
+    }
+    public void setMischievous(int colorSheme){
+        this.colorSheme = colorSheme;
+    }
+    public int getColorSheme(){
+        return colorSheme;
     }
     public int getModes(){return modes;}
     public int getCurrentMode(){

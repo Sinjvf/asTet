@@ -17,21 +17,27 @@ import java.util.ArrayList;
  * Created by sinjvf on 24.12.15.
  */
 public class BackgroundChoiceActivity extends Activity implements View.OnClickListener {
-    private ArrayList<ImageButton> background_buttons;
-    private Button button_cancel;
+    private ArrayList<ImageButton> backgroundButtons;
+    private Button buttonCancel;
     private ArrayList<LinearLayout> ll;
     private LinearLayout mainLL;
     private ArrayList<Integer> ids;
     private final static int n=9;
+    private final int id_0=0;
 
-    private final static int[] resourses = {R.drawable.bear, R.drawable.cat, R.drawable.fiolet,
+    private final static int[] resourses = {
+            R.drawable.bear, R.drawable.cat, R.drawable.fiolet,
             R.drawable.ornament, R.drawable.sky1, R.drawable.sky2,
             R.drawable.straus1, R.drawable.straus2, R.drawable.zhiraf};
+    private final static int[] s_resourses = {
+            R.drawable.s_bear, R.drawable.s_cat, R.drawable.s_fiolet,
+            R.drawable.s_ornament, R.drawable.s_sky1, R.drawable.s_sky2,
+            R.drawable.s_straus1, R.drawable.s_straus2, R.drawable.s_zhiraf};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.back_choice);
+        setContentView(R.layout.set_background_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mainLL = (LinearLayout)findViewById(R.id.linearLayout_from_back_choice);
 
@@ -47,27 +53,26 @@ public class BackgroundChoiceActivity extends Activity implements View.OnClickLi
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
         params_for_layout.setMargins(0, 0, 0, 0);
-        params_for_layout.bottomMargin = 1;
+
         ids = new ArrayList<Integer>();
         ll = new ArrayList<LinearLayout>();
-        background_buttons = new ArrayList<ImageButton>();
+        backgroundButtons = new ArrayList<ImageButton>();
         for (Integer k=0; k<n ;k++){
-            background_buttons.add(new ImageButton(this));
-            background_buttons.get(k).setImageResource(resourses[k]);
-            background_buttons.get(k).setBackgroundResource(R.drawable.image_selector);
-            background_buttons.get(k).setLayoutParams(params_for_button);
-            background_buttons.get(k).setScaleType(ImageView.ScaleType.FIT_XY);
-            //    background_buttons.get(k).
-            background_buttons.get(k).setOnClickListener(this);
-            ids.add(background_buttons.get(k).generateViewId());
-            background_buttons.get(k).setId(ids.get(k));
+            backgroundButtons.add(new ImageButton(this));
+            backgroundButtons.get(k).setImageResource(s_resourses[k]);
+            backgroundButtons.get(k).setBackgroundResource(R.drawable.image_selector);
+            backgroundButtons.get(k).setLayoutParams(params_for_button);
+            backgroundButtons.get(k).setScaleType(ImageView.ScaleType.FIT_XY);
+            backgroundButtons.get(k).setOnClickListener(this);
+            ids.add(k);
+            backgroundButtons.get(k).setId(ids.get(k));
             i = k%3;
             j = k/3;
             if (i==2){
                 ll.add(new LinearLayout(this));
-                ll.get(j).addView(background_buttons.get(k - 2));
-                ll.get(j).addView(background_buttons.get(k - 1));
-                ll.get(j).addView(background_buttons.get(k));
+                ll.get(j).addView(backgroundButtons.get(k - 2));
+                ll.get(j).addView(backgroundButtons.get(k - 1));
+                ll.get(j).addView(backgroundButtons.get(k));
                 ll.get(j).setLayoutParams(params_for_layout);
                 ll.get(j).setOrientation(LinearLayout.HORIZONTAL);
                 // ll.get(k).
@@ -75,16 +80,18 @@ public class BackgroundChoiceActivity extends Activity implements View.OnClickLi
 
             }
         }
-        button_cancel = new Button(this);
-        button_cancel.setText("cancel");
-        button_cancel.setLayoutParams(new LinearLayout.LayoutParams
+        buttonCancel = new Button(this);
+        buttonCancel.setText("cancel");
+        LinearLayout.LayoutParams params_for_cancel = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT, 0));
-        ids.add(button_cancel.generateViewId());
-        button_cancel.setId(ids.get(n));
-        button_cancel.setBackgroundResource(R.drawable.button_selector);
-        button_cancel.setOnClickListener(this);
-        mainLL.addView(button_cancel);
+                        LinearLayout.LayoutParams.WRAP_CONTENT, 0);
+        params_for_cancel.setMargins(0, 0, 0, 4);
+        buttonCancel.setLayoutParams(params_for_cancel);
+        ids.add(ids.get(ids.size()-1)+1);
+        buttonCancel.setId(ids.get(n));
+        buttonCancel.setBackgroundResource(R.drawable.button_selector);
+        buttonCancel.setOnClickListener(this);
+        mainLL.addView(buttonCancel);
 
     }
 

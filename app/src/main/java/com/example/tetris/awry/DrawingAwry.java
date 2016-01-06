@@ -41,7 +41,7 @@ public class DrawingAwry extends Drawing{
         path.reset();
         absJ = shifty+iW*j/2;
         absI = (j%2==0)
-                        ?(int)(shiftx+(i+1)*iW)
+                        ?(shiftx+(i+1)*iW)
                         :(int)(shiftx+(i+0.5f)*iW);
 
      /*   RadialGradient gradient = new RadialGradient(absI+(int)(iW*Math.sqrt(2)), absJ+(int)(iW*Math.sqrt(2)), (int)(iW*Math.sqrt(2)), Const.COLOR_CORE,
@@ -74,7 +74,7 @@ public class DrawingAwry extends Drawing{
         absJ = hShift+iW*2+iiw*j/2;
         absI = iW*(Const.NW[Const.AWRY] )+
                 ((j%2==0) ?
-                        (int)(shiftx+(i)*iiw)
+                        (shiftx+(i)*iiw)
                         :(int)(shiftx+(i-0.5f)*iiw));
         p.setDither(true);
         RadialGradient gradient = new RadialGradient(absI, absJ+iiw/2, iiw, colCore,
@@ -96,7 +96,7 @@ public class DrawingAwry extends Drawing{
         for (int i = 0; i < Const.NW[Const.AWRY]; i++) {
             for (int j = 0; j < Const.NH[Const.AWRY]*2-1; j++) {
                 if (screen.isFull(i, j) && !(j%2==0  && i==Const.NW[Const.AWRY]-1)){
-                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
+                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
                 }
             }
         }

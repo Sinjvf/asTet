@@ -3,10 +3,10 @@
           package="com.example.tetris"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="23"/>
+    <uses-sdk android:minSdkVersion="14"/>
     <application
         android:label="Tetris"
-        android:icon="@drawable/tetris">
+        android:icon="@drawable/logo">
         <activity
                 android:name=".MainActivity"
                 android:theme="@style/MyStyle">
@@ -27,6 +27,12 @@
         <activity android:name="SettingsActivity"
             android:theme="@style/MyStyle"/>
         <activity android:name="BackgroundChoiceActivity"
+            android:theme="@style/MyStyle"/>
+        <activity android:name="ComplexityChoiceActivity"
+            android:theme="@style/MyStyle"/>
+        <activity android:name="AboutActivity"
+            android:theme="@style/MyStyle"/>
+        <activity android:name="AboutAppActivity"
             android:theme="@style/MyStyle"/>
     </application>
 

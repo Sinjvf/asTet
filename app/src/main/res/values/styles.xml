@@ -2,37 +2,57 @@
 <resources>
     <style name="SaveResText" >
         <item name="android:textSize">40sp</item>
-        <item name="android:textColor">@color/dblue</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="PrintResText" >
+        <item name="android:textSize">35sp</item>
+    </style>
 
     <style name="ChoiceButtonStyle" >
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:background">@drawable/button_selector</item>
-        <item name="android:layout_marginBottom">2dp</item>
-        <item name="android:layout_marginTop">2dp</item>
-        <item name="android:layout_marginLeft">2dp</item>
-        <item name="android:layout_marginRight">2dp</item>
     </style>
     <style name="ChoiceImageButtonStyle" >
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:background">@drawable/image_selector</item>
         <item name="android:scaleType">fitXY</item>
-        <item name="android:layout_marginBottom">0dp</item>
-        <item name="android:layout_marginTop">0dp</item>
-        <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:layout_marginRight">0dp</item>
     </style>
 
-    <style name="MyStyle" parent="android:Theme.Light">
-        <item name="android:imageButtonStyle">@style/ChoiceImageButtonStyle</item>
+    <style name="MyTextStyle" >
+        <item name="android:background">@drawable/text_selector_reverse</item>
+        <item name="android:textColor">@drawable/text_selector</item>
+    </style>
+    <style name="NonClicableTextStyle" >
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/dark_primary</item>
+        <item name="android:textColorLink">@drawable/link_selector</item>
+    </style>
+
+    <style name="MyRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radiobutton_selector</item>
+        <item name="android:textColor">@color/dark_secondary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="MyStyle" parent="android:Theme.Light.NoTitleBar.Fullscreen">
         <item name="android:buttonStyle">@style/ChoiceButtonStyle</item>
+        <item name="android:imageButtonStyle">@style/ChoiceImageButtonStyle</item>
+        <item name="android:textViewStyle">@style/MyTextStyle</item>
+        <item name="android:radioButtonStyle">@style/MyRadioButtonStyle</item>
+       <!--
+        <item name="android:colorPrimaryDark">@color/dark_primary</item>
+        <item name="android:navigationBarColor">@color/dark_primary</item>
+        <item name="android:colorAccent">@color/dark_primary</item>
+       -->
     </style>
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="MyStyle" parent="android:Theme.Material.NoActionBar">
+        <item name="android:buttonStyle">@style/ChoiceButtonStyle</item>
+        <item name="android:imageButtonStyle">@style/ChoiceImageButtonStyle</item>
+        <item name="android:colorPrimaryDark">@color/dark_primary</item>
+        <item name="android:navigationBarColor">@color/dark_primary</item>
+        <item name="android:textViewStyle">@style/MyTextStyle</item>
+        <item name="android:radioButtonStyle">@style/MyRadioButtonStyle</item>
+        <item name="android:colorAccent">@color/dark_primary</item>
+        <!-- <item name="android:colorBackground">@color/dark_primary</item>
+        -->
+    </style>
+</resources>

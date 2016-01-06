@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,40 +20,48 @@ import java.util.ArrayList;
  * Created by sinjvf on 20.11.15.
  */
 public class PrintResultsActivity extends Activity implements View.OnClickListener {
-    private Button button_exit, button_erase;
-  //  private DBHelper dbHelper;
+    private Button buttonExit, buttonErase;
     private TableLayout resTable;
     private int type;
+    private GameProperties gameProperties;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.results);
+        setContentView(R.layout.results_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        button_exit = (Button)findViewById(R.id.button_exit_from_res);
-        button_erase = (Button)findViewById(R.id.button_erase);
+        buttonExit = (Button)findViewById(R.id.button_exit_from_res);
+        buttonErase = (Button)findViewById(R.id.button_erase);
         resTable = (TableLayout)findViewById(R.id.res_table);
-        button_exit.setOnClickListener(this);
-        button_erase.setOnClickListener(this);
+        buttonExit.setOnClickListener(this);
+        buttonErase.setOnClickListener(this);
         Intent intent= getIntent();
-        type = intent.getIntExtra("type", 0);
-
-Log.d(Const.LOG_TAG, "--------Print res!----------");
+        gameProperties = (GameProperties) getIntent().getParcelableExtra("properties");
+        type = gameProperties.getType();
         printResults();
+/**
+        TextView t2 = (TextView)findViewById(R.id.textView);
+        Linkify.addLinks(t2, Linkify.ALL);
+        t2.setMovementMethod(LinkMovementMethod.getInstance());
+   /**/
     }
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.button_exit_from_res:
+
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 this.finish();
                 break;
             case R.id.button_erase:
                 DBUser dbUser = new DBUser(this, type);
                 dbUser.deleteRes();
-                Intent intentr = new Intent(this, PrintResultsActivity.class);
-                intentr.putExtra("type", type);
-                startActivity(intentr);
+                intent = new Intent(this, PrintResultsActivity.class);
+                intent.putExtra("properties", gameProperties);
+                startActivity(intent);
                 finish();
                 break;
         }
@@ -68,27 +76,27 @@ Log.d(Const.LOG_TAG, "--------Print res!----------");
             TextView place = new TextView(this);
             TextView tname = new TextView(this);
             TextView tscore = new TextView(this);
-
-            place.setLayoutParams(new TableRow.LayoutParams
-                                        (TableRow.LayoutParams.WRAP_CONTENT,
-                                                TableRow.LayoutParams.WRAP_CONTENT, 0.2f));
+            TableRow.LayoutParams params = new TableRow.LayoutParams
+                    (TableRow.LayoutParams.WRAP_CONTENT,
+                            TableRow.LayoutParams.WRAP_CONTENT, 0.4f);
+            params.setMargins(0, 0, 4, 0);
+            place.setLayoutParams(params);
             tname.setLayoutParams(new TableRow.LayoutParams
-                                        (TableRow.LayoutParams.WRAP_CONTENT,
-                                                TableRow.LayoutParams.WRAP_CONTENT, 0.5f));
+                    (TableRow.LayoutParams.WRAP_CONTENT,
+                            TableRow.LayoutParams.WRAP_CONTENT, 0.3f));
             tscore.setLayoutParams(new TableRow.LayoutParams
-                                        (TableRow.LayoutParams.WRAP_CONTENT,
-                                                TableRow.LayoutParams.WRAP_CONTENT, 0.3f));
+                    (TableRow.LayoutParams.WRAP_CONTENT,
+                            TableRow.LayoutParams.WRAP_CONTENT, 0.3f));
 
             place.setTextSize(25);
             tname.setTextSize(25);
             tscore.setTextSize(25);
-            place.setTextColor(Color.GREEN);
-            tname.setTextColor(Color.GREEN);
-            tscore.setTextColor(Color.GREEN);
-            /*
-                    place.setGravity(Gravity.LEFT);
-                    tname.setGravity(Gravity.LEFT);
-                    tscore.setGravity(Gravity.RIGHT);*/
+            place.setTextColor(Color.parseColor("#ff0060a0"));
+            tname.setTextColor(Color.parseColor("#ff0060a0"));
+            tscore.setTextColor(Color.parseColor("#ff0060a0"));
+            place.setGravity(Gravity.RIGHT);
+            tname.setGravity(Gravity.LEFT);
+            tscore.setGravity(Gravity.CENTER);
             tname.setText(res.get(i-1).get(0));
             tscore.setText(res.get(i-1).get(1));
             place.setText(i.toString());

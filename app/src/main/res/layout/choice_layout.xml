@@ -45,9 +45,10 @@
                 </ImageView>
             </LinearLayout>
             <Button
+                    android:layout_marginBottom="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Standart Game"
+                    android:text="Classic Game"
                     android:id="@+id/button_standart">
             </Button>
             <LinearLayout
@@ -63,6 +64,7 @@
                 </ImageView>
             </LinearLayout>
             <Button
+                android:layout_marginBottom="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Awry Game"
@@ -81,6 +83,7 @@
                 </ImageView>
             </LinearLayout>
             <Button
+                android:layout_marginBottom="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hex Game"
@@ -100,6 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="Back to main menu"
+            android:layout_marginBottom="4dp"
             android:id="@+id/button_back1">
         </Button>
     </LinearLayout>

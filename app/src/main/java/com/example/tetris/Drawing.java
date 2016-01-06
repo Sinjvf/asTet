@@ -1,7 +1,6 @@
 package com.example.tetris;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,6 +8,7 @@ import android.graphics.Point;
 import android.util.Log;
 
 import java.util.HashSet;
+import java.util.Random;
 
 /**
  * Created by sinjvf on 20.11.15.
@@ -44,11 +44,24 @@ public abstract class Drawing {
 
 
     public void drawFigure( MyFigures fig) {
+        int colorCore, colorEdge;
+        int colorSheme;
+        Random random;
+        random = new Random(System.currentTimeMillis());
         Log.d("myLogs", "DRAW FIG");
         HashSet<Point> hashSet = fig.getFieldsWithPosition(0);
+
+        colorSheme = fig.getColorSheme();
+        if (colorSheme==Const.COLOR_FIGURES_CORE.length){
+            colorSheme= Math.abs(random.nextInt()%Const.COLOR_FIGURES_CORE.length);
+        }
+        if(colorSheme<0)
+            colorSheme=0;
+        colorCore = Const.COLOR_FIGURES_CORE[colorSheme];
+        colorEdge = Const.COLOR_FIGURES_EDGE[colorSheme];
         for (Point k : hashSet) {
             if (k.y>=0) {
-                drawField(Const.COLOR_CORE,Const.COLOR_EDGE,  k.x, k.y);
+                drawField(colorCore,colorEdge,  k.x, k.y);
             }
         }
     }
@@ -58,7 +71,7 @@ public abstract class Drawing {
         Log.d("myLogs", "DRAW NEXT FIG:  x="+fig.x + ", y=" + fig.y);
         HashSet<Point> hashSet = fig.getFieldsWithPosition(0);
         for (Point k : hashSet) {
-            drawFieldForNextFugure(Const.COLOR_CORE,Const.COLOR_EDGE,  k.x, k.y);
+            drawFieldForNextFugure(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED,  k.x, k.y);
         }
     }
     public abstract void drawFullScreen() ;

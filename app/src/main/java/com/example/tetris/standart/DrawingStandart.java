@@ -74,7 +74,7 @@ public class DrawingStandart extends Drawing{
         for (int i = 0; i < Const.NW[Const.STANDART]; i++) {
             for (int j = 0; j < Const.NH[Const.STANDART]; j++) {
                 if (screen.isFull(i, j)){
-                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
+                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
                 }
             }
         }
@@ -86,12 +86,12 @@ public class DrawingStandart extends Drawing{
         p.setColor(Color.BLACK);
         for (int i = 0; i <=Const.NW[Const.STANDART]; i++)
             canvas.drawLine(shiftx+i * iW,
-                            shifty+0,
+                            shifty,
                             shiftx+i * iW,
                             shifty+iW*Const.NH[Const.STANDART],
                             p);
         for (int i = 0; i <= Const.NH[Const.STANDART]; i++)
-            canvas.drawLine(shiftx+0,
+            canvas.drawLine(shiftx,
                             shifty+i * iW,
                             shiftx+iW * Const.NW[Const.STANDART],
                             shifty+ i * iW,

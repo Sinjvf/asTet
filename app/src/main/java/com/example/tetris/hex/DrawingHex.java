@@ -52,7 +52,7 @@ public class DrawingHex extends Drawing{
         path.reset();
         absI = shiftx+iW/2+(iW*3/2)*i;
         absJ = shifty + ((i%2==0)
-                        ?(int)((j)*iH)
+                        ?((j)*iH)
                         :(int)((j+0.5f)*iH));
 
         Paint p = new Paint();
@@ -82,8 +82,8 @@ public class DrawingHex extends Drawing{
                 +(iiW*3/2)*(i-1) ;
         absJ = hShift+ iW*3+ 2*iiH+
                 ((i%2==0)
-                ?(int)(j*iiH)
-                :(int)(j*iiH+iiH/2));
+                ?(j*iiH)
+                :(j*iiH+iiH/2));
 
         Paint p = new Paint();
         p.setDither(true);
@@ -109,7 +109,7 @@ public class DrawingHex extends Drawing{
         for (int i = 0; i < Const.NW[Const.HEX]*2; i++) {
             for (int j = 0; j < Const.NH[Const.HEX]*2-1; j++) {
                 if (screen.isFull(i, j) ){
-                    drawField(Const.COLOR_CORE,Const.COLOR_EDGE, i, j);
+                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
                 }
             }
         }

@@ -23,6 +23,7 @@ public class MyFiguresStandart extends MyFigures{
         movingStep = Const.MOVING_STEP[Const.STANDART];
         modes=Const.MODES[Const.STANDART];
     }
+
     @Override
     public void move(int i, int j){
         x+=i; y+=j;
@@ -66,7 +67,7 @@ public class MyFiguresStandart extends MyFigures{
                 fCurrent = new F_I();
                 break;
         }
-       // fCurrent = new F_I();
+      //  fCurrent = new F_I();
         fCurrent.setCurrentMode(Math.abs(random.nextInt()) % modes);
         return fCurrent;
     }

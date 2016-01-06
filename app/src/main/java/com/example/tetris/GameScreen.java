@@ -2,7 +2,6 @@ package com.example.tetris;
 
 import android.graphics.Point;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -42,17 +41,17 @@ public abstract class GameScreen {
         MyFigures newFig = fig.clone();
         newFig.move(shiftX, shiftY);
         HashSet<Point> field = newFig.getFieldsWithPosition(shiftMode);
-        Log.d(Const.LOG_TAG, "new_pos  , x="+shiftX+", y="+shiftY+", Sh="+shiftMode);
+   //     Log.d(Const.LOG_TAG, "new_pos  , x="+shiftX+", y="+shiftY+", Sh="+shiftMode);
         for (Point k : field) {
             Log.d(Const.LOG_TAG, "x="+k.x+", y="+k.y);
             //bottom
             if (k.y>= nJ){
-                Log.d(Const.LOG_TAG,"bottom");
+        //        Log.d(Const.LOG_TAG,"bottom");
                 return 1;}
             //wall
             if (k.x<0 ||k.x>=nI) {
 
-                Log.d(Const.LOG_TAG,"wall");
+       //         Log.d(Const.LOG_TAG,"wall");
                 return 0;
             }
             //other fig prevents
@@ -60,18 +59,18 @@ public abstract class GameScreen {
                 //other fig prevents rotation
                 if (shiftY == 0 ) {
 
-                    Log.d(Const.LOG_TAG,"pr rot");
+        //            Log.d(Const.LOG_TAG,"pr rot");
                     return 0;
                 }
                 //game over
                 else if (k.y<=0) {
 
-                    Log.d(Const.LOG_TAG,"game over");
+       //             Log.d(Const.LOG_TAG,"game over");
                     return 2;
                 }
                 //fig lay on the other fig
                 else {
-                    Log.d(Const.LOG_TAG,"lay");
+         //           Log.d(Const.LOG_TAG,"lay");
                     return 1;
                 }
             }

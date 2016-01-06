@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout_from_back_choice"
+    android:orientation="vertical"
+    android:layout_margin="0dp"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+</LinearLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/set_background_layout.xml -->

@@ -2,7 +2,6 @@ package com.example.tetris;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -18,6 +17,7 @@ import com.example.tetris.standart.GameScreenStandart;
 import com.example.tetris.standart.MyFiguresStandart;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -28,7 +28,8 @@ import java.util.ArrayList;
 public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
     private int width, height;
-    private int type, back, complex;
+    private int type, back;
+    private GameProperties.Complex complex;
     private MyFigures fCurrent;
     private MyFigures fNext;
     private Drawing draw;
@@ -37,9 +38,11 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     private Canvas canvas;
     private volatile boolean gameOver;
     private Integer score, level;
+    private int coef;
     private volatile boolean notPause = true;
     private ListenerToMain listenerToMain;
     private DrawThread drawThread;
+    private ArrayList<MyFigures> mischievousFCurrent;
 
     Context context;
 
@@ -61,22 +64,26 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         return score;
     }
 
-    public void newGame(GameProperties gameProperties){;
+    public void newGame(GameProperties gameProperties){
         type = gameProperties.getType();
         back = gameProperties.getBack();
         complex = gameProperties.getComplex();
 
-        Log.d(Const.LOG_TAG, "------NEW GAME---------");
-        Log.d(Const.LOG_TAG, "type="+ type+ ", back="+back+", complex="+complex);
-        Paint p = new Paint();
         score = 0;
         level =0;
+        //simple game
+        coef = 1;
+        //add for pace
+        coef=coef*(1+complex.getPace());
+        //add for many figures
+        coef=coef+complex.getNumbers();
         gameOver = false;
         checkingLevel = new ArrayList<Integer>();
         checkingLevel.add(0);
         for (int i=0; i<6; i++){
-            checkingLevel.add(checkingLevel.get(i)+Const.POINT_FOR_LINE[i]*Const.LEAVE_LEVEL[i] );
+            checkingLevel.add(checkingLevel.get(i)+Const.POINT_FOR_LINE[i]*Const.LEAVE_LEVEL[i]*coef );
         }
+        mischievousFCurrent= new ArrayList<MyFigures>();
         getHolder().addCallback(this);
         switch (type){
             case Const.STANDART:
@@ -84,19 +91,31 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                 fCurrent = MyFiguresStandart.newFigure();
                 fNext = MyFiguresStandart.newFigure();
                 draw = new DrawingStandart(context);
+                for (int i=0; i<complex.getNumbers();i++) {
+                    mischievousFCurrent.add(MyFiguresStandart.newFigure());
+                    mischievousFCurrent.get(i).setMischievous(complex.getColorShemes()[i]);
+                }
                 break;
             case Const.AWRY:
                 screen = new GameScreenAwry(Const.NW[type],  Const.NH[type]*2-1);
                 fCurrent = MyFiguresAwry.newFigure();
                 fNext = MyFiguresAwry.newFigure();
                 draw = new DrawingAwry(context);
+                for (int i=0; i<complex.getNumbers();i++) {
+                    mischievousFCurrent.add(MyFiguresAwry.newFigure());
+                    mischievousFCurrent.get(i).setMischievous(complex.getColorShemes()[i]);
+                }
                 break;
             case Const.HEX:
                 fCurrent = MyFiguresHex.newFigure();
                 fNext = MyFiguresHex.newFigure();
-
                 screen = new GameScreenHex(Const.NW[type]*2,  Const.NH[type]*2-1);
                 draw = new DrawingHex(context);
+
+                for (int i=0; i<complex.getNumbers();i++) {
+                    mischievousFCurrent.add(MyFiguresHex.newFigure());
+                    mischievousFCurrent.get(i).setMischievous(complex.getColorShemes()[i]);
+                }
                 break;
         }
     }
@@ -112,6 +131,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         drawThread = new DrawThread(getHolder());
         drawThread.setRunning(true);
         drawThread.start();
+
     }
 
     @Override
@@ -133,27 +153,24 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     {
         return notPause;
     }
-    public  synchronized  boolean moveFigure(MyFigures fig, int shiftX, int shiftY, int shift_mode) {
+    public  synchronized  boolean moveFigure(MyFigures fig, int shiftX, int shiftY, int shiftMode) {
         int stay;
-
-          Log.d("myLogs", " CHECK MOVE");
-        if ((stay = screen.canMoveOrRotate(fig, shiftX, shiftY, shift_mode))==-1) {
-            fig.setCurrentMode((fig.getCurrentMode()+shift_mode)%fig.getModes());
-            Log.d("myLogs", " MOVE");
+        if ((stay = screen.canMoveOrRotate(fig, shiftX, shiftY, shiftMode))==-1) {
+            fig.setCurrentMode((fig.getCurrentMode() + shiftMode) % fig.getModes());
             fig.move(shiftX,  shiftY);
             return true;
-        } else if (stay == 2){
-                    gameOver = true;
-                    screen.fillFigureSpace(fig);
-                    if (listenerToMain != null)
-                        listenerToMain.onListenToMain();
-                }
-                else if (stay==1){
-                    screen.fillFigureSpace(fig);
-                    score+=screen.deleteLineIfNesessary()*Const.POINT_FOR_LINE[level];
-                    checkAndSetLevel();
-                }
-            return false;
+        }
+        else if (stay == 2){
+            gameOver = true;
+            screen.fillFigureSpace(fig);
+            if (listenerToMain != null)
+                listenerToMain.onListenToMain();
+        } else if (stay==1){
+            screen.fillFigureSpace(fig);
+            score+=screen.deleteLineIfNesessary()*Const.POINT_FOR_LINE[level]*coef;
+            checkAndSetLevel();
+        }
+        return false;
     }
 
     public MyFigures getFCurrent() {
@@ -191,16 +208,26 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         @Override
         public void run() {
+            int mX, mY=1, mR;
+            int stay;
+            Random random;
+            random = new Random(System.currentTimeMillis());
             width = getWidth();
             height = getHeight();
             draw.setHW(height, width);
-          //  Log.d("myLogs", "WIDGH=" + width + "   HEIGHT=" + height);
+            for (int i=0; i<complex.getNumbers();i++) {
+                mX =Math.abs(random.nextInt()%screen.nI);
+                while((screen.canMoveOrRotate(mischievousFCurrent.get(i), mX, mY, 0))!=-1){
+                    mX =Math.abs(random.nextInt()%screen.nI);
+                }
+                mischievousFCurrent.get(i).move(mX - mischievousFCurrent.get(i).x, -2*i);
+            }
             while (running) {
                 while (notPause) {
                     now = System.currentTimeMillis();
                     elapsedTime = now - prevTime;
                     canvas = null;
-                    if (elapsedTime > Const.PACE[level]) {
+                    if (elapsedTime > Const.PACE[level]/Const.COMPLEX_PACE_COEFICIENT[complex.getPace()]) {
                         if (moveFigure(fCurrent, 0, 1, 0)) {
                             prevTime = now;
                         } else
@@ -218,6 +245,39 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                                         break;
                                 }
                             }
+                        for (int i=0; i<complex.getNumbers();i++) {
+                            mX=Math.abs(random.nextInt()%3)-1;
+                            mR =Math.abs(random.nextInt() % mischievousFCurrent.get(i).getModes());
+                            if ((stay=screen.canMoveOrRotate(mischievousFCurrent.get(i), mX, mY, mR))==-1) {
+                                prevTime = now;
+                                mischievousFCurrent.get(i).setCurrentMode(
+                                        (mischievousFCurrent.get(i).getCurrentMode() + mR) % mischievousFCurrent.get(i).getModes());
+                                mischievousFCurrent.get(i).move(mX, mY);
+                            } else if
+                                (stay==0){mischievousFCurrent.get(i).move(0, mY);}
+                            else if (!gameOver) {
+                                switch (type){
+                                  case Const.STANDART:
+                                        mischievousFCurrent.set(i, MyFiguresStandart.newFigure());
+                                        break;
+                                    case Const.AWRY:
+                                        mischievousFCurrent.set(i, MyFiguresAwry.newFigure());
+                                        break;
+                                    case Const.HEX:
+                                        mischievousFCurrent.set(i, MyFiguresHex.newFigure());
+                                        break;
+                                }
+                                mischievousFCurrent.get(i).setMischievous(complex.getColorShemes()[i]);
+                                mX =Math.abs(random.nextInt()%screen.nI);
+                                while((screen.canMoveOrRotate(mischievousFCurrent.get(i), mX, mY, 0))!=-1){
+                                    mX =Math.abs(random.nextInt()%screen.nI);
+                                }
+                                mischievousFCurrent.get(i).move(mX - mischievousFCurrent.get(i).x, 0);
+
+                            }
+                        }
+
+
                         try {
                             canvas = surfaceHolder.lockCanvas(null);
                             if (canvas != null){
@@ -225,6 +285,10 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                                 draw.setScreen(screen);
                                 draw.drawBackgroung(back);
                                 draw.drawFullScreen();
+                                for (int i=0; i<complex.getNumbers();i++) {
+                                    draw.drawFigure(mischievousFCurrent.get(i));
+                                }
+
                                 draw.drawFigure(fCurrent);
                                 draw.drawNextFigure(fNext);
                                 draw.drawGrid(score, level);
@@ -245,5 +309,4 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         }
     }
-
 }

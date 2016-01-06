@@ -37,10 +37,17 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
     private LinearLayout surface;
     private DBUser db;
     private GameProperties gameProperties;
+    private Intent intent;
 
     public void onCreate(Bundle savedInstanceState) {
-        gameProperties = (GameProperties) getIntent().getParcelableExtra("properties");
+        gameProperties = (GameProperties) getIntent().getParcelableExtra(Const.PROPERTIES);
         game = new Game(this, gameProperties);
+
+        GameProperties.Complex complex = gameProperties.getComplex();
+
+        Log.d(Const.LOG_TAG, "------ GAME ACTIVITY---------");
+        Log.d(Const.LOG_TAG, "numb="+ complex.getNumbers()+ ", pace="+complex.getPace()+
+                ", color="+complex.getColorShemes());
         game.setListenerToMain(this);
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -177,10 +184,14 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                 break;
             case R.id.button_exit:
                 checkResuts();
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 this.finish();
                 break;
             case R.id.button_game_over:
                 checkResuts();
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 this.finish();
                 break;
         }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/main_back"
+    android:layout_margin="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+        <Button
+            android:layout_margin="2dp"
+            android:text="New Game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_new_game_layout"/>
+        <Button
+            android:layout_margin="2dp"
+            android:text="Results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_results_layout"/>
+        <Button
+            android:layout_margin="2dp"
+            android:text="Settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_settings_layout"/>
+        <Button
+            android:layout_margin="2dp"
+            android:text="About"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_about_layout"/>
+        <Button
+            android:layout_margin="2dp"
+            android:text="Close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_finish"/>
+    </LinearLayout>
+
+</FrameLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/main_layout.xml -->

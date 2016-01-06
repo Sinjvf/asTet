@@ -1,19 +1,39 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.example.tetris"
         minSdkVersion 14
         targetSdkVersion 23
     }
-
-    buildTypes {
+ /**   buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }/**/
+    signingConfigs {
+        release {
+            storeFile file("/home/sinjvf/StudioProjects/for_keys/key.jks")
+            storePassword "thanksForDima"
+            keyAlias "mykey"
+            keyPassword "rhjkmxfnbyf"
+        }
     }
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFile '/home/sinjvf/bot/Android/Sdk/tools/proguard/proguard-android-optimize.txt'
+        }
+    }/**/
+
+
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile 'com.android.support:recyclerview-v7:+'
 }

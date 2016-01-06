@@ -15,21 +15,22 @@ import android.widget.TextView;
 public class SaveResultsActivity extends Activity implements View.OnClickListener {
     private Integer score;
     private String name;
-    private Button button_ok, button_cancel;
+    private Button buttonOk, buttonCancel;
     private EditText textName;
     private TextView textScore;
     private int type;
     private DBUser db;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.save_results);
+        setContentView(R.layout.save_results_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        button_ok = (Button)findViewById(R.id.button_save_res);
-        button_cancel = (Button)findViewById(R.id.button_cancel_res);
-        button_ok.setOnClickListener(this);
-        button_cancel.setOnClickListener(this);
+        buttonOk = (Button)findViewById(R.id.button_save_res);
+        buttonCancel = (Button)findViewById(R.id.button_cancel_res);
+        buttonOk.setOnClickListener(this);
+        buttonCancel.setOnClickListener(this);
         textName = (EditText)findViewById(R.id.winnerName);
         textScore = (TextView)findViewById(R.id.textScore);
 
@@ -37,7 +38,6 @@ public class SaveResultsActivity extends Activity implements View.OnClickListene
         score = intent.getIntExtra("score", 0);
         type = intent.getIntExtra("type", 0);
         db = new DBUser(this, type);
-      //  Log.d(Const.LOG_TAG, "score = "+score);
         textScore.setText(score.toString());
         textName.setText(db.bestRes());
     }
@@ -48,9 +48,10 @@ public class SaveResultsActivity extends Activity implements View.OnClickListene
         switch (v.getId()){
             case R.id.button_save_res:
                 saveRes();
-                finish();
-                break;
             case R.id.button_cancel_res:
+
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 finish();
                 break;
 
