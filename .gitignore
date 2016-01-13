@@ -1,0 +1,9 @@
+/build
+/app/build
+/BaseGameUtils/build
+/gradle
+/.gradle
+/.idea
+/import-summary.txt
+/local.properties
+/reports
