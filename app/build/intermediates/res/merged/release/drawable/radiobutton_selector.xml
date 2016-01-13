@@ -8,4 +8,4 @@
         android:state_checked="true"
         android:drawable="@drawable/radio_on" >
     </item>
-</selector><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/drawable/radiobutton_selector.xml -->
+</selector>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
-            android:background="@drawable/main_back3"
+    android:background="@drawable/back"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -10,7 +10,8 @@
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:layout_marginTop="40dp"
-            android:text="Best results"
+            android:gravity="center"
+            android:text="@string/best"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"/>
     <TableLayout
@@ -32,14 +33,14 @@
             <TextView
                     style="@style/PrintResText"
                     android:layout_weight="3"
-                    android:text="Name" >
+                    android:text="@string/name" >
             </TextView>
 
             <TextView
                     style="@style/PrintResText"
                     android:layout_weight="3"
                     android:layout_gravity="center"
-                    android:text="Score" >
+                    android:text="@string/my_score" >
             </TextView>
         </TableRow>
     </TableLayout>
@@ -51,16 +52,16 @@
             android:layout_height="wrap_content">
         <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
+                android:layout_height="match_parent"
+                android:text="@string/cancel"
                 android:layout_weight="1"
-                android:id="@+id/button_exit_from_res"/>
+                android:id="@+id/button_cancel"/>
         <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Erase results"
+                android:layout_height="match_parent"
+                android:text="@string/erase"
                 android:textColor="@color/darkred"
                 android:layout_weight="1"
                 android:id="@+id/button_erase"/>
     </LinearLayout>
-</LinearLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/results_layout.xml -->
+</LinearLayout>

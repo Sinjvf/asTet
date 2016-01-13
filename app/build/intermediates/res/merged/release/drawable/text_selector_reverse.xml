@@ -4,4 +4,4 @@
         <color  android:color="@color/dark_pressed"></color>
 
     </item>
-</selector><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/drawable/text_selector_reverse.xml -->
+</selector>

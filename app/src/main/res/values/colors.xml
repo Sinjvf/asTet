@@ -10,12 +10,16 @@
     <color name="darkred">#ffaa0000</color>
 
     <color name="dblue">#ff000aff</color>
-    <color name="background">#ff66ccff</color>
+    <color name="background">#66ccff</color>
+    <color name="background_button">#9966ccff</color>
+   <color name="background_image_button">#2266ccff</color>
     <!--colors for buttons-->
     <color name="lgreen">#ff00dd00</color>
     <color name="dgreen">#ff119900</color>
     <color name="dark_pressed">#ff0040c0</color>
     <color name="dark_primary">#ff0060a0</color>
+    <color name="dark_primary_button">#dd0060a0</color>
+    <color name="dark_primary_image_button">#440060a0</color>
     <color name="dark_secondary">#ff004090</color>
 
 

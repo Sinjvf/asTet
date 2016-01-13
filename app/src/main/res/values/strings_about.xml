@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tetris</string>
+    <string name="blank" translatable="false"><![CDATA[<html></html>]]></string>
+    <string name="up">Up </string>
+
+    <string name="about_sect_0"><![CDATA[<html><u>Game description</u></html>]]></string>
+    <string name="about_d_0"><![CDATA[<html>Common rules</html>]]></string>
+    <string name="about_d_1"><![CDATA[<html>Figures moving</html>]]></string>
+    <string name="about_d_2"><![CDATA[<html>Line filling</html>]]></string>
+    <string name="about_d_3"><![CDATA[<html>Game types</html>]]></string>
+    <string name="about_d_4"><![CDATA[<html>Levels</html>]]></string>
+    <string name="about_d_5"><![CDATA[<html>Score</html>]]></string>
+    <string name="about_sect_6"><![CDATA[<html><u>Setting</u></html>]]></string>
+    <string name="about_d_6"><![CDATA[<html>Background</html>]]></string>
+    <string name="about_d_7"><![CDATA[<html>\"Mischievous figures\"</html>]]></string>
+    <string name="about_d_8"><![CDATA[<html>Pace</html>]]></string>
+    <string name="about_d_9"><![CDATA[<html>Default settings</html>]]></string>
+    <string name="about_sect_10"><![CDATA[<html><u>Game Results</u></html>]]></string>
+    <string name="about_d_10"><![CDATA[<html>Results</html>]]></string>
+    <string name="about_t_0"><![CDATA[<html>
+    "Tetriminos" are game pieces shaped like tetrominoes, geometric shapes composed
+    of four blocks each. A random sequence of Tetriminos fall down the playing field. The objective of the game
+    is to manipulate these Tetriminos, by moving each one sideways (if the player feels the need)
+    and rotating it by 90 degree units, with the aim of creating a horizontal line of units without gaps.
+    When such a line is created, it disappears, and any block above the deleted line will fall.
+    As the game progresses, each level causes the Tetriminos to fall faster, and the game ends when the stack
+    of Tetriminos reaches the top of the playing field and no new Tetriminos are able to enter.
+    (с)<a href="http://ru.wikipedia.org/wiki/Тетрис">Wikipedia</a> </html>]]></string>
+
+    <string name="about_t_1"><![CDATA[<html>
+    You can move the figure by moving your finger across the screen and with buttons on the right side of the screen.<br />
+
+        <i>Short press:</i> figure will rotated by 90 degrees ;<br />
+        <i>Long press:</i> pause.</html>]]></string>
+
+    <string name="about_t_2"><![CDATA[<html>
+    In each game type second row is painted in yellow. Arrows show offset blocks after removing
+    of the bottom line.</html>]]></string>
+
+    <string name="about_t_3"><![CDATA[<html>
+    Game contains 3 types of field\'s grid  <br />
+    <i>Classic:</i> a rectangular vertical grid;<br />
+    <i>Awry:</i> rectangular grid, inclined at 45 degrees;<br />
+    <i>Hex:</i> hexagonal grid.<br />
+    Figure below shows a possible situation in the awry game. You would think that the cell 1 is delayed in the field 2,
+     because it will be keep by filled blocks on two sides of 2
+     However, it is not. Since cell 3 under 2 is not busy then 1 passes \"through\" 2 and stops in 3</html>]]></string>
+
+    <string name="about_t_4"><![CDATA[<html>
+    Game starts by 1 level. When a certain number of lines are cleared, the game enters a new level.
+    Figure\'s pace and points for deleting row is increased in each next level.</html>]]></string>
+
+    <string name="about_t_5"><![CDATA[<html>
+    Points are awarded for each deleted line. Number of points for one line depends on the level
+    of play and difficulty settings. There are two ways to change the difficulty:
+    add \"Mischievous figures\" or increase starting pace. You can do it in section
+     <b>Setting-> Set complexity</b></html>]]></string>
+
+    <string name="about_t_6"><![CDATA[<html>
+    To changing background go to <b>Setting-> Set Background</b> and select picture, then press <b>Save</b>.
+    All pictures taken from free internet resources. If you own the copyright on one of these pictures
+    and object to its use in this application, write about it in the mail: Sinjvf@gmail.com.
+    To return the monotonous blue background, in section <b>Settings</b> press <b>Default settings</b>, and then <b>Save</b>.</html>]]></string>
+
+    <string name="about_t_7"><![CDATA[<html>
+    \"Mischievous figures\" are additional figures falling on the field. You can\'t move it, but they have no effect on the game.
+       They only distract players. To changing number or color of \"Mischievous figures\" go to
+       <b>Setting-> Set complexity</b>. Do not forget to confirm the changes by pressing
+       <b>Save</b> buttons.</html>]]></string>
+    <string name="about_t_8"><![CDATA[<html>
+    To changing starting pace go to <b>Setting-> Set complexity</b>. Do not forget to confirm the changes by pressing
+       <b>Save</b> buttons.</html>]]></string>
+
+    <string name="about_t_9"><![CDATA[<html>
+    Default settings are: blue background, no \"mischievous figures\" and first starting pace.
+    To setting default settings go to <b>Setting->  Default settings</b>. Do not forget to confirm the changes by pressing
+       <b>Save</b> button.</html>]]></string>
+
+    <string name="about_t_10"><![CDATA[<html>
+        Результаты сохраняются отдельно для каждого из устройств, на котором установленно данное приложение.
+    Посмотреть результаты для каждого из типов игры можно в разделе <b>Результаты</b><br />.</html>]]></string>
+
+    <string name="about_app_sect_0">@string/blank</string>
+    <string name="about_app_d_0"><![CDATA[<html>About application</html>]]></string>
+    <string name="about_app_t_0"><![CDATA[<html><br />
+        Application version: 1.0 <br />
+        Developer: Sinjvf <br />
+        For any questions and wishes you can contact: Sinjvf@gmail.com</html>]]></string>
+
+
+
+    <string-array name="about_app_sect">
+        <item>@string/blank</item>
+    </string-array>
+    <string-array name="about_app_d">
+        <item>@string/about_app_d_0</item>
+    </string-array>
+    <string-array name="about_app_t">
+        <item>@string/about_app_t_0</item>
+    </string-array>
+
+
+    <string-array name="about_sect">
+        <item>@string/about_sect_0</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/about_sect_6</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/blank</item>
+        <item>@string/about_sect_10</item>
+        </string-array>
+
+
+    <string-array name="about_d">
+        <item>@string/about_d_0</item>
+        <item>@string/about_d_1</item>
+        <item>@string/about_d_2</item>
+        <item>@string/about_d_3</item>
+        <item>@string/about_d_4</item>
+        <item>@string/about_d_5</item>
+        <item>@string/about_d_6</item>
+        <item>@string/about_d_7</item>
+        <item>@string/about_d_8</item>
+        <item>@string/about_d_9</item>
+        <item>@string/about_d_10</item>
+    </string-array>
+
+    <string-array name="about_t">
+        <item>@string/about_t_0</item>
+        <item>@string/about_t_1</item>
+        <item>@string/about_t_2</item>
+        <item>@string/about_t_3</item>
+        <item>@string/about_t_4</item>
+        <item>@string/about_t_5</item>
+        <item>@string/about_t_6</item>
+        <item>@string/about_t_7</item>
+        <item>@string/about_t_8</item>
+        <item>@string/about_t_9</item>
+        <item>@string/about_t_10</item>
+    </string-array>
+</resources>

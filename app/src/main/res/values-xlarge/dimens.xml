@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_button_size">40sp</dimen>
+    <dimen name="text_print_res_size">55sp</dimen>
+    <dimen name="button_back_size">400dp</dimen>
+    <dimen name="text_margins_size">40dp</dimen>
+
+    <dimen name="text_about_t_size">34sp</dimen>
+    <dimen name="text_about_d_size">40sp</dimen>
+    <dimen name="text_about_s_size">50sp</dimen>
+    <dimen name="text_about_d_s_size">35sp</dimen>
+
+    <dimen name="text_game_over">60sp</dimen>
+</resources>

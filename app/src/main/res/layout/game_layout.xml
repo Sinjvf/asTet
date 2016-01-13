@@ -12,24 +12,7 @@
                 android:orientation="vertical">
         </LinearLayout>
     <!-- first and last linLayout - for centring "gameover" button-->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <Button
-                    android:text="Game Over"
-
-                    android:textSize="40sp"
-
-                android:textColor="@color/lgreen"
-                    android:id="@+id/button_game_over"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-            </Button>
-
-    </FrameLayout>
 
     <!-- buttons and game information-->
     <LinearLayout
@@ -47,104 +30,190 @@
 
 
         </LinearLayout>
-        <LinearLayout
-                android:id="@+id/linearLayout3"
+        <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_weight="6"
-                android:weightSum="10">
+                android:weightSum="6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="3"
+                android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:weightSum="4"
+                android:orientation="vertical">
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="top"
                     android:orientation="horizontal">
                 <ImageButton
                         android:src="@drawable/left"
                         android:id="@+id/button_left"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                 </ImageButton>
                 <ImageButton
                         android:src="@drawable/right"
                         android:id="@+id/button_right"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                 </ImageButton>
             </LinearLayout>
-            <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:orientation="vertical">
-                <ImageButton
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="10"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="vertical"/>
+                    <ImageButton
                         android:src="@drawable/down"
                         android:id="@+id/button_down"
-                        android:layout_gravity="center|top"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                </ImageButton>
-            </FrameLayout>
+                        android:layout_weight="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </ImageButton>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="vertical"/>
+                </LinearLayout>
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                     android:orientation="horizontal">
                 <ImageButton
                         android:src="@drawable/rotate"
                         android:id="@+id/button_rotate"
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
                 </ImageButton>
                 <ImageButton
                     android:src="@drawable/rotate_back"
                     android:id="@+id/button_rotate_back"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 </ImageButton>
             </LinearLayout>
-            <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:orientation="vertical">
-                <ImageButton
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:weightSum="10"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="vertical"/>
+                    <ImageButton
                         android:src="@drawable/pause"
                         android:id="@+id/button_pause"
-                        android:layout_gravity="center|top"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                </ImageButton>
-            </FrameLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10">
-            </LinearLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:weightSum="2"
-                    android:orientation="vertical">
-                <Button
-                        android:text="exit"
-                    android:layout_marginBottom="4dp"
-                        android:id="@+id/button_exit"
-                    android:textColor="@color/lgreen"
-                        android:layout_gravity="right|bottom"
+                        android:layout_weight="2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                </Button>
-
+                        android:layout_height="match_parent">
+                    </ImageButton>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:orientation="vertical"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="@style/PrintGameText"
+                android:text="@string/next"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="vertical">
+                <TextView
+                    style="@style/PrintGameText"
+                    android:layout_above="@+id/level_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/level"/>
+                <TextView
+                    android:id="@+id/level_id"
+                    android:layout_above="@+id/score_text"
+                    style="@style/PrintGameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    style="@style/PrintGameText"
+                    android:id="@+id/score_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/score_id"
+                    android:text="@string/my_score"/>
+                <TextView
+                    style="@style/PrintGameText"
+                    android:id="@+id/score_id"
+                    android:layout_above="@+id/button_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:text="@string/close"
+                    android:id="@+id/button_exit"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/lgreen"
+                    android:layout_gravity="right|bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </Button>
+            </RelativeLayout>
+
+
+
+
+        </FrameLayout>
     </LinearLayout>
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <Button
+            android:text="@string/game_over"
+            android:textSize="40sp"
+            android:textColor="@color/lgreen"
+            android:id="@+id/button_game_over"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+    </FrameLayout>
     </FrameLayout>

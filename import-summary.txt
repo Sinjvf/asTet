@@ -1,0 +1,117 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .idea/
+* .idea/.name
+* .idea/asTet.iml
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* README.md
+* ant.properties
+* build.xml
+* out/
+* out/production/
+* out/production/tetris/
+* out/production/tetris/com/
+* out/production/tetris/com/example/
+* out/production/tetris/com/example/tetris/
+* out/production/tetris/com/example/tetris/BuildConfig.class
+* out/production/tetris/com/example/tetris/Const.class
+* out/production/tetris/com/example/tetris/DBHelper.class
+* out/production/tetris/com/example/tetris/DBUser.class
+* out/production/tetris/com/example/tetris/Drawing.class
+* out/production/tetris/com/example/tetris/Game$DrawThread.class
+* out/production/tetris/com/example/tetris/Game.class
+* out/production/tetris/com/example/tetris/GameActivity$1.class
+* out/production/tetris/com/example/tetris/GameActivity.class
+* out/production/tetris/com/example/tetris/GameScreen.class
+* out/production/tetris/com/example/tetris/ListenerToMain.class
+* out/production/tetris/com/example/tetris/MainActivity.class
+* out/production/tetris/com/example/tetris/MyFigures.class
+* out/production/tetris/com/example/tetris/PrintResultsActivity.class
+* out/production/tetris/com/example/tetris/R$attr.class
+* out/production/tetris/com/example/tetris/R$color.class
+* out/production/tetris/com/example/tetris/R$drawable.class
+* out/production/tetris/com/example/tetris/R$id.class
+* out/production/tetris/com/example/tetris/R$layout.class
+* out/production/tetris/com/example/tetris/R$menu.class
+* out/production/tetris/com/example/tetris/R$string.class
+* out/production/tetris/com/example/tetris/R.class
+* out/production/tetris/com/example/tetris/SaveResultsActivity.class
+* out/production/tetris/com/example/tetris/awry/
+* out/production/tetris/com/example/tetris/awry/DrawingAwry.class
+* out/production/tetris/com/example/tetris/awry/F_I.class
+* out/production/tetris/com/example/tetris/awry/F_I_extended.class
+* out/production/tetris/com/example/tetris/awry/F_L.class
+* out/production/tetris/com/example/tetris/awry/F_O.class
+* out/production/tetris/com/example/tetris/awry/F_P.class
+* out/production/tetris/com/example/tetris/awry/F_T.class
+* out/production/tetris/com/example/tetris/awry/F_Z.class
+* out/production/tetris/com/example/tetris/awry/F_Z_back.class
+* out/production/tetris/com/example/tetris/awry/GameScreenAwry.class
+* out/production/tetris/com/example/tetris/awry/MyFiguresAwry.class
+* out/production/tetris/com/example/tetris/hex/
+* out/production/tetris/com/example/tetris/hex/DrawingHex.class
+* out/production/tetris/com/example/tetris/hex/F_I.class
+* out/production/tetris/com/example/tetris/hex/F_I_extended.class
+* out/production/tetris/com/example/tetris/hex/F_L.class
+* out/production/tetris/com/example/tetris/hex/F_O.class
+* out/production/tetris/com/example/tetris/hex/F_P.class
+* out/production/tetris/com/example/tetris/hex/F_T.class
+* out/production/tetris/com/example/tetris/hex/F_Z.class
+* out/production/tetris/com/example/tetris/hex/F_Z_back.class
+* out/production/tetris/com/example/tetris/hex/GameScreenHex.class
+* out/production/tetris/com/example/tetris/hex/MyFiguresHex.class
+* out/production/tetris/com/example/tetris/standart/
+* out/production/tetris/com/example/tetris/standart/DrawingStandart.class
+* out/production/tetris/com/example/tetris/standart/F_I.class
+* out/production/tetris/com/example/tetris/standart/F_L.class
+* out/production/tetris/com/example/tetris/standart/F_O.class
+* out/production/tetris/com/example/tetris/standart/F_P.class
+* out/production/tetris/com/example/tetris/standart/F_T.class
+* out/production/tetris/com/example/tetris/standart/F_Z.class
+* out/production/tetris/com/example/tetris/standart/F_Z_back.class
+* out/production/tetris/com/example/tetris/standart/GameScreenStandart.class
+* out/production/tetris/com/example/tetris/standart/MyFiguresStandart.class
+* out/production/tetris/tetris.apk
+* out/production/tetris/tetris.unaligned.apk
+* proguard-project.txt
+* tetris.iml
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app/src/main/AndroidManifest.xml
+* res/ => app/src/main/res/
+* src/ => app/src/main/java/
+* awry.PNG => awry.png
+* standart.PNG => standart.png
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

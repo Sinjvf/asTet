@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/main_back3"
+
+    android:background="@drawable/back_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,15 +12,17 @@
     android:id="@+id/linearLayout_from_complex_choice"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:gravity="center"
-        android:textColor="@color/dark_primary"
-        android:text="Number of \n mischievous figures:">
+        android:textColor="@color/dark_pressed"
+        android:text="@string/numb">
     </TextView>
 </LinearLayout>
     <LinearLayout
@@ -32,13 +35,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
-            android:id="@+id/button_save_settings"/>
+            android:text="@string/save"
+            android:id="@+id/button_save"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel"
-            android:id="@+id/button_cancel_settings"/>
+            android:text="@string/cancel"
+            android:id="@+id/button_cancel"/>
     </LinearLayout>
-</FrameLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/set_complexity_layout.xml -->
+</FrameLayout>

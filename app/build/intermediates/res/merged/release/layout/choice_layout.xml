@@ -2,7 +2,8 @@
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/frameLayout1"
-        android:background="@drawable/main_back2"
+
+    android:background="@drawable/back"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
@@ -30,6 +31,7 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:weightSum="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
@@ -41,14 +43,15 @@
                 <ImageView
                     android:background="@drawable/standart"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 </ImageView>
             </LinearLayout>
             <Button
                     android:layout_marginBottom="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Classic Game"
+                    android:text="@string/standart"
+                android:layout_weight="0"
                     android:id="@+id/button_standart">
             </Button>
             <LinearLayout
@@ -58,16 +61,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:background="@drawable/awry"
+                    android:background="@drawable/awry1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 </ImageView>
             </LinearLayout>
             <Button
                 android:layout_marginBottom="4dp"
+
+                android:layout_weight="0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Awry Game"
+                    android:text="@string/awry"
                     android:id="@+id/button_awry">
             </Button>
             <LinearLayout
@@ -79,14 +84,15 @@
                 <ImageView
                     android:background="@drawable/hex"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                 </ImageView>
             </LinearLayout>
             <Button
                 android:layout_marginBottom="4dp"
+                android:layout_weight="0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hex Game"
+                    android:text="@string/hex"
                     android:id="@+id/button_hex">
             </Button>
 
@@ -102,13 +108,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Back to main menu"
+            android:text="@string/cancel"
             android:layout_marginBottom="4dp"
-            android:id="@+id/button_back1">
+            android:id="@+id/button_back">
         </Button>
     </LinearLayout>
 
 </FrameLayout>
 
 
-<!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/choice_layout.xml -->

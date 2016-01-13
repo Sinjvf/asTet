@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Перейти на главный экран"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Перейти вверх"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Другие параметры"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Показать все"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Выбрать приложение"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Удалить запрос"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Поисковый запрос"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Поиск"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Отправить запрос"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Голосовой поиск"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Открыть доступ"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Открыть доступ пользователю %s"</string>
+    <string name="about">Об игре</string>
+    <string name="about_app">О приложении</string>
+    <string name="about_app_d_0">&lt;html>О приложении&lt;/html></string>
+    <string name="about_app_sect_0">@string/blank</string>
+    <string name="about_app_t_0">&lt;html>&lt;br />
+        Версия приложения: 1.0 &lt;br />
+        Разработчик: Sinjvf &lt;br />
+        Со всеми вопросами и пожеланиями можно обращаться по адресу: Sinjvf@gmail.com&lt;/html></string>
+    <string name="about_d_0">&lt;html>Общие правила игры&lt;/html></string>
+    <string name="about_d_1">&lt;html>Управление фигурками&lt;/html></string>
+    <string name="about_d_10">&lt;html>Результаты&lt;/html></string>
+    <string name="about_d_2">&lt;html>Заполнение ряда&lt;/html></string>
+    <string name="about_d_3">&lt;html>Типы игры&lt;/html></string>
+    <string name="about_d_4">&lt;html>Уровни игры&lt;/html></string>
+    <string name="about_d_5">&lt;html>Начисление очков&lt;/html></string>
+    <string name="about_d_6">&lt;html>Фон&lt;/html></string>
+    <string name="about_d_7">&lt;html>\"Непослушные фигурки\"&lt;/html></string>
+    <string name="about_d_8">&lt;html>Скорость&lt;/html></string>
+    <string name="about_d_9">&lt;html>Настройки по умолчанию&lt;/html></string>
+    <string name="about_sect_0">&lt;html>&lt;u>Описание игры&lt;/u>&lt;/html></string>
+    <string name="about_sect_10">&lt;html>&lt;u>Результаты игры&lt;/u>&lt;/html></string>
+    <string name="about_sect_6">&lt;html>&lt;u>Настройки&lt;/u>&lt;/html></string>
+    <string name="about_t_0">&lt;html>
+        Случайные фигурки, состоящие из 4х ячеек, падают сверху в прямоугольный стакан.
+    В полёте игрок может поворачивать фигурку и двигать её по горизонтали.
+    Фигурка летит, пока не наткнётся на другую фигурку либо на дно стакана.
+    Если при этом заполнился горизонтальный ряд, он пропадает и всё, что выше него, опускается на одну клетку.
+    Игра заканчивается, когда новая фигурка не может поместиться в стакан.
+    Игрок получает очки за каждый заполненный ряд, поэтому его задача — заполнять ряды,
+    не заполняя сам стакан (по вертикали) как можно дольше, чтобы таким образом получить как можно больше очков.
+    (с)&lt;a href="http://ru.wikipedia.org/wiki/Тетрис">Wikipedia&lt;/a> &lt;/html></string>
+    <string name="about_t_1">&lt;html>
+        Управление фигурками осуществляется с помощью движения пальца по экрану, а также кнопок в правой части экрана.&lt;br />
+        &lt;i>Движение пальцем слева направо:&lt;/i> фигура сдвинется вправо;&lt;br />
+        &lt;i>Движение пальцем справа налево:&lt;/i> фигура сдвинется влево;&lt;br />
+        &lt;i>Движение пальцем сверху вниз:&lt;/i> фигура стенет падать быстрее;&lt;br />
+        &lt;i>Короткое нажатие:&lt;/i> фигура повернется по часовой стрелке;&lt;br />
+        &lt;i>Длинное нажатие:&lt;/i> игра встанет на паузу.&lt;/html></string>
+    <string name="about_t_10">&lt;html>
+        Результаты сохраняются отдельно для каждого из устройств, на котором установленно данное приложение.
+    Посмотреть результаты для каждого из типов игры можно в разделе &lt;b>Результаты&lt;/b>&lt;br />.&lt;/html></string>
+    <string name="about_t_2">&lt;html>
+        Для наглядного пояснения того, что считается рядом, для каждой из реализаций сетки подсвечен желтым цветом
+    второй сверху ряд стакана. Стрелочками показано как смещаются элементы ряда при заполнении одного ряда под указанным.
+    Обратите внимание на то, что в игре с наклонной сеткой разное количество ячеек для четных и нечетных рядов.
+    Поэтому при сдвиге из короткого ряда в длинный появляется одна заполненная ячейка справа. При другом сдвиге эта ячейка, наоборот, пропадает.&lt;/html></string>
+    <string name="about_t_3">&lt;html>
+        В данном приложении предусмотренно 3 типа игры: &lt;br />
+    &lt;i>Классический(Standart)&lt;/i> с прямоугольной сеткой и падением фигурок по вертикали;&lt;br />
+    &lt;i>Наклонный(Awry)&lt;/i> с прямоугольной сеткой, наклоненной на 45° и падением фигурок по диагоналям сетки;&lt;br />
+    &lt;i>Гексагональный(Hex)&lt;/i> с полем из шестиугольников.&lt;br />
+    Отдельно стоит упомянуть особенности игры с наклонной сеткой. Для облегчения сложности игры введены фополнительные фигурки,
+    в которых соседние квадратики соединяются не по стороне, а лишь соприкасаются углами. Так как падение фигурок происходит по диагоналям квадратов,
+    то препятствием для дальнейшего падения фигурки служит занятая ровно под фигурой ячейка, боковые ячейки влияния не оказывают. Поясним это на примере:
+    На рис ниже показана возможная ситуация в игре. Можно подумать, что ячейка 1 задержится на поле 2, так как ее удержат находящие по бокам от 2 занятые ячейки стакана.
+    Однако это не так. Так как ячейка 3 под 2 не занята то 1 пройдет "сквозь" 2 и остановится в 3.&lt;/html></string>
+    <string name="about_t_4">&lt;html>
+        Игра всегда начинается с первого уровня. Для повышения уровня нужно убрать некоторое количество рядов.
+    На каждом следуещем уровне увеличевается скорость падения фигурок и количество очков за каждый убранный ряд&lt;/html></string>
+    <string name="about_t_5">&lt;html>
+        Очки начисляются за каждый убранный ряд. Количество очков за один ряд зависит от уровня игры и настроек сложности.
+    Есть два способа изменить сложность: добавить \"непослушные фигурки\" и увеличить начальную скорость падения фигурок.
+    Сделать это можно в разделе &lt;b>Настройки-> Установить сложность&lt;/b>&lt;/html></string>
+    <string name="about_t_6">&lt;html>
+        Для изменения фона игры зайдите в раздел &lt;b>Настройки-> Установить фон&lt;/b> и выберите понравившуюся Вам картинку, затем нажмите кнопку &lt;b>Сохранить&lt;/b>.
+    Все картинки взяты из открытых источников в интернете. Если Вы обладаете авторскими правами на одну из этих картинок
+    и возражаете против ее использования в данном приложении, напишите об этом на почту: Sinjvf@gmail.com.
+    Для того, чтобы вернуть однотонный голубой фон, в разделе &lt;b>Настройки&lt;/b> нажмите на кнопку &lt;b>Настройки по умолчанию&lt;/b>, затем на кнопку &lt;b>Сохранить&lt;/b>.&lt;/html></string>
+    <string name="about_t_7">&lt;html>
+        \"Непослушные фигурки\" представляют из себя дополнительные фигурки, падающие в стакан во время игры.
+    Они могут случайным образом поворачиваться и сдвигаться вправо/влево. Игрок не может ими управлять. Предназначены для того, чтобы отвлекать игрока.
+    Движение \"непослушных фигурок\" никак не сказывается на движении основной фигурки, они могут перекрываться друг другом и основной фигуркой.&lt;br />
+        Для изменения количества \"непослушных фигурок\" зайдите в раздел &lt;b>Настройки-> Установить сложность&lt;/b>,
+    и в разделе &lt;b>Количество непослушных фигурок&lt;/b> выберите нужное количество (от 0 до 3). После этого можно будет задать цвет для каждой из дополнительных фигурок:&lt;br />
+        &lt;i>Красный (R);&lt;br />&lt;/i>
+        &lt;i>Зеленый (G);&lt;br />&lt;/i>
+        &lt;i>Желтый (Y);&lt;br />&lt;/i>
+        &lt;i>Голубой (B);&lt;br />&lt;/i>
+        &lt;i>Случайный (Rand)&lt;/i> - фигурка будет менять цвет в процессе полета.&lt;br />
+    Не забудьте подтвердить результат нажатием кнопок &lt;b>Сохранить&lt;/b>.&lt;/html></string>
+    <string name="about_t_8">&lt;html>
+        Для изменения начальной скорости игры зайдите в раздел &lt;b>Настройки-> Установить сложность&lt;/b>
+    и выберите значение от 1 до 4 в разделе &lt;b>Начальная скорость&lt;/b>.&lt;br />
+    Не забудьте подтвердить результат нажатием кнопок &lt;b>Сохранить&lt;/b>.&lt;/html></string>
+    <string name="about_t_9">&lt;html>
+        Настройки по умолчанию представляют из себя голубой фон, отсутствие дополнительных \"непослушных фигурок\" и первую начальную скрость.
+    Для установки настроек по умолчанию нажмите &lt;b>Настройки-> Настройки по умолчанию.&lt;/b>&lt;br />
+    Не забудьте подтвердить результат нажатием кнопок &lt;b>Сохранить&lt;/b>. &lt;/html></string>
+    <string name="achievement_2_level">CgkIj6LbyvQEEAIQAQ</string>
+    <string name="achievement_3_level">CgkIj6LbyvQEEAIQAg</string>
+    <string name="achievement_4_level">CgkIj6LbyvQEEAIQAw</string>
+    <string name="achievement_5_level">CgkIj6LbyvQEEAIQBA</string>
+    <string name="achievement_6_level">CgkIj6LbyvQEEAIQBQ</string>
+    <string name="achievement_7_level">CgkIj6LbyvQEEAIQBg</string>
+    <string name="app_id">168734150927</string>
+    <string name="app_name">Тетрис</string>
+    <string name="awry">Наклонная</string>
+    <string name="background">Установить фон</string>
+    <string name="begin">Играть без авторизации</string>
+    <string name="best">Лучшие результаты</string>
+    <string name="cancel">Назад</string>
+    <string name="close">Выйти</string>
+    <string name="color">Цвет непослушных фигурок</string>
+    <string msgid="2785372108150982144" name="common_google_play_services_api_unavailable_text">"Сервисы Google Play, необходимые для работы с приложением \"<ns1:g id="APP_NAME">%1$s</ns1:g>\", сейчас недоступны. Обратитесь за помощью к разработчику."</string>
+    <string msgid="7334167077229901382" name="common_google_play_services_enable_button">"Включить"</string>
+    <string msgid="2016066508617425489" name="common_google_play_services_enable_text">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется включить сервисы Google Play."</string>
+    <string msgid="4763733806837472840" name="common_google_play_services_enable_title">"Включите сервисы Google Play"</string>
+    <string msgid="5765996826213593005" name="common_google_play_services_install_button">"Установить"</string>
+    <string msgid="1545874412485515659" name="common_google_play_services_install_text_phone">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется установить сервисы Google Play."</string>
+    <string msgid="2742131317258851812" name="common_google_play_services_install_text_tablet">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется установить сервисы Google Play."</string>
+    <string msgid="2110712637922504348" name="common_google_play_services_install_title">"Установите сервисы Google Play"</string>
+    <string msgid="8004809446015217370" name="common_google_play_services_invalid_account_text">"Этого аккаунта нет на устройстве. Выберите другой."</string>
+    <string msgid="9894539456463288" name="common_google_play_services_invalid_account_title">"Недействительный аккаунт"</string>
+    <string msgid="2602915190038884860" name="common_google_play_services_network_error_text">"Для работы с Google Play требуется подключение к сети передачи данных."</string>
+    <string msgid="5183831421651758225" name="common_google_play_services_network_error_title">"Ошибка сети"</string>
+    <string msgid="3936796119014022295" name="common_google_play_services_notification_ticker">"Ошибка сервисов Google Play"</string>
+    <string msgid="6951442375899151085" name="common_google_play_services_restricted_profile_text">"У вашего профиля нет доступа к аккаунтам."</string>
+    <string msgid="4958149393843193760" name="common_google_play_services_restricted_profile_title">"Профиль с ограниченным доступом"</string>
+    <string msgid="59739986196915578" name="common_google_play_services_sign_in_failed_text">"При входе в указанный аккаунт произошла ошибка. Выберите другой."</string>
+    <string msgid="8431204498860131150" name="common_google_play_services_sign_in_failed_title">"Ошибка входа"</string>
+    <string msgid="7170719956698345984" name="common_google_play_services_unknown_issue">"Приложению \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" не удается подключиться к сервисам Google Play. Если проблема не исчезнет, обратитесь к разработчику."</string>
+    <string msgid="4291190028362992831" name="common_google_play_services_unsupported_text">"Сервисы Google Play, необходимые для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\", не поддерживаются на вашем устройстве. Обратитесь к производителю."</string>
+    <string msgid="909734065366822541" name="common_google_play_services_unsupported_title">"Сервисы Google Play"</string>
+    <string msgid="2221302284291941971" name="common_google_play_services_update_button">"Обновить"</string>
+    <string msgid="6230553430311881723" name="common_google_play_services_update_text">"Для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\" требуется обновить сервисы Google Play."</string>
+    <string msgid="2926201203597631481" name="common_google_play_services_update_title">"Обновите сервисы Google Play"</string>
+    <string msgid="1576144479907495032" name="common_google_play_services_updating_text">"Сервисы Google Play, необходимые для работы приложения \"<ns1:g id="APP_NAME">%1$s</ns1:g>\", в настоящий момент обновляются."</string>
+    <string msgid="1604540693139938838" name="common_google_play_services_updating_title">"Обновление сервисов Google Play…"</string>
+    <string msgid="8334920661858223093" name="common_google_play_services_wear_update_text">"Версия сервисов Google Play устарела. Они автоматически обновятся в ближайшее время."</string>
+    <string msgid="311697239335516384" name="common_open_on_phone">"Открыть на телефоне"</string>
+    <string msgid="3156914698180786012" name="common_signin_button_text">"Войти"</string>
+    <string msgid="1483290677806110088" name="common_signin_button_text_long">"Войти через аккаунт Google"</string>
+    <string name="complex">Установить сложность</string>
+    <string name="def_is_set">Настройки по умолчанию установлены!</string>
+    <string name="default_set">Настройки по \nумолчанию</string>
+    <string name="erase">Очистить мои результаты</string>
+    <string name="event_2_level">CgkIj6LbyvQEEAIQCg</string>
+    <string name="event_3_level">CgkIj6LbyvQEEAIQCw</string>
+    <string name="event_4_level">CgkIj6LbyvQEEAIQDA</string>
+    <string name="event_5_level">CgkIj6LbyvQEEAIQDQ</string>
+    <string name="event_6_level">CgkIj6LbyvQEEAIQDg</string>
+    <string name="event_7_level">CgkIj6LbyvQEEAIQDw</string>
+    <string name="game_over">Игра окончена</string>
+    <string name="hex">Гексагональная</string>
+    <string name="leaderboard_awry">CgkIj6LbyvQEEAIQCA</string>
+    <string name="leaderboard_hex">CgkIj6LbyvQEEAIQCQ</string>
+    <string name="leaderboard_standart">CgkIj6LbyvQEEAIQBw</string>
+    <string name="level">Уровень</string>
+    <string name="my_score">Счет</string>
+    <string name="name">Имя</string>
+    <string name="new_game">Новая игра</string>
+    <string name="next">След.:</string>
+    <string name="numb">Количество непослушных фигурок</string>
+    <string name="pace">Начальная скорость</string>
+    <string name="package_name">com.sinjvf.tetris</string>
+    <string name="print_name">Пожалуйста, введите свое имя</string>
+    <string name="results">Результаты</string>
+    <string name="rules">Правила</string>
+    <string name="save">Сохранить</string>
+    <string name="setting">Настройки</string>
+    <string name="sign_in">Авторизация</string>
+    <string name="sign_out">Выйти из\nучетной записи</string>
+    <string name="signin_failure">Авторизация не удалась.</string>
+    <string name="signin_other_error">Возникла проблема с авторизацией, пожалуйста, попробуйте повторить позже.</string>
+    <string name="standart">Классическая</string>
+    <string name="up">Наверх </string>
+    <string name="your_score">Ваш счет</string>
+</resources>

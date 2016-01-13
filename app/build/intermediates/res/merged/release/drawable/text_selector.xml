@@ -6,4 +6,4 @@
     <item android:state_pressed="true" android:color="@color/background"/>
     <item android:color="@color/dark_primary"/>
 
-</selector><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/drawable/text_selector.xml -->
+</selector>

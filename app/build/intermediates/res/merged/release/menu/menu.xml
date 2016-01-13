@@ -6,4 +6,4 @@
             android:showAsAction="always"
             android:title="Tetris">
         </item>
-</menu><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/menu/menu.xml -->
+</menu>

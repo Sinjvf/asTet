@@ -9,6 +9,7 @@
         <item name="android:textViewStyle">@style/MyTextStyle</item>
         <item name="android:radioButtonStyle">@style/MyRadioButtonStyle</item>
         <item name="android:colorAccent">@color/dark_primary</item>
+        <item name="android:windowTitleBackgroundStyle">@style/MyTitleBackground</item>
         <!-- <item name="android:colorBackground">@color/dark_primary</item>
         -->
     </style>

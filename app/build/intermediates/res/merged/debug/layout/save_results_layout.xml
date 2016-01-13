@@ -12,7 +12,7 @@
     </LinearLayout>
     <TextView
             style="@style/SaveResText"
-            android:text="Your score is"/>
+            android:text="@string/your_score"/>
     <TextView
             style="@style/SaveResText"
             android:text=""
@@ -24,10 +24,8 @@
     </LinearLayout>
     <TextView
             style="@style/SaveResText"
-            android:text="Please,"/>
-    <TextView
-            style="@style/SaveResText"
-            android:text="print your name"/>
+            android:gravity="center"
+            android:text="@string/print_name"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,16 +49,16 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ok"
+                android:text="@string/save"
                 android:layout_weight="1"
-                android:id="@+id/button_save_res"/>
+                android:id="@+id/button_save"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:layout_weight="1"
-                android:id="@+id/button_cancel_res"/>
+                android:id="@+id/button_cancel"/>
     </LinearLayout>
 
-</LinearLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/save_results_layout.xml -->
+</LinearLayout>

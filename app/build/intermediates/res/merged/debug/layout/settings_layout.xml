@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/main_back2"
+    android:background="@drawable/back"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,19 +16,19 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:gravity="center"
-                    android:text="Set background"
+                    android:text="@string/background"
                     android:id="@+id/button_set_back"/>
                 <Button
                     android:layout_margin="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Set compexity"
+                    android:text="@string/complex"
                     android:id="@+id/button_set_complex"/>
                 <Button
                     android:layout_margin="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Default settings"
+                    android:text="@string/default_set"
                     android:id="@+id/button_default_settings"/>
             </LinearLayout>
 
@@ -42,15 +42,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Save"
-                android:id="@+id/button_save_settings"/>
+                android:text="@string/save"
+                android:id="@+id/button_save"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cancel"
-                android:id="@+id/button_cancel_settings"/>
+                android:text="@string/cancel"
+                android:id="@+id/button_cancel"/>
         </LinearLayout>
 
 
-</FrameLayout><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/layout/settings_layout.xml -->
+</FrameLayout>

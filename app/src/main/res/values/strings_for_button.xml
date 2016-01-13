@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in">Sign in</string>
+    <string name="begin">Begin without authorisation</string>
+    <string name="sign_out">Sign out</string>
+    <string name="signin_other_error">There was an issue with sign in, please try again later.</string>
+    <string name="signin_failure">Unable to sign in.</string>
+
+
+    <string name="new_game">New game</string>
+    <string name="results">Results</string>
+    <string name="setting">Settings</string>
+    <string name="about">About</string>
+    <string name="close">Exit</string>
+
+
+    <string name="standart">Classic</string>
+    <string name="awry">Awry</string>
+    <string name="hex">Hex</string>
+
+    <string name="cancel">Back</string>
+    <string name="save">Save</string>
+
+
+    <string name="erase">Erase my results</string>
+    <string name="best">Best results</string>
+    <string name="name">Name</string>
+    <string name="my_score">Score</string>
+
+    <string name="your_score">Your score</string>
+    <string name="print_name">Please, enter your name</string>
+
+
+    <string name="background">Set background</string>
+    <string name="complex">Set complexity</string>
+    <string name="default_set">Default settings</string>
+
+    <string name="rules">Rules</string>
+    <string name="about_app">About application</string>
+
+
+    <string name="game_over">Game over</string>
+    <string name="next">Next:</string>
+    <string name="level">Level</string>
+
+    <string name="numb">Number of mischievous figures</string>
+    <string name="color">Color of mischievous figures</string>
+    <string name="pace">Starting pace</string>
+
+    <string name="def_is_set">Default settings were set! </string>
+
+</resources>

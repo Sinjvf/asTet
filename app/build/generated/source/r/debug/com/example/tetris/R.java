@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.tetris;
+package com.sinjvf.tetris;
 
 public final class R {
     public static final class array {
@@ -77,154 +77,207 @@ containing a value of this type.
     }
     public static final class drawable {
         public static final int awry=0x7f020000;
-        public static final int bear=0x7f020001;
-        public static final int blue=0x7f020002;
-        public static final int button_selector=0x7f020003;
-        public static final int cat=0x7f020004;
-        public static final int down=0x7f020005;
-        public static final int fiolet=0x7f020006;
-        public static final int green=0x7f020007;
-        public static final int hex=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int image_selector=0x7f02000a;
-        public static final int left=0x7f02000b;
-        public static final int link_selector=0x7f02000c;
-        public static final int logo=0x7f02000d;
-        public static final int main_back=0x7f02000e;
-        public static final int main_back2=0x7f02000f;
-        public static final int main_back3=0x7f020010;
-        public static final int ornament=0x7f020011;
-        public static final int pause=0x7f020012;
-        public static final int radio_off=0x7f020013;
-        public static final int radio_on=0x7f020014;
-        public static final int radiobutton_selector=0x7f020015;
-        public static final int random=0x7f020016;
-        public static final int red=0x7f020017;
-        public static final int right=0x7f020018;
-        public static final int rotate=0x7f020019;
-        public static final int rotate_back=0x7f02001a;
-        public static final int s_bear=0x7f02001b;
-        public static final int s_cat=0x7f02001c;
-        public static final int s_fiolet=0x7f02001d;
-        public static final int s_ornament=0x7f02001e;
-        public static final int s_sky1=0x7f02001f;
-        public static final int s_sky2=0x7f020020;
-        public static final int s_straus1=0x7f020021;
-        public static final int s_straus2=0x7f020022;
-        public static final int s_zhiraf=0x7f020023;
-        public static final int save_res=0x7f020024;
-        public static final int sky1=0x7f020025;
-        public static final int sky2=0x7f020026;
-        public static final int standart=0x7f020027;
-        public static final int straus1=0x7f020028;
-        public static final int straus2=0x7f020029;
-        public static final int text_selector=0x7f02002a;
-        public static final int text_selector_reverse=0x7f02002b;
-        public static final int yellow=0x7f02002c;
-        public static final int zhiraf=0x7f02002d;
+        public static final int blue=0x7f020001;
+        public static final int button_selector=0x7f020002;
+        public static final int cat=0x7f020003;
+        public static final int cat1=0x7f020004;
+        public static final int cat3=0x7f020005;
+        public static final int down=0x7f020006;
+        public static final int elm=0x7f020007;
+        public static final int elm2=0x7f020008;
+        public static final int fiolet=0x7f020009;
+        public static final int flakes=0x7f02000a;
+        public static final int fox=0x7f02000b;
+        public static final int green=0x7f02000c;
+        public static final int hex=0x7f02000d;
+        public static final int ice=0x7f02000e;
+        public static final int image_selector=0x7f02000f;
+        public static final int left=0x7f020010;
+        public static final int link_selector=0x7f020011;
+        public static final int logo=0x7f020012;
+        public static final int main_back=0x7f020013;
+        public static final int main_back2=0x7f020014;
+        public static final int main_back3=0x7f020015;
+        public static final int ornament=0x7f020016;
+        public static final int pause=0x7f020017;
+        public static final int pec=0x7f020018;
+        public static final int radio_off=0x7f020019;
+        public static final int radio_on=0x7f02001a;
+        public static final int radiobutton_selector=0x7f02001b;
+        public static final int random=0x7f02001c;
+        public static final int red=0x7f02001d;
+        public static final int right=0x7f02001e;
+        public static final int rock=0x7f02001f;
+        public static final int rock2=0x7f020020;
+        public static final int rock3=0x7f020021;
+        public static final int rotate=0x7f020022;
+        public static final int rotate_back=0x7f020023;
+        public static final int s_bear=0x7f020024;
+        public static final int s_cat=0x7f020025;
+        public static final int s_cat1=0x7f020026;
+        public static final int s_cat3=0x7f020027;
+        public static final int s_elm=0x7f020028;
+        public static final int s_elm2=0x7f020029;
+        public static final int s_fiolet=0x7f02002a;
+        public static final int s_flakes=0x7f02002b;
+        public static final int s_fox=0x7f02002c;
+        public static final int s_ice=0x7f02002d;
+        public static final int s_ornament=0x7f02002e;
+        public static final int s_pec=0x7f02002f;
+        public static final int s_rock=0x7f020030;
+        public static final int s_rock2=0x7f020031;
+        public static final int s_rock3=0x7f020032;
+        public static final int s_sky1=0x7f020033;
+        public static final int s_sky2=0x7f020034;
+        public static final int s_straus1=0x7f020035;
+        public static final int s_straus2=0x7f020036;
+        public static final int s_white=0x7f020037;
+        public static final int s_white2=0x7f020038;
+        public static final int s_zhiraf=0x7f020039;
+        public static final int save_res=0x7f02003a;
+        public static final int sky1=0x7f02003b;
+        public static final int sky2=0x7f02003c;
+        public static final int standart=0x7f02003d;
+        public static final int straus1=0x7f02003e;
+        public static final int straus2=0x7f02003f;
+        public static final int text_selector=0x7f020040;
+        public static final int text_selector_reverse=0x7f020041;
+        public static final int through=0x7f020042;
+        public static final int through1=0x7f020043;
+        public static final int white=0x7f020044;
+        public static final int white2=0x7f020045;
+        public static final int yellow=0x7f020046;
+        public static final int zhiraf=0x7f020047;
     }
     public static final class id {
         public static final int button_about_app=0x7f080002;
-        public static final int button_about_app_back=0x7f08000b;
-        public static final int button_about_cancel=0x7f080003;
-        public static final int button_about_layout=0x7f08001a;
+        public static final int button_about_layout=0x7f080017;
         public static final int button_about_rules=0x7f080001;
         public static final int button_awry=0x7f080006;
-        public static final int button_back1=0x7f080008;
-        public static final int button_cancel_res=0x7f08002a;
-        public static final int button_cancel_settings=0x7f08002e;
-        public static final int button_default_settings=0x7f080031;
-        public static final int button_down=0x7f080012;
-        public static final int button_erase=0x7f080026;
-        public static final int button_exit=0x7f080016;
-        public static final int button_exit_from_res=0x7f080025;
-        public static final int button_finish=0x7f08001b;
-        public static final int button_game_over=0x7f08000d;
+        public static final int button_back=0x7f080008;
+        public static final int button_cancel=0x7f080003;
+        public static final int button_default_settings=0x7f08002d;
+        public static final int button_down=0x7f08000f;
+        public static final int button_erase=0x7f080025;
+        public static final int button_exit=0x7f080013;
+        public static final int button_finish=0x7f080018;
+        public static final int button_game_over=0x7f08000a;
         public static final int button_hex=0x7f080007;
-        public static final int button_left=0x7f080010;
-        public static final int button_new_game_layout=0x7f080017;
-        public static final int button_pause=0x7f080015;
-        public static final int button_results_layout=0x7f080018;
-        public static final int button_right=0x7f080011;
-        public static final int button_rotate=0x7f080013;
-        public static final int button_rotate_back=0x7f080014;
-        public static final int button_save_res=0x7f080029;
-        public static final int button_save_settings=0x7f08002d;
-        public static final int button_set_back=0x7f08002f;
-        public static final int button_set_complex=0x7f080030;
-        public static final int button_settings_layout=0x7f080019;
+        public static final int button_left=0x7f08000d;
+        public static final int button_new_game_layout=0x7f080014;
+        public static final int button_pause=0x7f080012;
+        public static final int button_results_layout=0x7f080015;
+        public static final int button_right=0x7f08000e;
+        public static final int button_rotate=0x7f080010;
+        public static final int button_rotate_back=0x7f080011;
+        public static final int button_save=0x7f080028;
+        public static final int button_set_back=0x7f08002b;
+        public static final int button_set_complex=0x7f08002c;
+        public static final int button_settings_layout=0x7f080016;
         public static final int button_standart=0x7f080005;
         public static final int frameLayout1=0x7f080004;
-        public static final int item1=0x7f080032;
+        public static final int ib_recycler_1=0x7f08001b;
+        public static final int ib_recycler_2=0x7f08001c;
+        public static final int ib_recycler_3=0x7f08001d;
+        public static final int item1=0x7f08002e;
         public static final int item_touch_helper_previous_elevation=0x7f080000;
-        public static final int linearLayout1=0x7f08000c;
-        public static final int linearLayout2=0x7f08000e;
-        public static final int linearLayout3=0x7f08000f;
-        public static final int linearLayout_from_back_choice=0x7f08002b;
-        public static final int linearLayout_from_complex_choice=0x7f08002c;
-        public static final int main_about_layout=0x7f080009;
-        public static final int my_recycler_view=0x7f08000a;
+        public static final int linearLayout1=0x7f080009;
+        public static final int linearLayout2=0x7f08000b;
+        public static final int linearLayout3=0x7f08000c;
+        public static final int linearLayout_from_back_choice=0x7f080029;
+        public static final int linearLayout_from_complex_choice=0x7f08002a;
+        public static final int main_about_layout=0x7f080019;
+        public static final int my_recycler_view=0x7f08001a;
         public static final int res_table=0x7f080024;
-        public static final int textScore=0x7f080027;
+        public static final int textScore=0x7f080026;
         public static final int textView=0x7f080023;
-        public static final int tv_recycler_descript=0x7f080020;
-        public static final int tv_recycler_descript1=0x7f08001e;
-        public static final int tv_recycler_descript2=0x7f08001c;
+        public static final int tv_recycler_descript=0x7f08001e;
+        public static final int tv_recycler_ll=0x7f080020;
         public static final int tv_recycler_sect=0x7f08001f;
-        public static final int tv_recycler_sect1=0x7f08001d;
         public static final int tv_recycler_text=0x7f080021;
         public static final int tv_recycler_up=0x7f080022;
-        public static final int winnerName=0x7f080028;
+        public static final int winnerName=0x7f080027;
     }
     public static final class layout {
         public static final int about_layout=0x7f030000;
         public static final int choice_layout=0x7f030001;
-        public static final int empty_about_layout=0x7f030002;
-        public static final int game_layout=0x7f030003;
-        public static final int main_layout=0x7f030004;
-        public static final int recycler_content_item=0x7f030005;
-        public static final int recycler_content_sect_item=0x7f030006;
-        public static final int recycler_text_item=0x7f030007;
-        public static final int results_layout=0x7f030008;
-        public static final int save_results_layout=0x7f030009;
-        public static final int set_background_layout=0x7f03000a;
-        public static final int set_complexity_layout=0x7f03000b;
-        public static final int settings_layout=0x7f03000c;
+        public static final int game_layout=0x7f030002;
+        public static final int main_layout=0x7f030003;
+        public static final int main_recycle_about=0x7f030004;
+        public static final int main_recycle_back=0x7f030005;
+        public static final int recycler_background_item=0x7f030006;
+        public static final int recycler_content_item=0x7f030007;
+        public static final int recycler_content_sect_item=0x7f030008;
+        public static final int recycler_text_item=0x7f030009;
+        public static final int results_layout=0x7f03000a;
+        public static final int save_results_layout=0x7f03000b;
+        public static final int set_background_layout=0x7f03000c;
+        public static final int set_complexity_layout=0x7f03000d;
+        public static final int settings_layout=0x7f03000e;
     }
     public static final class menu {
         public static final int menu=0x7f0a0000;
     }
     public static final class string {
-        public static final int about_app_d_0=0x7f090000;
-        public static final int about_app_sect_0=0x7f090001;
-        public static final int about_app_t_0=0x7f090002;
-        public static final int about_d_0=0x7f090003;
-        public static final int about_d_1=0x7f090004;
-        public static final int about_d_10=0x7f090005;
-        public static final int about_d_2=0x7f090006;
-        public static final int about_d_3=0x7f090007;
-        public static final int about_d_4=0x7f090008;
-        public static final int about_d_5=0x7f090009;
-        public static final int about_d_6=0x7f09000a;
-        public static final int about_d_7=0x7f09000b;
-        public static final int about_d_8=0x7f09000c;
-        public static final int about_d_9=0x7f09000d;
-        public static final int about_sect_0=0x7f09000e;
-        public static final int about_sect_10=0x7f09000f;
-        public static final int about_sect_6=0x7f090010;
-        public static final int about_t_0=0x7f090011;
-        public static final int about_t_1=0x7f090012;
-        public static final int about_t_10=0x7f090013;
-        public static final int about_t_2=0x7f090014;
-        public static final int about_t_3=0x7f090015;
-        public static final int about_t_4=0x7f090016;
-        public static final int about_t_5=0x7f090017;
-        public static final int about_t_6=0x7f090018;
-        public static final int about_t_7=0x7f090019;
-        public static final int about_t_8=0x7f09001a;
-        public static final int about_t_9=0x7f09001b;
-        public static final int app_name=0x7f09001c;
-        public static final int blank=0x7f09001d;
+        public static final int about=0x7f090000;
+        public static final int about_app=0x7f090001;
+        public static final int about_app_d_0=0x7f090002;
+        public static final int about_app_sect_0=0x7f090003;
+        public static final int about_app_t_0=0x7f090004;
+        public static final int about_d_0=0x7f090005;
+        public static final int about_d_1=0x7f090006;
+        public static final int about_d_10=0x7f090007;
+        public static final int about_d_2=0x7f090008;
+        public static final int about_d_3=0x7f090009;
+        public static final int about_d_4=0x7f09000a;
+        public static final int about_d_5=0x7f09000b;
+        public static final int about_d_6=0x7f09000c;
+        public static final int about_d_7=0x7f09000d;
+        public static final int about_d_8=0x7f09000e;
+        public static final int about_d_9=0x7f09000f;
+        public static final int about_sect_0=0x7f090010;
+        public static final int about_sect_10=0x7f090011;
+        public static final int about_sect_6=0x7f090012;
+        public static final int about_t_0=0x7f090013;
+        public static final int about_t_1=0x7f090014;
+        public static final int about_t_10=0x7f090015;
+        public static final int about_t_2=0x7f090016;
+        public static final int about_t_3=0x7f090017;
+        public static final int about_t_4=0x7f090018;
+        public static final int about_t_5=0x7f090019;
+        public static final int about_t_6=0x7f09001a;
+        public static final int about_t_7=0x7f09001b;
+        public static final int about_t_8=0x7f09001c;
+        public static final int about_t_9=0x7f09001d;
+        public static final int app_name=0x7f09001e;
+        public static final int awry=0x7f09001f;
+        public static final int background=0x7f090020;
+        public static final int best=0x7f090021;
+        public static final int blank=0x7f090022;
+        public static final int cancel=0x7f090023;
+        public static final int close=0x7f090024;
+        public static final int color=0x7f090025;
+        public static final int complex=0x7f090026;
+        public static final int def_is_set=0x7f090027;
+        public static final int default_set=0x7f090028;
+        public static final int erase=0x7f090029;
+        public static final int game_over=0x7f09002a;
+        public static final int hex=0x7f09002b;
+        public static final int level=0x7f09002c;
+        public static final int name=0x7f09002d;
+        public static final int new_game=0x7f09002e;
+        public static final int next=0x7f09002f;
+        public static final int numb=0x7f090030;
+        public static final int pace=0x7f090031;
+        public static final int print_name=0x7f090032;
+        public static final int results=0x7f090033;
+        public static final int rules=0x7f090034;
+        public static final int save=0x7f090035;
+        public static final int score=0x7f090036;
+        public static final int setting=0x7f090037;
+        public static final int standart=0x7f090038;
+        public static final int up=0x7f090039;
+        public static final int your_score=0x7f09003a;
     }
     public static final class style {
         public static final int ChoiceButtonStyle=0x7f040001;
@@ -252,10 +305,10 @@ containing a value of this type.
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #RecyclerView_android_orientation android:orientation}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_layoutManager com.example.tetris:layoutManager}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_reverseLayout com.example.tetris:reverseLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_spanCount com.example.tetris:spanCount}</code></td><td></td></tr>
-           <tr><td><code>{@link #RecyclerView_stackFromEnd com.example.tetris:stackFromEnd}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_layoutManager com.sinjvf.tetris:layoutManager}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_reverseLayout com.sinjvf.tetris:reverseLayout}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_spanCount com.sinjvf.tetris:spanCount}</code></td><td></td></tr>
+           <tr><td><code>{@link #RecyclerView_stackFromEnd com.sinjvf.tetris:stackFromEnd}</code></td><td></td></tr>
            </table>
            @see #RecyclerView_android_orientation
            @see #RecyclerView_layoutManager
@@ -274,7 +327,7 @@ containing a value of this type.
         */
         public static final int RecyclerView_android_orientation = 0;
         /**
-          <p>This symbol is the offset where the {@link com.example.tetris.R.attr#layoutManager}
+          <p>This symbol is the offset where the {@link com.sinjvf.tetris.R.attr#layoutManager}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -284,11 +337,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.tetris:layoutManager
+          @attr name com.sinjvf.tetris:layoutManager
         */
         public static final int RecyclerView_layoutManager = 1;
         /**
-          <p>This symbol is the offset where the {@link com.example.tetris.R.attr#reverseLayout}
+          <p>This symbol is the offset where the {@link com.sinjvf.tetris.R.attr#reverseLayout}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -298,11 +351,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.tetris:reverseLayout
+          @attr name com.sinjvf.tetris:reverseLayout
         */
         public static final int RecyclerView_reverseLayout = 3;
         /**
-          <p>This symbol is the offset where the {@link com.example.tetris.R.attr#spanCount}
+          <p>This symbol is the offset where the {@link com.sinjvf.tetris.R.attr#spanCount}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -312,11 +365,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.tetris:spanCount
+          @attr name com.sinjvf.tetris:spanCount
         */
         public static final int RecyclerView_spanCount = 2;
         /**
-          <p>This symbol is the offset where the {@link com.example.tetris.R.attr#stackFromEnd}
+          <p>This symbol is the offset where the {@link com.sinjvf.tetris.R.attr#stackFromEnd}
           attribute's value can be found in the {@link #RecyclerView} array.
 
 
@@ -326,7 +379,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.example.tetris:stackFromEnd
+          @attr name com.sinjvf.tetris:stackFromEnd
         */
         public static final int RecyclerView_stackFromEnd = 4;
     };

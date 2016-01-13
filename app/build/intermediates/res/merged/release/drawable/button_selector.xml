@@ -3,12 +3,12 @@
     <item android:state_pressed="false">
         <shape>
             <gradient
-                android:startColor="@color/background"
-                android:endColor="@color/dark_primary"
+                android:startColor="@color/background_button"
+                android:endColor="@color/dark_primary_button"
                 android:angle="270" />
             <stroke
                 android:width="2dp"
-                android:color="@color/dark_primary"/>
+                android:color="@color/dark_primary_button"/>
             <corners
                 android:radius="10dp" />
             <padding
@@ -22,7 +22,7 @@
     <item android:state_pressed="true">
         <shape>
             <gradient
-                android:startColor="@color/background"
+                android:startColor="@color/background_button"
                 android:endColor="@color/dark_pressed"
                 android:angle="270" />
             <stroke
@@ -37,4 +37,4 @@
                 android:bottom="10dp" />
         </shape>
     </item>
-</selector><!-- From: file:/home/sinjvf/StudioProjects/asTet/app/src/main/res/drawable/button_selector.xml -->
+</selector>
