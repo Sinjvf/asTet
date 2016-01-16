@@ -15,17 +15,27 @@ public abstract class MyFigures {
     protected static int movingStep;
     protected static int modes;
     protected static int primaryY;
-    protected int colorSheme;
+    protected int colorScheme;
+    protected boolean real=true;
 
     public MyFigures(){
         modeHashMap = new HashMap<Integer,  HashSet<Point > >();
-        colorSheme = 0;
+        colorScheme = 0;
     }
+
+    public boolean isReal() {
+        return real;
+    }
+
+    public void setReal(boolean real) {
+        this.real=real;
+    }
+
     public void setMischievous(int colorSheme){
-        this.colorSheme = colorSheme;
+        this.colorScheme = colorSheme;
     }
-    public int getColorSheme(){
-        return colorSheme;
+    public int getColorScheme(){
+        return colorScheme;
     }
     public int getModes(){return modes;}
     public int getCurrentMode(){

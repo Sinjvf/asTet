@@ -55,7 +55,7 @@ public abstract class Drawing {
         random = new Random(System.currentTimeMillis());
         HashSet<Point> hashSet = fig.getFieldsWithPosition(0);
 
-        colorSheme = fig.getColorSheme();
+        colorSheme = fig.getColorScheme();
         if (colorSheme==Const.COLOR_FIGURES_CORE.length){
             colorSheme= Math.abs(random.nextInt()%Const.COLOR_FIGURES_CORE.length);
         }

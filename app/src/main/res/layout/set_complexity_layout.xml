@@ -5,25 +5,73 @@
     android:background="@drawable/back_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 <LinearLayout
-
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:id="@+id/linearLayout_from_complex_choice"
+    android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/linearLayout_1"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp">
-
+    android:layout_marginLeft="@dimen/complexity_margins_size"
+    android:layout_marginRight="@dimen/complexity_margins_size">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="@dimen/text_about_d_size"
         android:gravity="center"
-        android:textColor="@color/dark_pressed"
         android:text="@string/numb">
     </TextView>
+</LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:id="@+id/linearLayout_from_complex_choice"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/complexity_margins_size"
+        android:layout_marginRight="@dimen/complexity_margins_size">
+        <LinearLayout
+            android:id="@+id/linearLayout_for_switcher"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_about_d_size"
+            android:text="@string/text_switch"
+            android:id="@+id/tw_switcher"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical" >
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textOn="@string/switch_on"
+                android:textOff="@string/switch_off"
+                android:showText="true"
+                android:switchTextAppearance="@style/MySwitchStyle"
+                android:thumbTextPadding="8dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_bg"
+
+                android:id="@+id/switch1"/>
+            </FrameLayout>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -42,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/cancel"
+            android:visibility="gone"
             android:id="@+id/button_cancel"/>
     </LinearLayout>
 </FrameLayout>

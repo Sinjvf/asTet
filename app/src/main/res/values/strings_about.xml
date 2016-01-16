@@ -58,28 +58,30 @@
      <b>Setting-> Set complexity</b></html>]]></string>
 
     <string name="about_t_6"><![CDATA[<html>
-    To changing background go to <b>Setting-> Set Background</b> and select picture, then press <b>Save</b>.
+    To changing background go to <b>Setting-> Set Background</b> and select picture.
     All pictures taken from free internet resources. If you own the copyright on one of these pictures
     and object to its use in this application, write about it in the mail: Sinjvf@gmail.com.
-    To return the monotonous blue background, in section <b>Settings</b> press <b>Default settings</b>, and then <b>Save</b>.</html>]]></string>
+    To return the monotonous blue background, in section <b>Settings</b> press <b>Default settings</b>.</html>]]></string>
 
     <string name="about_t_7"><![CDATA[<html>
-    \"Mischievous figures\" are additional figures falling on the field. You can\'t move it, but they have no effect on the game.
-       They only distract players. To changing number or color of \"Mischievous figures\" go to
+    \"Mischievous figures\" are additional figures falling on the field. You can\'t move it, and they may shift and rotate.
+     They can be in two states: distract and prevent.
+In the \"distract\" state they do not affect the game, only distracting the player.<br />
+In the \"prevent\" state, when they reach the bottom of the field, they remain, and they can also interfere with the movement of the main figure.
+The disturbing figures fall rare, more often, the more their number<br />
+     To changing number or color or state of \"Mischievous figures\" go to
        <b>Setting-> Set complexity</b>. Do not forget to confirm the changes by pressing
        <b>Save</b> buttons.</html>]]></string>
     <string name="about_t_8"><![CDATA[<html>
     To changing starting pace go to <b>Setting-> Set complexity</b>. Do not forget to confirm the changes by pressing
-       <b>Save</b> buttons.</html>]]></string>
+       <b>Save</b> button.</html>]]></string>
 
     <string name="about_t_9"><![CDATA[<html>
     Default settings are: blue background, no \"mischievous figures\" and first starting pace.
-    To setting default settings go to <b>Setting->  Default settings</b>. Do not forget to confirm the changes by pressing
-       <b>Save</b> button.</html>]]></string>
+    To setting default settings go to <b>Setting->  Default settings</b>. </html>]]></string>
 
     <string name="about_t_10"><![CDATA[<html>
-        Результаты сохраняются отдельно для каждого из устройств, на котором установленно данное приложение.
-    Посмотреть результаты для каждого из типов игры можно в разделе <b>Результаты</b><br />.</html>]]></string>
+        You can see the best results of your friends in Google+, as well as the results of other players in the <b> Results </ b> section <br />.</html>]]></string>
 
     <string name="about_app_sect_0">@string/blank</string>
     <string name="about_app_d_0"><![CDATA[<html>About application</html>]]></string>

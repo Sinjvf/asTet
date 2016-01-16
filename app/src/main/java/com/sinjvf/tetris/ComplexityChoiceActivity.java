@@ -1,30 +1,38 @@
 package com.sinjvf.tetris;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
  * Created by sinjvf on 24.12.15.
  */
-public class ComplexityChoiceActivity extends Activity implements View.OnClickListener {
+public class ComplexityChoiceActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     private GameProperties.Complex complex;
     private int []colors;
 
     private LinearLayout.LayoutParams paramsForBig;
-    private LinearLayout mainLL;
+    private LinearLayout numberLL, mainLL, switchLL;
     private TextView titleColors;
     private TextView titlePace;
+    private TextView twSwitcher;
     private int last_id=0;
 
     private RadioGroup groupForNumbers;
@@ -32,6 +40,7 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
    // private ArrayList<Integer> idsForNumbers;
     private int [] idsForNumbers;
 
+    private Switch mySwitcher;
     private ArrayList<RadioGroup> groupForColors;
     private ArrayList<ArrayList<RadioButton> > buttonForColors;
     //private ArrayList<ArrayList<Integer> > idsForColors;
@@ -45,21 +54,29 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
     
 
     private Button buttonCancel, buttonSave;
-    private static final int[] resources={R.drawable.red,
-            R.drawable.green,
-            R.drawable.yellow,
-            R.drawable.blue,
-            R.drawable.random};
+    private static int[] resources;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         complex  = (GameProperties.Complex) getIntent().getParcelableExtra(Const.COMPLEXITY);
-        colors = complex.getColorShemes();
+        colors = complex.getColorSchemes();
+        resources = new int [5];
+        resources[0]=R.drawable.red;
+        resources[1]=R.drawable.green;
+        resources[2]=R.drawable.yellow;
+        resources[3]=R.drawable.blue;
+        resources[4]=R.drawable.random;
         
         setContentView(R.layout.set_complexity_layout);
+        mySwitcher = (Switch)findViewById(R.id.switch1);
+        mySwitcher.setOnCheckedChangeListener(this);
+      //  twSwitcher = (TextView)findViewById(R.id.tw_switcher);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        switchLL = (LinearLayout)findViewById(R.id.linearLayout_for_switcher);
+        numberLL = (LinearLayout)findViewById(R.id.linearLayout_1);
         mainLL = (LinearLayout)findViewById(R.id.linearLayout_from_complex_choice);
         String[] textForNumb = {"0", "1", "2", "3", "4"};
 
@@ -74,15 +91,15 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
         setIdsForNumbers();
      //   idsForNumbers = getResources().getIntArray(R.array.numb);
         setButtons(groupForNumbers, buttonForNumbers, idsForNumbers,
-                Const.MAX_FIG + 1, textForNumb, null);
+                Const.MAX_FIG + 1, textForNumb, null, numberLL);
         buttonForNumbers.get(complex.getNumbers()).setChecked(true);
 
         titleColors = new TextView(this);
         titleColors.setText(getResources().getString(R.string.color));
         titleColors.setGravity(Gravity.CENTER);
 
-        titleColors.setTextColor(ContextCompat.getColor(this, R.color.dark_pressed));
-        titleColors.setTextSize(25);
+      //  titleColors.setTextColor(ContextCompat.getColor(this, R.color.dark_pressed));
+        titleColors.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_about_d_size));
         mainLL.addView(titleColors);
         
         groupForColors = new ArrayList<RadioGroup>();
@@ -98,8 +115,8 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
             //idsForColors.add(new ArrayList<Integer>());
 
             setButtons(groupForColors.get(i), buttonForColors.get(i), idsForColors[i],
-                    Const.MAX_COLOR, textForColor1, resources);
-            buttonForColors.get(i).get(complex.getColorShemes()[i]).setChecked(true);
+                    Const.MAX_COLOR, textForColor1, resources, mainLL);
+            buttonForColors.get(i).get(complex.getColorSchemes()[i]).setChecked(true);
         }
         int i=complex.getNumbers();
         for (int j = 0; j < i; j++) {
@@ -108,28 +125,23 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
         for (int j = i; j < 3; j++) {
             groupForColors.get(j).setVisibility(View.INVISIBLE);
         }
-        if (i > 0) {
-            titleColors.setVisibility(View.VISIBLE);
-        } else {
-            titleColors.setVisibility(View.INVISIBLE);
-        }
-
-
+        setTitleVisible(i);
 
         String [] textForPace = {"1", "2", "3", "4"};
 
         titlePace = new TextView(this);
         titlePace.setText(getResources().getString(R.string.pace));
         titlePace.setGravity(Gravity.CENTER);
-        titlePace.setTextColor(ContextCompat.getColor(this, R.color.dark_pressed));
-        titlePace.setTextSize(25);
+        //titlePace.setTextColor(ContextCompat.getColor(this, R.color.dark_pressed));
+        //titlePace.setTextSize(25);
+        titlePace.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_about_d_size));
         mainLL.addView(titlePace);
       //  idsForPace = new ArrayList<Integer>();
         idsForPace = new int [Const.MAX_PACE];
         groupForPace = new RadioGroup(this);
         buttonForPace = new ArrayList<RadioButton>();
         setIdsForPace();
-        setButtons(groupForPace, buttonForPace, idsForPace, Const.MAX_PACE,  textForPace, null);
+        setButtons(groupForPace, buttonForPace, idsForPace, Const.MAX_PACE,  textForPace, null, mainLL);
         buttonForPace.get(complex.getPace()).setChecked(true);
         
         
@@ -138,6 +150,14 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
 
         buttonSave.setOnClickListener(this);
         buttonCancel.setOnClickListener(this);
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
+            this.setTaskDescription(taskDesc);
+        }
     }
 
     private void setIdsForNumbers(){
@@ -148,6 +168,18 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
         //idsForNumbers = getResources().getIntArray(R.array.numb);
 
     }
+
+    private void setTitleVisible(int i){
+        if (i > 0) {
+            titleColors.setVisibility(View.VISIBLE);
+            switchLL.setVisibility(View.VISIBLE);
+
+        } else {
+            titleColors.setVisibility(View.INVISIBLE);
+            switchLL.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private void setIdsForColors(){
         for (int i=0;i<Const.MAX_FIG;i++){
             idsForColors[i] = new int[Const.MAX_COLOR];
@@ -156,11 +188,6 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
             }
             last_id = idsForColors[i][Const.MAX_COLOR-1];
         }
-        /**
-        idsForColors[0] =  getResources().getIntArray(R.array.fig_1);
-        idsForColors[1] =  getResources().getIntArray(R.array.fig_2);
-        idsForColors[2] =  getResources().getIntArray(R.array.fig_3);
-        /**/
     }
     private void setIdsForPace(){
        // idsForPace = getResources().getIntArray(R.array.fig_pace);
@@ -170,7 +197,7 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
         last_id = idsForPace[Const.MAX_PACE-1];
     }
     private void setButtons(RadioGroup group,ArrayList<RadioButton> button,
-                          int[] ids, int n,String[]mytext,  int[] res){
+                          int[] ids, int n,String[]mytext,  int[] res, LinearLayout ll){
         RadioGroup.LayoutParams paramsForGroup;
         paramsForGroup = new RadioGroup.LayoutParams
                 (RadioGroup.LayoutParams.WRAP_CONTENT,
@@ -186,13 +213,14 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
             button.get(i).setGravity(Gravity.CENTER);
             button.get(i).setId(ids[i]);
             button.get(i).setText(mytext[i]);
+            button.get(i).setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_radio_button));
             if(res!=null)
                 button.get(i).setBackgroundResource(res[i]);
             group.addView(button.get(i));
             button.get(i).setOnClickListener(this);
         }
 
-        mainLL.addView(group);
+        ll.addView(group);
         group.setOnClickListener(this);
     }
 
@@ -208,12 +236,7 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
                 for (int j=i;j<3;j++){
                     groupForColors.get(j).setVisibility(View.INVISIBLE);
                 }
-                if(i>0) {
-                    titleColors.setVisibility(View.VISIBLE);
-                }
-                else{
-                    titleColors.setVisibility(View.INVISIBLE);
-                }
+                setTitleVisible(i);
             }
         }
         for (int fig=0; fig<Const.MAX_FIG;fig++)
@@ -222,7 +245,7 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
                 if (v.getId()==idsForColors[fig][col])
                     {
                         colors[fig]=col;
-                        complex.setColorShemes(colors);
+                        complex.setColorSchemes(colors);
                     }
             }
 
@@ -243,5 +266,11 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
                 finish();
                 break;
         }
+    }
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        int prevent;
+        prevent = isChecked ? Const.SWITCH_PREVENT : Const.SWITCH_DISTRACT;
+        complex.setPrevent(prevent);
     }
 }

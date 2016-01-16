@@ -58,10 +58,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
      * constructor
      */
     public Game(Context context, GameProperties gameProperties) {
-
         super(context);
-
-        Log.d(Const.LOG_TAG, "context CREATED!");
         this.context = context;
         newGame(gameProperties);
     }
@@ -88,8 +85,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void newGame(GameProperties gameProperties){
-
-        Log.d(Const.LOG_TAG, "game creating...");
         type = gameProperties.getType();
         back = gameProperties.getBack();
         complex = gameProperties.getComplex();
@@ -101,18 +96,14 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         //add for pace
         coef=coef*(1+complex.getPace());
         //add for many figures
-        coef=coef+complex.getNumbers();
+        coef=coef+complex.getNumbers()*complex.getPrevent();
         gameOver = false;
         checkingLevel = new ArrayList<Integer>();
         checkingLevel.add(0);
         for (int i=0; i<6; i++){
             checkingLevel.add(checkingLevel.get(i)+Const.POINT_FOR_LINE[i]*Const.LEAVE_LEVEL[i]*coef );
         }
-
-        Log.d(Const.LOG_TAG, "simple CREATED!");
         getHolder().addCallback(this);
-
-        Log.d(Const.LOG_TAG, "get Holder!");
         fCurrent = newFig();
         fNext = newFig();
         switch (type){
@@ -129,12 +120,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                 draw = new DrawingHex(context, back);
                 break;
         }
-
-        Log.d(Const.LOG_TAG, "new figs and screen!");
-        mischFig = new MischievousFigures(complex.getNumbers(), complex.getColorShemes(), false);
-
-
-        Log.d(Const.LOG_TAG, "GAME CREATED!");
+        mischFig = new MischievousFigures(complex.getNumbers(), complex.getColorSchemes(), complex.getPrevent());
     }
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
@@ -170,32 +156,66 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         return notPause;
     }
 
-    public  synchronized  boolean moveFigure(MyFigures fig, int shiftX, int shiftY, int shiftMode) {
-        int stay;
+    public  synchronized  boolean moveFigure(MyFigures fig, int shiftX, int shiftY, int shiftMode, int type_fig) {
+        int stay, stay2;
         if (!needLay) {
-            if ((stay = screen.canMoveOrRotate(fig, shiftX, shiftY, shiftMode)) == -1) {
-                fig.setCurrentMode((fig.getCurrentMode() + shiftMode) % fig.getModes());
-                fig.move(shiftX, shiftY);
-                needReDraw = true;
-                return true;
-            } else if (stay == 2) {
+            stay=screen.canMoveOrRotate(fig, shiftX, shiftY, shiftMode);
+            if (stay == -1) {
+                stay2=screen.canMoveOrRotateWithOther(fCurrent, mischFig, type_fig, shiftX, shiftY, shiftMode);
+                if (stay2==2) {
+                    layFig(fig);
+                    Log.d(Const.LOG_TAG, "2222");
+                }
+                if((stay2)==-1|| (type_fig==Const.REAL_FIG_TIME && stay2!=2)) {
+
+                    fig.setCurrentMode((fig.getCurrentMode() + shiftMode) % fig.getModes());
+                    fig.move(shiftX, shiftY);
+                    needReDraw = true;
+                    return true;
+                }
+                else
+                    stay=0;
+            }
+            if (stay == 2) {
                 gameOver = true;
                 screen.fillFigureSpace(fig);
                 if (listenerGameOver != null)
                     listenerGameOver.onListenToMain();
-            } else if (stay == 1  ) {
-                screen.fillFigureSpace(fig);
-                score += screen.deleteLineIfNesessary() * Const.POINT_FOR_LINE[level] * coef;
-                checkAndSetLevel();
-                needLay = true;
-                numberFalling=numberFalling+1;
-
-
+            }
+            if (stay == 1  ) {
+                layFig(fig);
             }
         }
         return false;
     }
 
+
+    private void layFig(MyFigures fig){
+        Log.d(Const.LOG_TAG, "LAY!");
+        screen.fillFigureSpace(fig);
+        score += screen.deleteLineIfNesessary() * Const.POINT_FOR_LINE[level] * coef;
+        checkAndSetLevel();
+        if (fig.isReal()) {
+            needLay = true;
+            numberFalling = numberFalling + 1;
+            Log.d(Const.LOG_TAG, "falling="+numberFalling);
+            if (mischFig.numb>0)
+                if ( numberFalling>=Const.PERIOD/mischFig.numb)
+                {
+                    mischFig.last = (mischFig.last+1)%mischFig.numb;
+                    Log.d(Const.LOG_TAG, "last="+mischFig.last);
+                    mischFig.visible[mischFig.last] = true;
+
+                    mischFig.mischFistMove(mischFig.last);
+                    numberFalling=0;
+                }
+        }else
+        if(mischFig.prevent){
+            mischFig.visible[mischFig.last]=false;
+            mischFig.newMischFig(mischFig.last);
+        }
+        ///WARNING! DANGEROUS CRUTCH!
+    }
     public MyFigures getFCurrent() {
         return fCurrent;
     }
@@ -267,7 +287,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                 listenerDrawText.onDrawText(level, score);
             }
             else {running = false;}
-
             needReDraw = false;
             } finally {
                 if (canvas != null) {
@@ -295,7 +314,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
                     if (elapsedTime > Const.PACE[level]/Const.COMPLEX_PACE_COEFICIENT[complex.getPace()]) {
 
-                        if (moveFigure(fCurrent, 0, 1, 0)) {
+                        if (moveFigure(fCurrent, 0, 1, 0, Const.REAL_FIG_TIME)) {
                             prevTime = now;
                         } else
                             if (!gameOver) {
@@ -317,21 +336,25 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         private int []colors;
         private ArrayList<MyFigures> misFig;
         private int mX, mY=1, mR;
-        private boolean real;
+        private boolean prevent;
         private Random random;
+        private boolean []visible;
+        private int last=-1;
 
-        public MischievousFigures(int numb, int []colors, boolean real){
+        public MischievousFigures(int numb, int []colors, int prev){
+            prevent = (prev==Const.SWITCH_DISTRACT)?false:true;
             random = new Random(System.currentTimeMillis());
+            visible = new boolean[numb];
+            for (int i=0; i<numb; i++){
+                visible[i]=!prevent;
+            }
             this.numb = numb;
             this.colors = colors;
             misFig= new ArrayList<>();
             for (int i=0; i<numb;i++){
                newMischFig(i);
             }
-            this.real=real;
-        }
-        public MyFigures get(int i){
-            return misFig.get(i);
+            this.prevent =prevent;
         }
 
         private  void newMischFig(int i){
@@ -341,42 +364,71 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
             else
                 misFig.set(i, newFig());
             misFig.get(i).setMischievous(colors[i]);
-            mischFistMove(i);
+            misFig.get(i).setReal(false);
+            if (visible[i])
+                 mischFistMove(i);
+        }
+        private void mischZeroMove(int i){
+
+            misFig.get(i).move(0, -2);
         }
 
-        private void mischFistMove(int i){
+        private void mischFistMove(int i) {
 
-            int mX, mY=1;
-            mX =Math.abs(random.nextInt()%screen.nI);
-            while((screen.canMoveOrRotate(misFig.get(i), mX - misFig.get(i).x, mY, 0))!=-1){
-                mX =Math.abs(random.nextInt()%screen.nI);
+            Log.d(Const.LOG_TAG, "first move");
+            int mX, mY = 1;
+            mX = Math.abs(random.nextInt() % screen.nI);
+            if (!prevent)
+                mY = -2 * i;
+            while (true) {
+                while ((screen.canMoveOrRotate(misFig.get(i), mX - misFig.get(i).x, 0, 0)) != -1) {
+                    mX = Math.abs(random.nextInt() % screen.nI);
+                    Log.d(Const.LOG_TAG, "mx="+mX);
+                }
+                if (screen.canMoveOrRotateWithOther(fCurrent, this, i + 2, mX, 0, 0) == -1) {
+                    misFig.get(i).move(mX - misFig.get(i).x, 0);
+                    break;
+                }
             }
-            misFig.get(i).move(mX - misFig.get(i).x, -2 * i);
-
+            misFig.get(i).move(0, mY);
         }
         public void mischMoving(){
-            int stay;
-
-
             for (int i=0; i<numb;i++) {
                 mX = Math.abs(random.nextInt() % 3) - 1;
                 mR = Math.abs(random.nextInt() % misFig.get(i).getModes());
-                if (real) {
-                    moveFigure(misFig.get(i),mX, mY, mR);
-                }
-                else {
-                    if ((stay = screen.canMoveOrRotate(misFig.get(i), mX, mY, mR)) == -1) {
-                        misFig.get(i).setCurrentMode(
-                                (misFig.get(i).getCurrentMode() + mR) % misFig.get(i).getModes());
-                        misFig.get(i).move(mX, mY);
-                    } else if (stay == 0) {
-                        misFig.get(i).move(0, mY);
-                    } else if (!gameOver) {
-                        newMischFig(i);
+                if(visible[i]) {
+
+               //     Log.d(Const.LOG_TAG, "moving");
+                    if (prevent) {
+                        moveFigure(misFig.get(i), mX, 0, 0, i+2);
+                        moveFigure(misFig.get(i), 0, 0, mR, i+2);
+                        moveFigure(misFig.get(i), 0, mY, 0, i+2);
+                    } else {
+                        singleMoving(mX,0, 0,  i);
+                        singleMoving(0,0, mR,  i);
+                        singleMoving(0,mY, 0,  i);
                     }
                 }
             }
+
         }
+        private void singleMoving(int x, int y, int r, int i){
+            int stay;
+            if ((stay = screen.canMoveOrRotate(misFig.get(i), x, y, r)) == -1) {
+                misFig.get(i).setCurrentMode(
+                        (misFig.get(i).getCurrentMode() + r) % misFig.get(i).getModes());
+                misFig.get(i).move(x, y);
+            } else if (stay == 0) {
+                misFig.get(i).move(0, y);
+            } else if (!gameOver) {
+                newMischFig(i);
+            }
+        }
+        public MyFigures get(int i){
+            return misFig.get(i);
+        }
+        public boolean isPrevent(){return prevent;}
+        public int getNumb(){return numb;}
     }
 
 }

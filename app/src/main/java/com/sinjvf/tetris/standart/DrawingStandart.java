@@ -105,10 +105,14 @@ public class DrawingStandart extends Drawing{
      */
     @Override
     public void drawFullScreen() {
+        Integer color;
         for (int i = 0; i < Const.NW[Const.STANDART]; i++) {
             for (int j = 0; j < Const.NH[Const.STANDART]; j++) {
                 if (screen.isFull(i, j)){
-                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
+                    color = screen.getColor(i, j);
+                    if (color<0||color>=Const.MAX_COLOR-1)
+                        color = Const.MAX_COLOR-1;
+                    drawField(Const.COLOR_FIGURES_CORE[color],Const.COLOR_FIGURES_EDGE[color], i, j);
                 }
             }
         }

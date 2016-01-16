@@ -42,7 +42,14 @@
             android:text="@string/begin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_begin"/>
+            android:id="@+id/button_begin_without"/>
+        <Button
+            android:layout_margin="2dp"
+            android:text="@string/begin_with"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_begin_with"/>
     </LinearLayout>
 
 </FrameLayout>

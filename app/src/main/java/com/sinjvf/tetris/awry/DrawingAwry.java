@@ -1,6 +1,7 @@
 package com.sinjvf.tetris.awry;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -132,10 +133,14 @@ public class DrawingAwry extends Drawing{
      */
     @Override
     public void drawFullScreen() {
+        Integer color;
         for (int i = 0; i < Const.NW[Const.AWRY]; i++) {
             for (int j = 0; j < Const.NH[Const.AWRY]*2-1; j++) {
                 if (screen.isFull(i, j) && !(j%2==0  && i==Const.NW[Const.AWRY]-1)){
-                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
+                    color = screen.getColor(i, j);
+                    if (color<0||color>=Const.MAX_COLOR-1)
+                        color = Const.MAX_COLOR-1;
+                    drawField(Const.COLOR_FIGURES_CORE[color],Const.COLOR_FIGURES_EDGE[color], i, j);
                 }
             }
         }

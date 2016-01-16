@@ -3,6 +3,7 @@
 
     <string name="sign_in">Авторизация</string>
 
+    <string name="begin_with">Начать</string>
     <string name="begin">Играть без авторизации</string>
     <string name="sign_out">Выйти из\nучетной записи</string>
     <string name="signin_other_error">Возникла проблема с авторизацией, пожалуйста, попробуйте повторить позже.</string>
@@ -36,6 +37,8 @@
     <string name="complex">Установить сложность</string>
     <string name="default_set">Настройки по \nумолчанию</string>
 
+    <string name="goto_signin">Перейти на экран авторизации</string>
+
     <string name="rules">Правила</string>
     <string name="about_app">О приложении</string>
 
@@ -46,6 +49,9 @@
 
     <string name="numb">Количество непослушных фигурок</string>
     <string name="color">Цвет непослушных фигурок</string>
+    <string name="text_switch">Непослушные фигуры:</string>
+    <string name="switch_on">Мешают</string>
+    <string name="switch_off">Отвлекают</string>
     <string name="pace">Начальная скорость</string>
 
     <string name="def_is_set">Настройки по умолчанию установлены!</string>

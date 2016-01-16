@@ -72,9 +72,17 @@ public class GameProperties implements Parcelable {
 
     public static class Complex implements Parcelable {
         private int numbers;
-        private int[] colorShemes;
+        private int[] colorSchemes;
         private int pace;
+        private int prevent;
 
+        public int getPrevent() {
+            return prevent;
+        }
+
+        public void setPrevent(int prevent) {
+            this.prevent = prevent;
+        }
 
         public int getPace() {
             return pace;
@@ -92,19 +100,20 @@ public class GameProperties implements Parcelable {
             this.numbers = numbers;
         }
 
-      public int[] getColorShemes() {
-            return colorShemes;
+      public int[] getColorSchemes() {
+            return colorSchemes;
         }
 
-        public void setColorShemes(int[] colorShemes) {
-            this.colorShemes = colorShemes;
+        public void setColorSchemes(int[] colorSchemes) {
+            this.colorSchemes = colorSchemes;
         }
 
 
-        public Complex (int numbers, int[] colorShemes, int pace) {
+        public Complex (int numbers, int[] colorSchemes, int pace, int prevent) {
             this.numbers =numbers;
-            this.colorShemes = colorShemes;
+            this.colorSchemes = colorSchemes;
             this.pace =pace;
+            this.prevent = prevent;
         }
         public Complex () {
             int []color = new int[Const.MAX_FIG];
@@ -112,14 +121,15 @@ public class GameProperties implements Parcelable {
             for(int i=0;i<Const.MAX_FIG;i++) {
                 color[i]=Const.DEFAULT_COMPLEX_COLOR;
             }
-            this.colorShemes = color;
+            this.colorSchemes = color;
             this.pace =Const.DEFAULT_COMPLEX_PACE;
+            this.prevent = Const.SWITCH_DISTRACT;
         }
         public Complex(Parcel parcel) {
             numbers = parcel.readInt();
-            colorShemes= parcel.createIntArray();
-           // colorShemes = parcel.readInt();
+            colorSchemes = parcel.createIntArray();
             pace = parcel.readInt();
+            prevent = parcel.readInt();
         }
 
         public int describeContents() {
@@ -128,10 +138,10 @@ public class GameProperties implements Parcelable {
 
         public void writeToParcel(Parcel parcel, int flags) {
             parcel.writeInt(numbers);
-            parcel.writeIntArray(colorShemes);
+            parcel.writeIntArray(colorSchemes);
             parcel.writeInt(pace);
+            parcel.writeInt(prevent);
 
-            //parcel.writeIntArray(colorShemes);
         }
 
         public static final Parcelable.Creator<Complex> CREATOR = new Parcelable.Creator<Complex>() {

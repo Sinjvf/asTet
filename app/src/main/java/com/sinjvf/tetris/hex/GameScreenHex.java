@@ -19,11 +19,4 @@ public class GameScreenHex extends GameScreen{
         if (j<0)return false;
         return screenArray.get(j).get(i);
     }
-    @Override
-    protected  void removeLine(int j) {
-        screenArray.remove(j);
-        //add the blank line in the top
-        screenArray.add(0, (ArrayList<Boolean>) blankLine.clone());
-
-    }
 }

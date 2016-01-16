@@ -1,9 +1,14 @@
 package com.sinjvf.tetris;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,21 +35,21 @@ public class BackgroundChoiceActivity extends Activity implements View.OnClickLi
     private RecyclerAdapterBackground.ItemClickListener clickListener;
 
     private final static int[] resources = {
-            R.drawable.sky1, R.drawable.sky2, R.drawable.ice,
-            R.drawable.cat, R.drawable.cat1, R.drawable.cat3,
+            R.drawable.sky2, R.drawable.ice,
+            R.drawable.cat, R.drawable.cat1,
             R.drawable.fiolet, R.drawable.ornament, R.drawable.fox,
             R.drawable.white, R.drawable.white2, R.drawable.pec,
-            R.drawable.straus1, R.drawable.straus2, R.drawable.zhiraf,
-            R.drawable.rock, R.drawable.rock2, R.drawable.rock3,
-            R.drawable.elm,R.drawable.elm2,R.drawable.flakes};
+            R.drawable.straus2, R.drawable.zhiraf,
+            R.drawable.rock, R.drawable.rock3,
+            R.drawable.elm2};
     private final static int[] s_resources = {
-            R.drawable.s_sky1, R.drawable.s_sky2, R.drawable.s_ice,
-            R.drawable.s_cat, R.drawable.s_cat1, R.drawable.s_cat3,
+            R.drawable.s_sky2, R.drawable.s_ice,
+            R.drawable.s_cat, R.drawable.s_cat1,
             R.drawable.s_fiolet, R.drawable.s_ornament, R.drawable.s_fox,
             R.drawable.s_white, R.drawable.s_white2, R.drawable.s_pec,
-            R.drawable.s_straus1, R.drawable.s_straus2, R.drawable.s_zhiraf,
-            R.drawable.s_rock, R.drawable.s_rock2, R.drawable.s_rock3,
-            R.drawable.s_elm,R.drawable.s_elm2,R.drawable.s_flakes };
+            R.drawable.s_straus2, R.drawable.s_zhiraf,
+            R.drawable.s_rock,  R.drawable.s_rock3,
+            R.drawable.s_elm2 };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,14 @@ public class BackgroundChoiceActivity extends Activity implements View.OnClickLi
         ((RecyclerAdapterBackground)mAdapter).setMyClickListener(this);
         buttonCancel = (Button)findViewById(R.id.button_back);
         buttonCancel.setOnClickListener(this);
-
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
+            this.setTaskDescription(taskDesc);
+        }
     }
 
     @Override

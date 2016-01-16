@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RadialGradient;
+import android.support.annotation.IntegerRes;
 
 import com.sinjvf.tetris.Const;
 import com.sinjvf.tetris.Drawing;
@@ -24,16 +25,15 @@ public class DrawingHex extends Drawing{
         this.width = width;
         shiftx = Const.SHIFTX;
 
-        iW = (width*3/4)/ (Const.NW[Const.HEX])/3; //height
+        iW = (int)((width*3/4)/(Const.NW[Const.HEX])*3); //height
         iH =  (int)Math.round (iW*Math.sqrt(3));
-        float temp=(float)Const.NH[Const.HEX]*2-1/2;
-        if (temp*iH>height) {
+        if ((Const.NH[Const.HEX]*2)*iH-iH/2>height) {
             shifty = Const.SHIFTX;
-            iH= (height-shifty)/(Const.NH[Const.HEX]*2-1);
+            iH= (int)((height-shifty)/(Const.NH[Const.HEX]*2-0.5f));
             iW = (int)Math.round (iH/Math.sqrt(3));
         }
         else {
-            shifty = (height - (int)(temp * iH)) / 2;
+            shifty = (height - (Const.NH[Const.HEX]*2*iH-iH/2)) / 2;
         }
         hShift = height/2+iH/2;
         iW= (iW%2==0)?iW:iW-1;
@@ -59,6 +59,8 @@ public class DrawingHex extends Drawing{
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(4);
         paint.setColor(color);
+
+        paint.setFlags(Paint.ANTI_ALIAS_FLAG);
         Path path = new Path();
         path.moveTo(absI + iW / 2, absJ + iH * 3 / 4);
         path.lineTo(absI + iW / 2, absJ + iH * 3 / 2);
@@ -80,6 +82,7 @@ public class DrawingHex extends Drawing{
     @Override
     protected void drawField(int colCore, int colEdg, int i, int j) {
         Path path=new Path();
+
         int absI, absJ;
         path.reset();
         absI = shiftx+iW/2+(iW*3/2)*i;
@@ -89,6 +92,7 @@ public class DrawingHex extends Drawing{
 
         Paint p = new Paint();
         p.setDither(true);
+        p.setFlags(Paint.ANTI_ALIAS_FLAG);
         RadialGradient gradient = new RadialGradient(absI + iW/2, absJ+iH/2, iW*3/2,
                 colCore,colEdg, android.graphics.Shader.TileMode.CLAMP);
         p.setShader(gradient);
@@ -119,6 +123,7 @@ public class DrawingHex extends Drawing{
 
         Paint p = new Paint();
         p.setDither(true);
+        p.setFlags(Paint.ANTI_ALIAS_FLAG);
         RadialGradient gradient = new RadialGradient(absI + iiW/2, absJ+iiH/2, iiW*3/2,
                 colCore,colEdg, android.graphics.Shader.TileMode.CLAMP);
         p.setShader(gradient);
@@ -138,10 +143,14 @@ public class DrawingHex extends Drawing{
 
     @Override
     public void drawFullScreen() {
+        Integer color;
         for (int i = 0; i < Const.NW[Const.HEX]*2; i++) {
             for (int j = 0; j < Const.NH[Const.HEX]*2-1; j++) {
                 if (screen.isFull(i, j) ){
-                    drawField(Const.COLOR_CORE_RED,Const.COLOR_EDGE_RED, i, j);
+                    color = screen.getColor(i, j);
+                    if (color<0||color>=Const.MAX_COLOR-1)
+                        color = Const.MAX_COLOR-1;
+                    drawField(Const.COLOR_FIGURES_CORE[color],Const.COLOR_FIGURES_EDGE[color], i, j);
                 }
             }
         }
@@ -152,6 +161,7 @@ public class DrawingHex extends Drawing{
         Paint p = new Paint();
         p.setStrokeWidth(Const.TRACE*2);
         p.setColor(Color.BLACK);
+        p.setFlags(Paint.ANTI_ALIAS_FLAG);
 /**/
         for (int j=0; j<Const.NH[Const.HEX]*2;j++) {
             for (int i = 0; i < Const.NW[Const.HEX] ; i++) {

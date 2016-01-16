@@ -30,6 +30,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/default_set"
                     android:id="@+id/button_default_settings"/>
+                <Button
+                    android:layout_margin="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goto_signin"
+                    android:id="@+id/button_goto_signin"/>
             </LinearLayout>
 
         <LinearLayout
@@ -43,12 +49,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/save"
+                android:visibility="gone"
                 android:id="@+id/button_save"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
+                android:visibility="gone"
                 android:id="@+id/button_cancel"/>
         </LinearLayout>
 

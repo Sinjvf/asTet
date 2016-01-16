@@ -22,7 +22,8 @@ import com.google.example.games.basegameutils.BaseGameUtils;
 public class SignInActivity extends BaseGameActivity implements View.OnClickListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
     private Button
-            buttonBegin,
+            buttonBeginWithout,
+            buttonBeginWith,
             buttonSignOut;
     private Button buttonSignIn;
     private final int REQUEST_CODE=1;
@@ -35,6 +36,7 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
 
     private boolean mExplicitSignOut = false;
     private boolean mInSignInFlow = false;
+
 
 
     GoogleApiClient mGoogleApiClient;
@@ -97,19 +99,57 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
                 BaseGameUtils.showActivityResultError(this,
                         requestCode, resultCode, R.string.signin_failure);
             }
-        }
+        }else
+            if (requestCode==Const.STANDART) {
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
     }
     @Override
     public void onConnected(Bundle connectionHint) {
         buttonSignIn.setVisibility(View.GONE);
         buttonSignOut.setVisibility(View.VISIBLE);
-        buttonBegin.setVisibility(View.GONE);
+        buttonBeginWithout.setVisibility(View.GONE);
+        buttonBeginWith.setVisibility(View.VISIBLE);
+        Const.Connect =true;
 
-        Log.d(Const.LOG_TAG, "Client="+getApiClient()+", connect="+ getApiClient().isConnected());
-        intent = new Intent(this, MainActivity.class);
+        Intent intent = getIntent();
+        ApiProperties apiProp =  intent.getParcelableExtra(Const.SIGN_IN);
+        Log.d(Const.LOG_TAG, "apiprop="+apiProp);
+        Log.d(Const.LOG_TAG, "getApiClient()p="+getApiClient());
+        Log.d(Const.LOG_TAG, "getApiClient().isConnected()="+getApiClient().isConnected());
+        if (apiProp!=null && getApiClient() != null && getApiClient().isConnected()) {
+            Log.d(Const.LOG_TAG, "sign not null");
+            String lead_id;
+            switch (apiProp.getType()) {
+                case Const.STANDART:
+                    lead_id =getString( R.string.leaderboard_standart);
+                    break;
+                case Const.AWRY:
+                    lead_id =getString( R.string.leaderboard_awry);
+                    break;
+                default:
+                    lead_id =getString( R.string.leaderboard_hex);
+                    break;
+            }
+            if (apiProp.getScore()>=0) {
+                Log.d(Const.LOG_TAG, "sign set score");
+                Games.Leaderboards.submitScore(getApiClient(), lead_id, apiProp.getScore());
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            else if (apiProp.getScore()==Const.SCORE_FOR_RESULTS)
+
+                Log.d(Const.LOG_TAG, "sign print score");
+            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
+                    lead_id), Const.STANDART);
+        }
+      /*  intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
+    */}
 
 
     private void initAPI(){
@@ -124,26 +164,28 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         initAPI();
         setContentView(R.layout.sign_in_layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        buttonBegin = (Button)findViewById(R.id.button_begin);
+        buttonBeginWithout = (Button)findViewById(R.id.button_begin_without);
+
+        buttonBeginWith = (Button)findViewById(R.id.button_begin_with);
         buttonSignIn = (Button) findViewById(R.id.sign_in_button);
         buttonSignOut = (Button)findViewById(R.id.sign_out_button);
-
-        buttonBegin.setOnClickListener(this);
+        buttonBeginWithout.setOnClickListener(this);
+        buttonBeginWith.setOnClickListener(this);
         buttonSignIn.setOnClickListener(this);
         buttonSignOut.setOnClickListener(this);
         if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                               R.drawable.logo_small);
-                    ActivityManager.TaskDescription taskDesc =
-                            new ActivityManager.TaskDescription(getString(R.string.app_name),
-                                    icon, ContextCompat.getColor(this, R.color.dark_primary));
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
             this.setTaskDescription(taskDesc);
         }
+
+
 
     }
         @Override
@@ -159,13 +201,15 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
                     // sign out.
                     mSignInClicked = false;
                     Games.signOut(mGoogleApiClient);
+                    Const.Connect = false;
                     // show sign-in button, hide the sign-out button
                     buttonSignIn.setVisibility(View.VISIBLE);
                     buttonSignOut.setVisibility(View.GONE);
-                    buttonBegin.setVisibility(View.VISIBLE);
+                    buttonBeginWithout.setVisibility(View.VISIBLE);
+                    buttonBeginWith.setVisibility(View.GONE);
                     break;
 
-                case R.id.button_begin:
+               default:
                     intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                     finish();

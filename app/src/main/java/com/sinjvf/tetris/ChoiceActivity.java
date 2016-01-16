@@ -1,9 +1,14 @@
 package com.sinjvf.tetris;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,20 +16,14 @@ import android.widget.Button;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
-public class ChoiceActivity extends BaseGameActivity implements View.OnClickListener {
+public class ChoiceActivity extends Activity implements View.OnClickListener {
     private Button buttonStandart, buttonAwry, buttonHex,
             buttonBack;
     private Intent intent;
     private int nextLayout;
     private GameProperties gameProperties;
 
-    @Override
-    public void onSignInSucceeded() {
-    }
 
-    @Override
-    public void onSignInFailed() {
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,78 +41,79 @@ public class ChoiceActivity extends BaseGameActivity implements View.OnClickList
         buttonBack.setOnClickListener(this);
 
         Intent intent = getIntent();
-        nextLayout = intent.getIntExtra(Const.LAYOUT, 0);
+        nextLayout = intent.getIntExtra(Const.LAYOUT, Const.STANDART);
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
+            this.setTaskDescription(taskDesc);
+        }
+    }
 
+    private void newGame(int type, int back, GameProperties.Complex complex){
+        intent = new Intent(this, GameActivity.class);
+        GameProperties gameProperties = new GameProperties(type, back, complex);
+        intent.putExtra(Const.PROPERTIES, gameProperties);
+        startActivity(intent);
+        finish();
+    }
+    private void printRes(int type){
+        intent = new Intent(this, SignInActivity.class);
+        ApiProperties prop = new ApiProperties(type, Const.SCORE_FOR_RESULTS);
+        intent.putExtra(Const.SIGN_IN, prop);
+        startActivity(intent);
+        this.finish();
     }
         @Override
         public void onClick(View v) {
             int type, back;
-            int numb, colors[], pace;
+            int numb, colors[], pace, prevent;
             GameProperties.Complex complex;
             SharedPreferences sPref;
             sPref = getSharedPreferences(Const.SETTINGS, MODE_PRIVATE);
             back = sPref.getInt(Const.BACK, Const.DEFAULT_BACK);
             numb = sPref.getInt(Const.COMPLEX_NUMB, Const.DEFAULT_COMPLEX_NUMB);
             pace = sPref.getInt(Const.COMPLEX_PACE, Const.DEFAULT_COMPLEX_PACE);
+            prevent = sPref.getInt(Const.COMPLEX_PREVENT, Const.DEFAULT_COMPLEX_PREVENT);
             colors = new int [Const.MAX_FIG];
             for (int i=0;i<numb;i++){
                 colors[i]=sPref.getInt(Const.COMPLEX_COLORS[i], Const.DEFAULT_COMPLEX_COLOR);
             }
-            complex = new GameProperties.Complex(numb, colors, pace);
+            complex = new GameProperties.Complex(numb, colors, pace, prevent);
 
-          //  Log.d(Const.LOG_TAG, "load complex. numb=" + complex.getNumbers()+", pace=" +complex.getPace()+
-          //  ", c0="+complex.getColorShemes()[0]+", c1="+complex.getColorShemes()[1]+", c2="+complex.getColorShemes()[2]);
 
                    switch (v.getId()) {
                 case R.id.button_standart:
+                    type = Const.STANDART;
                     if(nextLayout==Const.NEW_GAME_LAYOUT) {
-                        intent = new Intent(this, AboutActivity.class);
-                        /*
-                        type = Const.STANDART;
-                        gameProperties = new GameProperties(type, back, complex);
-                        intent.putExtra(Const.PROPERTIES, gameProperties);
-                        */
-                        startActivity(intent);
-
-                        Log.d(Const.LOG_TAG, "start");
-                        finish();
+                        newGame(type, back, complex);
                     }
-                    else
-
+                    else{printRes(type);
+                    }
+                    /*
                     if (getApiClient() != null && getApiClient().isConnected()) {
                         startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
                                 getString(R.string.leaderboard_standart)), Const.STANDART);}
-
+*/
                     break;
                 case R.id.button_awry:
-                    if(nextLayout==Const.NEW_GAME_LAYOUT) {
-                        intent = new Intent(this, AboutAppActivity.class);
                         type = Const.AWRY;
-                        gameProperties = new GameProperties(type, back, complex);
-                        intent.putExtra(Const.PROPERTIES, gameProperties);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else
+                        if(nextLayout==Const.NEW_GAME_LAYOUT) {
+                            newGame(type, back, complex);
+                        }
+                        else{printRes(type);
+                        }
 
-                    if (getApiClient() != null && getApiClient().isConnected()) {
-                        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
-                                getString(R.string.leaderboard_awry)), Const.AWRY);}
                     break;
                 case R.id.button_hex:
+                    type = Const.HEX;
                     if(nextLayout==Const.NEW_GAME_LAYOUT) {
-                        intent = new Intent(this, ComplexityChoiceActivity.class);
-                        type = Const.HEX;
-                        gameProperties = new GameProperties(type, back, complex);
-                        intent.putExtra(Const.PROPERTIES, gameProperties);
-                        startActivity(intent);
-                        finish();
+                        newGame(type, back, complex);
                     }
-                    else
-
-                    if (getApiClient() != null && getApiClient().isConnected()) {
-                        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
-                                getString(R.string.leaderboard_hex)), Const.HEX);}
+                    else{printRes(type);
+                    }
 
                     break;
                 case R.id.button_back:

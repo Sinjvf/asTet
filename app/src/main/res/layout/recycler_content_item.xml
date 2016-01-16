@@ -8,7 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll_for_recycler">
-
+        <TextView
+            android:id="@+id/tv_recycler_sect"
+            android:textSize="@dimen/text_about_d_size"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:clickable="true"/>
     </LinearLayout>
     <TextView
         android:id="@+id/tv_recycler_descript"

@@ -1,9 +1,14 @@
 package com.sinjvf.tetris;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -19,7 +24,7 @@ import com.google.example.games.basegameutils.BaseGameActivity;
 /**
  * Created by Sinjvf on 09.03.2015.
  */
-public class GameActivity extends BaseGameActivity implements View.OnTouchListener, View.OnClickListener,
+public class GameActivity extends Activity implements View.OnTouchListener, View.OnClickListener,
                                                             Game.ListenerGameOver, GestureDetector.OnGestureListener,
                                                             Game.ListnerDrawText, Game.ListnerSetLevel {
 
@@ -46,39 +51,36 @@ public class GameActivity extends BaseGameActivity implements View.OnTouchListen
     private GameProperties gameProperties;
     private Intent intent;
     private int lastLevel =1;
-    private String levels_id[]={getString(R.string.achievement_2_level),
+    /*private String levels_id[]={getString(R.string.achievement_2_level),
             getString(R.string.achievement_3_level),
             getString(R.string.achievement_4_level),
             getString(R.string.achievement_5_level),
             getString(R.string.achievement_6_level),
-            getString(R.string.achievement_7_level)};
+            getString(R.string.achievement_7_level)};*/
 
-    private String event_id[]={getString(R.string.event_2_level),
+    /*private String event_id[]={getString(R.string.event_2_level),
             getString(R.string.event_3_level),
             getString(R.string.event_4_level),
             getString(R.string.event_5_level),
             getString(R.string.event_6_level),
-            getString(R.string.event_7_level)};
+            getString(R.string.event_7_level)};*/
     
-    @Override
+  //  @Override
     public void onSignInSucceeded() {
     }
 
-    @Override
+  //  @Override
     public void onSignInFailed() {
     }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.main_layout);
-        Log.d(Const.LOG_TAG, "game activity!");
+        setContentView(R.layout.game_layout);
         gameProperties = getIntent().getParcelableExtra(Const.PROPERTIES);
         game = new Game(this, gameProperties);
-
         game.setListenerGameOver(this);
         game.setListenerDrawText(this);
-   //     super.onCreate(savedInstanceState);
         surface = (LinearLayout)findViewById(R.id.linearLayout1);
         surface.addView(game);
         surface.setOnTouchListener(this);
@@ -111,7 +113,14 @@ public class GameActivity extends BaseGameActivity implements View.OnTouchListen
         Const.Level = getString(R.string.level);
         Const.Score = getString(R.string.my_score);
 
-Log.d(Const.LOG_TAG, "OnCreate finish");
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
+            this.setTaskDescription(taskDesc);
+        }
     }
 
 
@@ -119,7 +128,7 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
     private void checkResuts(){
         int score =game.getScore();
         game.stop();
-      /*  if (getApiClient() != null && getApiClient().isConnected()) {
+       /* if (getApiClient() != null && getApiClient().isConnected()) {
             String leaderboard_id;
             switch (gameProperties.getType()){
                 case Const.STANDART:
@@ -135,10 +144,19 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
             Games.Leaderboards.submitScore(getApiClient(), leaderboard_id, score);
         } else {
             Log.d(Const.LOG_TAG, "LOGIN ERROR!");
+        }*/
+        if (Const.Connect && score>0) {
+            intent = new Intent(this, SignInActivity.class);
+            ApiProperties prop = new ApiProperties(gameProperties.getType(), score);
+            intent.putExtra(Const.SIGN_IN, prop);
+            startActivity(intent);
+            this.finish();
         }
-       */ intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
+        else {
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
+        }
     }
     @Override
     public void onDrawText(int level,int score){
@@ -186,20 +204,20 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_left:
-                game.moveFigure(game.getFCurrent(), -1, 0, 0);
+                game.moveFigure(game.getFCurrent(), -1, 0, 0, Const.REAL_FIG);
                 break;
             case R.id.button_right:
-                game.moveFigure(game.getFCurrent(), 1, 0, 0);
+                game.moveFigure(game.getFCurrent(), 1, 0, 0, Const.REAL_FIG);
                 break;
             case R.id.button_rotate:
-                game.moveFigure(game.getFCurrent(), 0, 0, 1);
+                game.moveFigure(game.getFCurrent(), 0, 0, 1, Const.REAL_FIG);
                 break;
             case R.id.button_rotate_back:
-                game.moveFigure(game.getFCurrent(), 0, 0, -1);
+                game.moveFigure(game.getFCurrent(), 0, 0, -1, Const.REAL_FIG);
                 break;
             case R.id.button_down:
-                game.moveFigure(game.getFCurrent(), 0, 1, 0);
-                game.moveFigure(game.getFCurrent(), 0, 1, 0);
+                game.moveFigure(game.getFCurrent(), 0, 1, 0, Const.REAL_FIG);
+                game.moveFigure(game.getFCurrent(), 0, 1, 0, Const.REAL_FIG);
                 break;
             case R.id.button_pause:
                 boolean pause = !game.getNotPause();
@@ -245,13 +263,13 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
 
                     switch (typeOfMotion) {
                         case RIGHT_MOTION:
-                            game.moveFigure(game.getFCurrent(), 1, 0, 0);
+                            game.moveFigure(game.getFCurrent(), 1, 0, 0, Const.REAL_FIG);
                             break;
                         case LEFT_MOTION:
-                            game.moveFigure(game.getFCurrent(), -1, 0, 0);
+                            game.moveFigure(game.getFCurrent(), -1, 0, 0, Const.REAL_FIG);
                             break;
                         case DOWN_MOTION:
-                            game.moveFigure(game.getFCurrent(), 0, 1, 0);
+                            game.moveFigure(game.getFCurrent(), 0, 1, 0, Const.REAL_FIG);
                             break;
                     }
                     break;
@@ -292,7 +310,7 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
 
         boolean pause = !game.getNotPause();
         inActivateButtons(pause);
-        game.setNotPause(pause);
+      //  game.setNotPause(pause);
     }
 
     @Override
@@ -308,7 +326,7 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
     @Override
     public boolean onSingleTapUp(MotionEvent event) {
         if (buttonRotate.isClickable()) {
-            game.moveFigure(game.getFCurrent(), 0, 0, 1);
+            game.moveFigure(game.getFCurrent(), 0, 0, 1, Const.REAL_FIG);
         }
         return true;
     }
@@ -332,7 +350,7 @@ Log.d(Const.LOG_TAG, "OnCreate finish");
         super.onResume();
         inActivateButtons(true);
 
-        inActivateButtons(false);
+      //  inActivateButtons(false);
         //  game.setNotPause(true);
         //  Log.d(Const.LOG_TAG, "RESUME");
     }

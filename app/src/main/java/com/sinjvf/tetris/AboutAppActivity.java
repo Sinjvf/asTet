@@ -1,9 +1,14 @@
 package com.sinjvf.tetris;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spanned;
@@ -61,6 +66,14 @@ public class AboutAppActivity extends Activity implements View.OnClickListener {
             case Const.ABOUT_APP:
                 setApp();
                 break;
+        }
+        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.drawable.logo_small);
+            ActivityManager.TaskDescription taskDesc =
+                    new ActivityManager.TaskDescription(getString(R.string.app_name),
+                            icon, ContextCompat.getColor(this, R.color.dark_primary));
+            this.setTaskDescription(taskDesc);
         }
     }
 

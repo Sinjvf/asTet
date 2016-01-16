@@ -52,7 +52,7 @@ public class RecyclerAdapterAbout extends RecyclerView.Adapter<RecyclerAdapterAb
 
             sTextView = (TextView) v.findViewById(R.id.tv_recycler_text);
             sDescriptView = (TextView) v.findViewById(R.id.tv_recycler_descript);
-
+            sSectView = (TextView) v.findViewById(R.id.tv_recycler_sect);
 
             switch (viewType) {
                 case TEXT_WITH_PICT:
@@ -76,12 +76,12 @@ public class RecyclerAdapterAbout extends RecyclerView.Adapter<RecyclerAdapterAb
                     sSectView = (TextView) v.findViewById(R.id.tv_recycler_sect);
                     break;
                 case CONTENT_SECT_VIEW:
-                    llview = (LinearLayout)v.findViewById(R.id.ll_for_recycler);
-                    sSectView = new TextView(llview.getContext());//(TextView) v.findViewById(R.id.tv_recycler_sect);
-                    sSectView.setTextSize(TypedValue.COMPLEX_UNIT_PX,dim);
-                    Log.d(Const.LOG_TAG, "dim size=" + dim);
-                    sSectView.setClickable(true);
-                    llview.addView(sSectView);
+                 //   llview = (LinearLayout)v.findViewById(R.id.ll_for_recycler);
+                   // sSectView.setTextSize(TypedValue.COMPLEX_UNIT_PX,dim);
+                  //  Log.d(Const.LOG_TAG, "dim size=" + dim);
+                  //  sSectView.setClickable(true);
+                   // llview.addView(sSectView);
+                    sSectView.setVisibility(View.VISIBLE);
                     sSectView.setOnClickListener(this);
 
                 default:
