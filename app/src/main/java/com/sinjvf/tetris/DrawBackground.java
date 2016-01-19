@@ -26,7 +26,7 @@ public class DrawBackground extends View {
         width = w;
         bitmap = Bitmap.createScaledBitmap(bitmap,  width,
                 height, false);
-        Log.d(Const.LOG_TAG, "Set size for DrawBack");
+      //  Log.d(Const.LOG_TAG, "Set size for DrawBack");
     }
 
     public Bitmap getBitmap(){

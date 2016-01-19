@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">tetris</string>
+    <string name="app_name">Tetro</string>
     <string name="blank" translatable="false"><![CDATA[<html></html>]]></string>
     <string name="up">Up </string>
 
@@ -59,8 +59,6 @@
 
     <string name="about_t_6"><![CDATA[<html>
     To changing background go to <b>Setting-> Set Background</b> and select picture.
-    All pictures taken from free internet resources. If you own the copyright on one of these pictures
-    and object to its use in this application, write about it in the mail: Sinjvf@gmail.com.
     To return the monotonous blue background, in section <b>Settings</b> press <b>Default settings</b>.</html>]]></string>
 
     <string name="about_t_7"><![CDATA[<html>
@@ -86,7 +84,7 @@ The disturbing figures fall rare, more often, the more their number<br />
     <string name="about_app_sect_0">@string/blank</string>
     <string name="about_app_d_0"><![CDATA[<html>About application</html>]]></string>
     <string name="about_app_t_0"><![CDATA[<html><br />
-        Application version: 1.0 <br />
+        Application version: 1.1 <br />
         Developer: Sinjvf <br />
         For any questions and wishes you can contact: Sinjvf@gmail.com</html>]]></string>
 

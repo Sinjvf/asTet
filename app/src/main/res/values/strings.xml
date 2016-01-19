@@ -2,4 +2,9 @@
 <resources>
 
 
+    <string name="banner_main">ca-app-pub-4497586394267673/7961276748</string>
+    <string name="banner_choice">ca-app-pub-4497586394267673/3552926746</string>
+    <string name="banner_signin">ca-app-pub-4497586394267673/9041057144</string>
+    <string name="banner_about">ca-app-pub-4497586394267673/2994523542</string>
+    <string name="banner_settings">ca-app-pub-4497586394267673/9041057144</string>
 </resources>

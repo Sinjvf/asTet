@@ -15,6 +15,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class SettingsActivity extends Activity implements View.OnClickListener {
     private Button buttonSetBack, buttonSetCompex, buttonDefault,
             buttonSave, buttonCancel, buttonGoTo;
@@ -31,7 +34,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    //    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonSetBack = (Button)findViewById(R.id.button_set_back);
         buttonSetCompex = (Button)findViewById(R.id.button_set_complex);
         buttonDefault = (Button)findViewById(R.id.button_default_settings);
@@ -55,6 +58,10 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
                             icon, ContextCompat.getColor(this, R.color.dark_primary));
             this.setTaskDescription(taskDesc);
         }
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     void saveSettings() {
@@ -76,7 +83,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             ed.putInt(Const.COMPLEX_COLORS[i], complex.getColorSchemes()[i]);
         }
         ed.commit();
-        Log.d(Const.LOG_TAG, "save complex. numb=" + complex.getNumbers() + ", pace=" + complex.getPace());
+    //    Log.d(Const.LOG_TAG, "save complex. numb=" + complex.getNumbers() + ", pace=" + complex.getPace());
     }
     void setDefaultSettings() {
         sPref = getSharedPreferences(Const.SETTINGS, MODE_PRIVATE);
@@ -99,7 +106,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
             colors[i]=sPref.getInt(Const.COMPLEX_COLORS[i], Const.DEFAULT_COMPLEX_COLOR);
         }
         complex = new GameProperties.Complex(numb, colors, pace, prevent);
-        Log.d(Const.LOG_TAG, "load complex. numb=" + complex.getNumbers() + ", pace=" + complex.getPace());
+ //       Log.d(Const.LOG_TAG, "load complex. numb=" + complex.getNumbers() + ", pace=" + complex.getPace());
     }
         @Override
         public void onClick(View v) {

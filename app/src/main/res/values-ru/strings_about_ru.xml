@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Тетрис</string>
 
+    <string name="app_name">Тетро</string>
     <string name="up">Наверх </string>
 
     <string name="about_sect_0"><![CDATA[<html><u>Описание игры</u></html>]]></string>
@@ -66,8 +66,6 @@
 
     <string name="about_t_6"><![CDATA[<html>
         Для изменения фона игры зайдите в раздел <b>Настройки-> Установить фон</b> и выберите понравившуюся Вам картинку.
-    Все картинки взяты из открытых источников в интернете. Если Вы обладаете авторскими правами на одну из этих картинок
-    и возражаете против ее использования в данном приложении, напишите об этом на почту: Sinjvf@gmail.com.
     Для того, чтобы вернуть однотонный голубой фон, в разделе <b>Настройки</b> нажмите на кнопку <b>Настройки по умолчанию</b>.</html>]]></string>
 
     <string name="about_t_7"><![CDATA[<html>
@@ -105,7 +103,7 @@
     <string name="about_app_sect_0">@string/blank</string>
     <string name="about_app_d_0"><![CDATA[<html>О приложении</html>]]></string>
     <string name="about_app_t_0"><![CDATA[<html><br />
-        Версия приложения: 1.0 <br />
+        Версия приложения: 1.1 <br />
         Разработчик: Sinjvf <br />
         Со всеми вопросами и пожеланиями можно обращаться по адресу: Sinjvf@gmail.com</html>]]></string>
 </resources>

@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
@@ -166,7 +168,7 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         initAPI();
         setContentView(R.layout.sign_in_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+     //   setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonBeginWithout = (Button)findViewById(R.id.button_begin_without);
 
         buttonBeginWith = (Button)findViewById(R.id.button_begin_with);
@@ -184,8 +186,9 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
                             icon, ContextCompat.getColor(this, R.color.dark_primary));
             this.setTaskDescription(taskDesc);
         }
-
-
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
         @Override

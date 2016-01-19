@@ -11,7 +11,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("H:\\for_keys\\key.jks")
+            storeFile file("/home/sinjvf/StudioProjects/for_keys/key.jks")
             storePassword "thanksForDima"
             keyAlias "mykey"
             keyPassword "rhjkmxfnbyf"
@@ -21,7 +21,7 @@ android {
         release {
             minifyEnabled true
             signingConfig signingConfigs.release
-            proguardFile 'C:\\Program Files\\Android\\android-sdk\\tools\\proguard\\proguard-android-optimize.txt'
+            proguardFile '/home/sinjvf/bot/Android/Sdk/tools/proguard/proguard-android-optimize.txt'
         }
     }/**/
 
@@ -50,21 +50,17 @@ android {
 }
 dependencies {
     compile project(':BaseGameUtils')
+    //  compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.android.support:recyclerview-v7:23.1.1'
-  //  compile 'com.google.android.gms:play-services:8.4.0'
-
     compile 'com.google.android.gms:play-services-identity:8.4.0'
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
-    compile 'com.google.android.gms:play-services-appinvite:8.4.0'
-    compile 'com.google.android.gms:play-services-appstate:8.4.0'
+ //   compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+ //   compile 'com.google.android.gms:play-services-appinvite:8.4.0'
+  //  compile 'com.google.android.gms:play-services-appstate:8.4.0'
     compile 'com.google.android.gms:play-services-auth:8.4.0'
-
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.google.android.gms:play-services-base:8.4.0'
     compile 'com.google.android.gms:play-services-basement:8.4.0'
     compile 'com.google.android.gms:play-services-games:8.4.0'
-
-    compile 'com.google.android.gms:play-services-location:8.4.0'
-
+ //   compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'com.google.android.gms:play-services-plus:8.4.0'
-
 }

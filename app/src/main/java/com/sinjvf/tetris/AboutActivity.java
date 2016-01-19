@@ -16,6 +16,8 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 public class AboutActivity extends Activity implements View.OnClickListener {
@@ -27,7 +29,7 @@ public class AboutActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         //setContentView(new Game(this));
         setContentView(R.layout.about_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+      //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonRules = (Button)findViewById(R.id.button_about_rules);
         buttonApp = (Button)findViewById(R.id.button_about_app);
         buttonBack = (Button)findViewById(R.id.button_cancel);
@@ -43,6 +45,10 @@ public class AboutActivity extends Activity implements View.OnClickListener {
                             icon, ContextCompat.getColor(this, R.color.dark_primary));
             this.setTaskDescription(taskDesc);
         }
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
     @Override

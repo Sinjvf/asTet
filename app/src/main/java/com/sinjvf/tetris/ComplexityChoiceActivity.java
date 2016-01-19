@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -72,8 +73,10 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
         setContentView(R.layout.set_complexity_layout);
         mySwitcher = (Switch)findViewById(R.id.switch1);
         mySwitcher.setOnCheckedChangeListener(this);
+
+        mySwitcher.setChecked(complex.getPrevent()==Const.SWITCH_PREVENT);
       //  twSwitcher = (TextView)findViewById(R.id.tw_switcher);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    //    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         switchLL = (LinearLayout)findViewById(R.id.linearLayout_for_switcher);
         numberLL = (LinearLayout)findViewById(R.id.linearLayout_1);

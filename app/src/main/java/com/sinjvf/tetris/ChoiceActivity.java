@@ -12,7 +12,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.games.Games;
 import com.google.example.games.basegameutils.BaseGameActivity;
 
@@ -29,7 +30,7 @@ public class ChoiceActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         //setContentView(new Game(this));
         setContentView(R.layout.choice_layout);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+   //     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonStandart = (Button)findViewById(R.id.button_standart);
         buttonAwry = (Button)findViewById(R.id.button_awry);
         buttonHex = (Button)findViewById(R.id.button_hex);
@@ -50,6 +51,10 @@ public class ChoiceActivity extends Activity implements View.OnClickListener {
                             icon, ContextCompat.getColor(this, R.color.dark_primary));
             this.setTaskDescription(taskDesc);
         }
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     private void newGame(int type, int back, GameProperties.Complex complex){

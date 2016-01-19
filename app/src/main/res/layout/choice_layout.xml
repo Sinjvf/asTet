@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/frameLayout1"
 
     android:background="@drawable/back"
@@ -61,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
-                    android:background="@drawable/awry1"
+                    android:background="@drawable/awry"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 </ImageView>
@@ -106,18 +107,31 @@
     </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
+            android:layout_weight="0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="@string/cancel"
-            android:visibility="invisible"
-            android:layout_marginBottom="4dp"
-            android:id="@+id/button_back">
-        </Button>
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/banner_choice">
+            </com.google.android.gms.ads.AdView>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="bottom|center_horizontal"
+                android:text="@string/cancel"
+                android:layout_marginBottom="4dp"
+                android:id="@+id/button_back">
+            </Button>
+
         </LinearLayout>
     </LinearLayout>
 

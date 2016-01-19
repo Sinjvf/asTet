@@ -343,6 +343,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         public MischievousFigures(int numb, int []colors, int prev){
             prevent = (prev==Const.SWITCH_DISTRACT)?false:true;
+            Log.d(Const.LOG_TAG, "prev="+prevent);
             random = new Random(System.currentTimeMillis());
             visible = new boolean[numb];
             for (int i=0; i<numb; i++){
@@ -354,7 +355,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
             for (int i=0; i<numb;i++){
                newMischFig(i);
             }
-            this.prevent =prevent;
         }
 
         private  void newMischFig(int i){
@@ -367,10 +367,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
             misFig.get(i).setReal(false);
             if (visible[i])
                  mischFistMove(i);
-        }
-        private void mischZeroMove(int i){
-
-            misFig.get(i).move(0, -2);
         }
 
         private void mischFistMove(int i) {
@@ -385,10 +381,18 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                     mX = Math.abs(random.nextInt() % screen.nI);
                     Log.d(Const.LOG_TAG, "mx="+mX);
                 }
-                if (screen.canMoveOrRotateWithOther(fCurrent, this, i + 2, mX, 0, 0) == -1) {
-                    misFig.get(i).move(mX - misFig.get(i).x, 0);
-                    break;
-                }
+               if (prevent) {
+                   if (screen.canMoveOrRotateWithOther(fCurrent, this, i + 2, mX - misFig.get(i).x, 0, 0) == -1) {
+                       misFig.get(i).move(mX - misFig.get(i).x, 0);
+                       break;
+                   }
+               }
+                else {
+                   misFig.get(i).move(mX - misFig.get(i).x, 0);
+                   break;
+               }
+
+                Log.d(Const.LOG_TAG, "true!");
             }
             misFig.get(i).move(0, mY);
         }
