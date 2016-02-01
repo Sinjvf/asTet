@@ -30,7 +30,7 @@ public class ChoiceActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         //setContentView(new Game(this));
         setContentView(R.layout.choice_layout);
-   //     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonStandart = (Button)findViewById(R.id.button_standart);
         buttonAwry = (Button)findViewById(R.id.button_awry);
         buttonHex = (Button)findViewById(R.id.button_hex);

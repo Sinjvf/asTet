@@ -34,7 +34,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
-    //    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonSetBack = (Button)findViewById(R.id.button_set_back);
         buttonSetCompex = (Button)findViewById(R.id.button_set_complex);
         buttonDefault = (Button)findViewById(R.id.button_default_settings);

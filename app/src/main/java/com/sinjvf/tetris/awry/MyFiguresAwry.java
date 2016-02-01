@@ -65,7 +65,7 @@ public class MyFiguresAwry extends MyFigures{
         else
             if (y%2==0){
                 x=x+(i+1)/2;
-                y=y+1;
+                y=y-1;
             }
             else{
                 x=x+(i-1)/2;
@@ -142,8 +142,10 @@ public class MyFiguresAwry extends MyFigures{
                 fCurrent = new F_I();
 
         }
-       // fCurrent=new F_T_ex();
+        /*fCurrent=new F_L_ex();
+        fCurrent.setCurrentMode(0);*/
         fCurrent.setCurrentMode(Math.abs(random.nextInt()) % modes);
+
         return fCurrent;
     }
 }

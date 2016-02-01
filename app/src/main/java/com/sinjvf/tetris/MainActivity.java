@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
      //   initAPI();
         setContentView(R.layout.main_layout);
-    //    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonNewGame = (Button)findViewById(R.id.button_new_game_layout);
         buttonRating = (Button)findViewById(R.id.button_results_layout);
         buttonSettings = (Button)findViewById(R.id.button_settings_layout);

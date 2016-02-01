@@ -36,20 +36,20 @@ public class BackgroundChoiceActivity extends Activity implements View.OnClickLi
 
     private final static int[] resources = {
             R.drawable.rock1, R.drawable.rock2, R.drawable.rock3,
-            R.drawable.fox, R.drawable.ev, R.drawable.zai,
+            R.drawable.cat, R.drawable.flower1, R.drawable.horse,
             R.drawable.tulip, R.drawable.tulip2, R.drawable.flower,
-            R.drawable.vulk, R.drawable.hur, R.drawable.edel};
+            R.drawable.vulk, R.drawable.hur, R.drawable.iron};
     private final static int[] s_resources ={
             R.drawable.s_rock1, R.drawable.s_rock2, R.drawable.s_rock3,
-            R.drawable.s_fox, R.drawable.s_ev, R.drawable.s_zai,
+            R.drawable.s_cat, R.drawable.s_flower1, R.drawable.s_horse,
             R.drawable.s_tulip, R.drawable.s_tulip2, R.drawable.s_flower,
-            R.drawable.s_vulk, R.drawable.s_hur, R.drawable.s_edel};
+            R.drawable.s_vulk, R.drawable.s_hur, R.drawable.s_iron};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_recycle_back);
-   //     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);

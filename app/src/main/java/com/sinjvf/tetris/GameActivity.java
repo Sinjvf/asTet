@@ -104,7 +104,7 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
         buttonPause.setOnClickListener(this);
         buttonGameOver.setOnClickListener(this);
         buttonGameOver.setClickable(false);
-        buttonGameOver.setVisibility(View.INVISIBLE);
+        buttonGameOver.setVisibility(View.GONE);
         buttonExit.setOnClickListener(this);
         mDetector = new GestureDetector(this,this);
         db= new DBUser(this, gameProperties.getType());
@@ -176,12 +176,14 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
                     public void run() {
                         buttonGameOver.setClickable(true);
                         buttonGameOver.setVisibility(View.VISIBLE);
+                        inActivateButtons(false);
+                        /*
                         buttonPause.setClickable(false);
                         buttonDown.setClickable(false);
                         buttonLeft.setClickable(false);
                         buttonRight.setClickable(false);
                         buttonRotate.setClickable(false);
-
+*/
                     }
                 }
         );
@@ -342,7 +344,8 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
     @Override
     protected void onStart() {
         super.onStart();
-        //    Log.d(Const.LOG_TAG, "START");
+        inActivateButtons(true);
+       Log.d(Const.LOG_TAG, "START");
     }
 
     @Override
@@ -350,23 +353,20 @@ public class GameActivity extends Activity implements View.OnTouchListener, View
         super.onResume();
         inActivateButtons(true);
 
-      //  inActivateButtons(false);
-        //  game.setNotPause(true);
-        //  Log.d(Const.LOG_TAG, "RESUME");
+        Log.d(Const.LOG_TAG, "RESUME");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //    game.setNotPause(false);
-
         inActivateButtons(false);
-        //  Log.d(Const.LOG_TAG, "PAUSE");
+          Log.d(Const.LOG_TAG, "PAUSE");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        //   Log.d(Const.LOG_TAG, "STOP");
+        inActivateButtons(false);
+        Log.d(Const.LOG_TAG, "STOP");
     }
 }

@@ -122,11 +122,11 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
         Log.d(Const.LOG_TAG, "getApiClient()p="+getApiClient());
         Log.d(Const.LOG_TAG, "getApiClient().isConnected()="+getApiClient().isConnected());
         if (apiProp!=null && getApiClient() != null && getApiClient().isConnected()) {
-            Log.d(Const.LOG_TAG, "sign not null");
+            Log.d(Const.LOG_TAG, "sign not null, type=" +apiProp.getType()+"score="+apiProp.getScore());
             String lead_id;
             switch (apiProp.getType()) {
                 case Const.STANDART:
-                    lead_id =getString( R.string.leaderboard_standart);
+                    lead_id =getString(R.string.leaderboard_standart);
                     break;
                 case Const.AWRY:
                     lead_id =getString( R.string.leaderboard_awry);
@@ -142,11 +142,11 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
                 startActivity(intent);
                 finish();
             }
-            else if (apiProp.getScore()==Const.SCORE_FOR_RESULTS)
-
-                Log.d(Const.LOG_TAG, "sign print score");
-            startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
-                    lead_id), Const.STANDART);
+            else if (apiProp.getScore()==Const.SCORE_FOR_RESULTS) {
+                Log.d(Const.LOG_TAG, "start print res");
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
+                        lead_id), Const.STANDART);
+            }
         }
       /*  intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -168,7 +168,7 @@ public class SignInActivity extends BaseGameActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         initAPI();
         setContentView(R.layout.sign_in_layout);
-     //   setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonBeginWithout = (Button)findViewById(R.id.button_begin_without);
 
         buttonBeginWith = (Button)findViewById(R.id.button_begin_with);

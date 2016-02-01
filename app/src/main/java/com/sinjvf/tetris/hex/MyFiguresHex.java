@@ -63,9 +63,9 @@ public class MyFiguresHex extends MyFigures{
 
 
     public void move(int i, int j){
-            if (x%2!=0 & i!=0){
+        /*    if (x%2!=0 & i!=0){
                 y=y+1;
-            }
+            }*/
         x=x+i;
         y=y+j* movingStep;
 

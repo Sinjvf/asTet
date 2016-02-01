@@ -76,7 +76,7 @@ public class ComplexityChoiceActivity extends Activity implements View.OnClickLi
 
         mySwitcher.setChecked(complex.getPrevent()==Const.SWITCH_PREVENT);
       //  twSwitcher = (TextView)findViewById(R.id.tw_switcher);
-    //    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         switchLL = (LinearLayout)findViewById(R.id.linearLayout_for_switcher);
         numberLL = (LinearLayout)findViewById(R.id.linearLayout_1);

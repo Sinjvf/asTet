@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.sinjvf.tetris"
     android:installLocation="preferExternal"
-          android:versionCode="2"
-          android:versionName="1.1">
+          android:versionCode="6"
+          android:versionName="1.2">
 
     <uses-sdk android:minSdkVersion="14"/>
     <application
@@ -38,6 +38,12 @@
         <activity android:name="com.sinjvf.tetris.AboutAppActivity"
             android:theme="@style/MyStyle"/>
 
+        <activity android:name="com.purplebrain.adbuddiz.sdk.AdBuddizActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:name="com.google.ads.AdActivity" />
+
 
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
@@ -45,8 +51,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />-
-        <activity            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:name="com.google.ads.AdActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

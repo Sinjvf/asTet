@@ -11,7 +11,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("/home/sinjvf/StudioProjects/for_keys/key.jks")
+            storeFile file("H:\\for_keys\\key.jks")
             storePassword "thanksForDima"
             keyAlias "mykey"
             keyPassword "rhjkmxfnbyf"
@@ -21,7 +21,7 @@ android {
         release {
             minifyEnabled true
             signingConfig signingConfigs.release
-            proguardFile '/home/sinjvf/bot/Android/Sdk/tools/proguard/proguard-android-optimize.txt'
+            proguardFile "C:\\Program Files\\Android\\android-sdk\\tools\\proguard\\proguard-android-optimize.txt"
         }
     }/**/
 
@@ -63,4 +63,12 @@ dependencies {
     compile 'com.google.android.gms:play-services-games:8.4.0'
  //   compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'com.google.android.gms:play-services-plus:8.4.0'
+
+
+    compile 'com.purplebrain.adbuddiz.sdk:AdBuddiz-Java:3.+'
+}
+repositories {
+    maven {
+        url 'http://repository.adbuddiz.com/maven'
+    }
 }

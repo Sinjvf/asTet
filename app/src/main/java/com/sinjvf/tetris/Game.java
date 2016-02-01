@@ -160,13 +160,12 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         int stay, stay2;
         if (!needLay) {
             stay=screen.canMoveOrRotate(fig, shiftX, shiftY, shiftMode);
-            if (stay == -1) {
+            if (stay ==Const.MOVE_CAN) {
                 stay2=screen.canMoveOrRotateWithOther(fCurrent, mischFig, type_fig, shiftX, shiftY, shiftMode);
-                if (stay2==2) {
+                if (stay2==Const.MOVE_WITH_OTHER_LAY) {
                     layFig(fig);
-                    Log.d(Const.LOG_TAG, "2222");
                 }
-                if((stay2)==-1|| (type_fig==Const.REAL_FIG_TIME && stay2!=2)) {
+                if((stay2)==Const.MOVE_CAN|| (type_fig==Const.REAL_FIG_TIME && stay2!=Const.MOVE_WITH_OTHER_LAY)) {
 
                     fig.setCurrentMode((fig.getCurrentMode() + shiftMode) % fig.getModes());
                     fig.move(shiftX, shiftY);
@@ -174,15 +173,15 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
                     return true;
                 }
                 else
-                    stay=0;
+                    stay=Const.MOVE_CANNOT;
             }
-            if (stay == 2) {
+            if (stay == Const.MOVE_GAME_OVER) {
                 gameOver = true;
                 screen.fillFigureSpace(fig);
                 if (listenerGameOver != null)
                     listenerGameOver.onListenToMain();
             }
-            if (stay == 1  ) {
+            if (stay == Const.MOVE_LAY  ) {
                 layFig(fig);
             }
         }
@@ -370,59 +369,58 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         private void mischFistMove(int i) {
-
             Log.d(Const.LOG_TAG, "first move");
             int mX, mY = 1;
             mX = Math.abs(random.nextInt() % screen.nI);
             if (!prevent)
                 mY = -2 * i;
-            while (true) {
+            do {
                 while ((screen.canMoveOrRotate(misFig.get(i), mX - misFig.get(i).x, 0, 0)) != -1) {
                     mX = Math.abs(random.nextInt() % screen.nI);
                     Log.d(Const.LOG_TAG, "mx="+mX);
                 }
-               if (prevent) {
-                   if (screen.canMoveOrRotateWithOther(fCurrent, this, i + 2, mX - misFig.get(i).x, 0, 0) == -1) {
-                       misFig.get(i).move(mX - misFig.get(i).x, 0);
-                       break;
-                   }
-               }
-                else {
-                   misFig.get(i).move(mX - misFig.get(i).x, 0);
-                   break;
-               }
-
                 Log.d(Const.LOG_TAG, "true!");
-            }
-            misFig.get(i).move(0, mY);
+            }while(prevent && (!prevent || (screen.canMoveOrRotateWithOther(fCurrent, this, i + 2, mX - misFig.get(i).x, 0, 0) != -1)));
+            misFig.get(i).move(mX - misFig.get(i).x, 0);
+            singleMoving(0, mY, 0, i);
+        }
+        public int getmX(){
+            mX = Math.abs(random.nextInt() % 3) - 1;
+            return mX;
+        }
+        public int getmR(){
+            mR = Math.abs(random.nextInt() % misFig.get(0).getModes());
+            return mX;
         }
         public void mischMoving(){
             for (int i=0; i<numb;i++) {
-                mX = Math.abs(random.nextInt() % 3) - 1;
-                mR = Math.abs(random.nextInt() % misFig.get(i).getModes());
-                if(visible[i]) {
+                mX = getmX();
+                mR = getmR();
+                mY = 1;
+                singleMoving(mX,mY, mR, i);
+            }
+        }
 
-               //     Log.d(Const.LOG_TAG, "moving");
-                    if (prevent) {
-                        moveFigure(misFig.get(i), mX, 0, 0, i+2);
-                        moveFigure(misFig.get(i), 0, 0, mR, i+2);
-                        moveFigure(misFig.get(i), 0, mY, 0, i+2);
-                    } else {
-                        singleMoving(mX,0, 0,  i);
-                        singleMoving(0,0, mR,  i);
-                        singleMoving(0,mY, 0,  i);
-                    }
+        private void singleMoving(int mX, int mY,int mR,  int i){
+            if(visible[i]) {
+                if (prevent) {
+                    moveFigure(misFig.get(i), mX, 0, 0, i+2);
+                    moveFigure(misFig.get(i), 0, 0, mR, i+2);
+                    moveFigure(misFig.get(i), 0, mY, 0, i+2);
+                } else {
+                    singleNonPrevMoving(mX,0, 0,  i);
+                    singleNonPrevMoving(0,0, mR,  i);
+                    singleNonPrevMoving(0,mY, 0,  i);
                 }
             }
-
         }
-        private void singleMoving(int x, int y, int r, int i){
+        private void singleNonPrevMoving(int x, int y, int r, int i){
             int stay;
-            if ((stay = screen.canMoveOrRotate(misFig.get(i), x, y, r)) == -1) {
+            if ((stay = screen.canMoveOrRotate(misFig.get(i), x, y, r)) == Const.MOVE_CAN) {
                 misFig.get(i).setCurrentMode(
                         (misFig.get(i).getCurrentMode() + r) % misFig.get(i).getModes());
                 misFig.get(i).move(x, y);
-            } else if (stay == 0) {
+            } else if (stay == Const.MOVE_CANNOT) {
                 misFig.get(i).move(0, y);
             } else if (!gameOver) {
                 newMischFig(i);
@@ -433,6 +431,9 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
         }
         public boolean isPrevent(){return prevent;}
         public int getNumb(){return numb;}
+        public boolean getVisible(int i){
+            return visible[i];
+        }
     }
 
 }

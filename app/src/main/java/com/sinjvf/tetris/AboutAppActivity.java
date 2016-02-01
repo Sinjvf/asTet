@@ -45,7 +45,7 @@ public class AboutAppActivity extends Activity implements View.OnClickListener {
         intent = getIntent();
         appType = intent.getIntExtra(Const.ABOUT, 1);
         setContentView(R.layout.main_recycle_about);
-   //     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         buttonBack = (Button) findViewById(R.id.button_back);
         buttonBack.setOnClickListener(this);
        // mainLayout = (LinearLayout)findViewById(R.id.main_about_layout);

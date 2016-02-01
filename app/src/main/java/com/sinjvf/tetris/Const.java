@@ -40,11 +40,28 @@ public class Const {
 
     public static final String LOG_TAG = "myLogs";
 
-    public static final int[] PACE = {800, 700, 450, 300, 200, 100, 80};
+    public static final int[] PACE = {800, 700, 600, 500, 400, 300, 200};
     public static final int[] POINT_FOR_LINE ={1, 2, 4, 6, 10, 15, 20};
-    public static final int[] LEAVE_LEVEL ={10, 10, 8, 8, 6, 5 };
-    public static final float[] COMPLEX_PACE_COEFICIENT = {1, 1.3f ,1.5f, 2};
+    public static final int[] LEAVE_LEVEL ={20, 20, 15, 15, 10, 10 };
+    public static final float[] COMPLEX_PACE_COEFICIENT = {1, 1.33f ,1.67f, 2};
     public static final int SENSIBILITY =7; // for moving.
+
+
+    //in CanMoveOrRotate
+    public final static int MOVE_LAY=1;
+    public final static int MOVE_BOTTOM = 1;
+    public final static int MOVE_GAME_OVER = 2;
+    public final static int MOVE_OTHER_PREVENT = 0;
+    public final static int MOVE_WALL=0;
+    public final static int MOVE_CANNOT=0;
+    public final static int MOVE_CAN=-1;
+
+    //in CanMoveOrRotateWithOther
+
+    public final static int MOVE_WITH_CANNOT=1;
+    public final static int MOVE_WITH_CAN=-1;
+    public final static int MOVE_WITH_OTHER_LAY=2;
+
 
     //Data Base
     public static final String DATABASE_NAME = "mydatabase.db";
@@ -81,7 +98,8 @@ public class Const {
     public static final int SWITCH_PREVENT= 3;
     public static final int DEFAULT_COMPLEX_PREVENT =SWITCH_DISTRACT;
 
-    public static final int PERIOD = 15;
+    //between 2 falling of one prevent figure
+    public static final int PERIOD = 5;
     public static final int REAL_FIG = 1;
     public static final int REAL_FIG_TIME = 0;
     public static final int[] MISCH_FIG = {2, 3, 4};
